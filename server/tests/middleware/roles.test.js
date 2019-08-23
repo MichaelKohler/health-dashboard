@@ -3,11 +3,13 @@ import sinon from 'sinon';
 
 const roleCheck = require('../../middleware/roles');
 
+const PERMISSION_DENIED_STATUS = 403;
+
 test.beforeEach((t) => {
   t.context.sandbox = sinon.createSandbox();
   t.context.req = {
     user: {
-      getUserRoles: sinon.stub().resolves([{ dataValues: { name: 'admin' }}]),
+      getUserRoles: sinon.stub().resolves([{ dataValues: { name: 'admin' } }]),
     },
   };
   t.context.res = {
@@ -54,7 +56,7 @@ test('should send 403 if user does not have role', async (t) => {
   const check = await roleCheck('inexistingrole');
   await check(req, res, next);
   t.true(req.user.getUserRoles.calledOnce);
-  t.true(res.status.calledWith(403));
+  t.true(res.status.calledWith(PERMISSION_DENIED_STATUS));
   t.true(res.json.calledWith({}));
   t.false(next.called);
 });
@@ -64,7 +66,7 @@ test('should send 403 if user does not have role (multiple user roles to check)'
   const check = await roleCheck('inexistingrole', 'inexisting2');
   await check(req, res, next);
   t.true(req.user.getUserRoles.calledOnce);
-  t.true(res.status.calledWith(403));
+  t.true(res.status.calledWith(PERMISSION_DENIED_STATUS));
   t.true(res.json.calledWith({}));
   t.false(next.called);
 });
