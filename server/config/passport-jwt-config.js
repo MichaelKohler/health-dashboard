@@ -4,7 +4,7 @@ const passport = require('passport');
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const securityConfig = require('./security-config');
-const User = require('../models')['User'];
+const { User } = require('../models');
 
 module.exports = () => {
     const options = {
@@ -13,7 +13,7 @@ module.exports = () => {
     };
 
     passport.use(new JwtStrategy(options, (jwt_payload, done) => {
-      User.findOne({ where: { id: jwt_payload.data._id }})
+      User.findOne({ where: { id: jwt_payload.id }})
         .then((user) => {
           return user ? done(null, user) : done(null, false)
         })

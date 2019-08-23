@@ -4,7 +4,7 @@ const debug = require('debug')('health:routes:auth');
 const bcrypt = require('bcrypt');
 const express = require('express');
 const jwt = require('jwt-simple');
-const User = require('../models')['User'];
+const { User } = require('../models');
 const securityConfig = require('../config/security-config');
 
 const router = express.Router();
