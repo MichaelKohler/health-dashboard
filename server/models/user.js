@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: false,
     },
     email: DataTypes.STRING,
-    password: DataTypes.STRING
+    password: DataTypes.STRING,
   }, {});
 
   User.associate = (models) => {

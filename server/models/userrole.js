@@ -9,10 +9,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       autoIncrement: false,
     },
-    name: DataTypes.STRING
+    name: DataTypes.STRING,
   }, {});
 
-  UserRole.associate = models => {
+  UserRole.associate = (models) => {
     UserRole.belongsToMany(models.User, { through: 'UserUserRole' });
   };
 

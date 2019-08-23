@@ -15,9 +15,15 @@
     "sequelize": "^5.16.0"
   },
   "devDependencies": {
+    "@michaelkohler/eslint-config-node": "^6.8.7",
+    "eslint": "^6.2.1",
     "sequelize-cli": "^5.5.0"
   },
+  "engines": {
+    "node" : ">=10.0.0"
+  },
   "scripts": {
+    "eslint": "npx eslint .",
     "migrate": "npx sequelize-cli db:migrate",
     "seed": "npx sequelize-cli db:seed:all",
     "start": "npm run migrate && env DEBUG=\"health*\" node index.js",

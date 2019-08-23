@@ -8,6 +8,8 @@ const configurePassport = require('./config/passport-jwt-config');
 const authRoutes = require('./routes/auth');
 const healthRoutes = require('./routes/health');
 
+const port = process.env.PORT || '3333';
+
 const app = express();
 app.use(passport.initialize());
 configurePassport();
@@ -17,6 +19,6 @@ app.use(bodyParser.json());
 app.use('/auth', authRoutes);
 app.use('/health', healthRoutes);
 
-app.listen(3333, () => {
-  debug('Listening on http://localhost:3333..');
+app.listen(port, () => {
+  debug(`Listening on http://localhost:${port}..`);
 });
