@@ -15,7 +15,8 @@ router.post('/login', async (req, res) => {
       success: true,
       token: `JWT ${token}`,
     });
-  } catch (error) {
+  }
+  catch (error) {
     debug('AUTHENTICATION_FAILED', email, error);
     res.json({
       success: false,
