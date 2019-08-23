@@ -5,10 +5,10 @@ const { User } = require('../models');
 const securityConfig = require('../config/security-config');
 
 module.exports = {
-  checkPassword,
+  getToken,
 };
 
-async function checkPassword(email, password) {
+async function getToken(email, password) {
   const user = await User.findOne({ where: { email } });
   const isValid = user.checkValidPassword(password);
 

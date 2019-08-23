@@ -9,7 +9,7 @@ const router = express.Router(); // eslint-disable-line new-cap
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
   try {
-    const token = await authentication.checkPassword(email, password);
+    const token = await authentication.getToken(email, password);
     debug('USER_LOGGED_IN', email);
     res.json({
       success: true,
