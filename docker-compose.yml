@@ -1,0 +1,11 @@
+version: '2.1'
+services:
+  db:
+    image: mariadb:latest
+    container_name: health-db
+    restart: always
+    environment:
+      MYSQL_DATABASE: health
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: localdevelopment
+      MYSQL_ROOT_PASSWORD: localdevelopment

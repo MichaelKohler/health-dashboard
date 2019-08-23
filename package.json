@@ -1,0 +1,19 @@
+{
+  "name": "health-dashboard",
+  "version": "1.0.0",
+  "description": "Some health dashboard.. or just something so I can play around..",
+  "scripts": {
+    "start:server": "pushd server && npm start && popd",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MichaelKohler/health-dashboard.git"
+  },
+  "author": "Michael Kohler <me@michaelkohler.info>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MichaelKohler/health-dashboard/issues"
+  },
+  "homepage": "https://github.com/MichaelKohler/health-dashboard#readme"
+}
