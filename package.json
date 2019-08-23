@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Some health dashboard.. or just something so I can play around..",
   "scripts": {
-    "install": "pushd server && npm install && popd",
+    "install": "cd server && npm install && cd ..",
     "start:server": "pushd server && npm start && popd",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
