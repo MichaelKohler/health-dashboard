@@ -16,8 +16,11 @@
   },
   "devDependencies": {
     "@michaelkohler/eslint-config-node": "^6.8.7",
+    "ava": "^2.3.0",
     "eslint": "^6.2.1",
-    "sequelize-cli": "^5.5.0"
+    "nyc": "^14.1.1",
+    "sequelize-cli": "^5.5.0",
+    "sinon": "^7.4.1"
   },
   "engines": {
     "node": ">=10.0.0"
@@ -27,8 +30,31 @@
     "migrate": "sequelize-cli db:migrate",
     "seed": "sequelize-cli db:seed:all",
     "start": "npm run migrate && env DEBUG=\"health*\" node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nyc ava"
   },
   "author": "Michael Kohler <me@michaelkohler.info>",
-  "license": "MIT"
+  "license": "MIT",
+  "nyc": {
+    "check-coverage": true,
+    "lines": 10,
+    "statements": 10,
+    "functions": 10,
+    "branches": 10,
+    "include": [
+      "middleware/**/*.js",
+      "models/**/*.js",
+      "routes/**/*.js"
+    ],
+    "all": true,
+    "reporter": [
+      "text-summary",
+      "lcov"
+    ]
+  },
+  "ava": {
+    "files": [
+      "tests/**/*.test.js"
+    ],
+    "timeout": "2s"
+  }
 }
