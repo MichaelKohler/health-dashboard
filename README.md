@@ -1,5 +1,7 @@
 # health-dashboard
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/MichaelKohler/health-dashboard.svg)](https://greenkeeper.io/)
+
 Some health dashboard.. or just something so I can play around..
 
 ## Prerequisites
