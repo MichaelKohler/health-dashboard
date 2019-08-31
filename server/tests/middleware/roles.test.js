@@ -33,10 +33,7 @@ test('should call next if user has role', async (t) => {
 
 test('should call next if user has role (multiple user roles)', async (t) => {
   const { req, res, next } = t.context;
-  req.user.getUserRoles.resolves([
-    { dataValues: { name: 'foo' } },
-    { dataValues: { name: 'meh' } },
-  ]);
+  req.user.getUserRoles.resolves([{ dataValues: { name: 'foo' } }, { dataValues: { name: 'meh' } }]);
   const check = await roleCheck('foo');
   await check(req, res, next);
   t.true(req.user.getUserRoles.calledOnce);
