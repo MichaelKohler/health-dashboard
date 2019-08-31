@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "dependencies": {
+    "@michaelkohler/eslint-config-base": "^6.8.8",
     "@michaelkohler/eslint-config-test": "^6.8.8",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
