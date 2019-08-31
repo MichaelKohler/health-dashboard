@@ -22,3 +22,5 @@ app.use('/health', healthRoutes);
 app.listen(port, () => {
   debug(`Listening on http://localhost:${port}..`);
 });
+
+module.exports = app;

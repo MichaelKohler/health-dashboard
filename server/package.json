@@ -22,7 +22,8 @@
     "eslint": "^6.3.0",
     "nyc": "^14.1.1",
     "sequelize-cli": "^5.5.1",
-    "sinon": "^7.4.1"
+    "sinon": "^7.4.1",
+    "supertest": "^4.0.2"
   },
   "engines": {
     "node": ">=10.0.0"
@@ -38,10 +39,10 @@
   "license": "MIT",
   "nyc": {
     "check-coverage": true,
-    "lines": 65,
-    "statements": 66,
-    "functions": 84,
+    "statements": 90,
     "branches": 72,
+    "functions": 90,
+    "lines": 90,
     "include": [
       "middleware/**/*.js",
       "models/**/*.js",
