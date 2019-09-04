@@ -1,6 +1,6 @@
 import test from 'ava';
 import sinon from 'sinon';
-import jwt from 'jwt-simple';
+import jwt from 'jsonwebtoken';
 
 const authentication = require('../../lib/authentication');
 const { User } = require('../../models');
@@ -41,18 +41,22 @@ test.serial('getToken: should get token if correct password', async (t) => {
   t.context.sandbox.stub(User, 'findOne').returns({
     checkValidPassword: sinon.stub().returns(true),
   });
-  const token = await authentication.getToken('email', 'wrongpassword');
+  const token = await authentication.getToken('email', 'password');
   t.false(typeof token === 'undefined');
   t.true(token.startsWith('ey'));
 });
 
-test.serial('getToken: should not encode password in JWT', async (t) => {
-  t.context.sandbox.stub(jwt, 'encode');
+test.serial('getToken: should encode in JWT', async (t) => {
+  t.context.sandbox.stub(jwt, 'sign');
   t.context.sandbox.stub(User, 'findOne').returns({
+    id: 1234,
     password: 'foo',
     checkValidPassword: sinon.stub().returns(true),
+    email: 'foo@example.com',
   });
-  await authentication.getToken('email', 'wrongpassword');
-  const [userArgs] = jwt.encode.getCall(0).args;
+  await authentication.getToken('email', 'somepassword');
+  const [userArgs] = jwt.sign.getCall(0).args;
   t.true(typeof userArgs.password === 'undefined');
+  t.is(userArgs.id, 1234);
+  t.is(userArgs.email, 'foo@example.com');
 });

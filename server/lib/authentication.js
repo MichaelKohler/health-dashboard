@@ -1,6 +1,6 @@
 'use strict';
 
-const jwt = require('jwt-simple');
+const jwt = require('jsonwebtoken');
 const { User } = require('../models');
 const securityConfig = require('../config/security-config');
 
@@ -27,7 +27,6 @@ async function getToken(email, password) {
     throw new Error(WRONG_USER_OR_PASSWORD);
   }
 
-  delete user.password;
-  const token = jwt.encode(user, securityConfig.jwtSecret);
+  const token = jwt.sign({ id: user.id, email: user.email }, securityConfig.jwtSecret, { expiresIn: '72h' });
   return token;
 }

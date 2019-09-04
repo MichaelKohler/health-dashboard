@@ -15,6 +15,7 @@ router.post('/login', async (req, res) => {
     const token = await authentication.getToken(email, password);
     debug('USER_LOGGED_IN', email);
     res.status(STATUS_OK);
+    res.cookie('jwt', token);
     res.json({
       success: true,
       token: `JWT ${token}`,
