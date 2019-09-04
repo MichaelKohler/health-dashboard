@@ -27,6 +27,12 @@ async function getToken(email, password) {
     throw new Error(WRONG_USER_OR_PASSWORD);
   }
 
-  const token = jwt.sign({ id: user.id, email: user.email }, securityConfig.jwtSecret, { expiresIn: '72h' });
+  const token = jwt.sign({
+    id: user.id,
+    email: user.email,
+  }, securityConfig.jwtSecret, {
+    expiresIn: securityConfig.tokenExpirationInMS,
+  });
+
   return token;
 }
