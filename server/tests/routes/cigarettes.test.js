@@ -2,7 +2,7 @@ import test from 'ava';
 import sinon from 'sinon';
 import request from 'supertest';
 
-import app from '../../index';
+import app from '../..';
 import { Cigarette } from '../../models';
 
 test.beforeEach((t) => {
@@ -49,7 +49,19 @@ test.serial('should return all cigarettes - readonly', async (t) => {
     });
 });
 
-test.serial('should not return - no roles user', async (t) => {
+test.serial('should fail to get entries', async (t) => {
+  t.context.sandbox.stub(Cigarette, 'create').rejects(new Error('NOPE'));
+
+  await request(app)
+    .get('/cigarettes?username=readonly&password=foo')
+    .expect(500)
+    .then(() => t.pass())
+    .catch((error) => {
+      t.fail(error.message);
+    });
+});
+
+test.serial('should not return anything - no roles user', async (t) => {
   const cigarettes = [{
     id: 1,
     createdAt: Date.now(),
@@ -65,12 +77,16 @@ test.serial('should not return - no roles user', async (t) => {
     });
 });
 
-test.skip('should create entry - not rolled', async (t) => {
+test.serial('should create entry - not rolled', async (t) => {
   t.context.sandbox.stub(Cigarette, 'create').resolves();
 
   await request(app)
     .post('/cigarettes')
-    .send({ rolled: false })
+    .send({
+      rolled: false,
+      username: 'admin',
+      password: 'foo',
+    })
     .expect(201)
     .then(() => {
       t.true(Cigarette.create.calledWith({ rolled: false }));
@@ -81,12 +97,16 @@ test.skip('should create entry - not rolled', async (t) => {
     });
 });
 
-test.skip('should create entry - rolled', async (t) => {
+test.serial('should create entry - rolled', async (t) => {
   t.context.sandbox.stub(Cigarette, 'create').resolves();
 
   await request(app)
     .post('/cigarettes')
-    .send({ rolled: true })
+    .send({
+      rolled: true,
+      username: 'admin',
+      password: 'foo',
+    })
     .expect(201)
     .then(() => {
       t.true(Cigarette.create.calledWith({ rolled: true }));
@@ -96,16 +116,133 @@ test.skip('should create entry - rolled', async (t) => {
     });
 });
 
-test.skip('should create entry - default', async (t) => {
+test.serial('should create entry - default', async (t) => {
   t.context.sandbox.stub(Cigarette, 'create').resolves();
 
   await request(app)
     .post('/cigarettes')
-    .send({})
+    .send({
+      username: 'admin',
+      password: 'foo',
+    })
     .expect(201)
     .then(() => {
       t.true(Cigarette.create.calledWith({ rolled: true }));
     })
+    .catch((error) => {
+      t.fail(error.message);
+    });
+});
+
+test.serial('should not create entry - unauthorized', async (t) => {
+  t.context.sandbox.stub(Cigarette, 'create').resolves();
+
+  await request(app)
+    .post('/cigarettes')
+    .send({
+      username: 'inexistent',
+      password: 'foo',
+    })
+    .expect(403)
+    .then(() => t.pass())
+    .catch((error) => {
+      t.fail(error.message);
+    });
+});
+
+test.serial('should not create entry - readonly', async (t) => {
+  t.context.sandbox.stub(Cigarette, 'create').resolves();
+
+  await request(app)
+    .post('/cigarettes')
+    .send({
+      username: 'readonly',
+      password: 'foo',
+    })
+    .expect(403)
+    .then(() => t.pass())
+    .catch((error) => {
+      t.fail(error.message);
+    });
+});
+
+test.serial('should fail to create entry', async (t) => {
+  t.context.sandbox.stub(Cigarette, 'create').rejects(new Error('NOPE'));
+
+  await request(app)
+    .post('/cigarettes')
+    .send({
+      username: 'admin',
+      password: 'foo',
+    })
+    .expect(500)
+    .then(() => t.pass())
+    .catch((error) => {
+      t.fail(error.message);
+    });
+});
+
+test.serial('should delete entry - default', async (t) => {
+  t.context.sandbox.stub(Cigarette, 'destroy').resolves();
+
+  await request(app)
+    .delete('/cigarettes/1')
+    .send({
+      username: 'admin',
+      password: 'foo',
+    })
+    .expect(200)
+    .then(() => {
+      t.true(Cigarette.destroy.calledWith({ where: { id: '1' } }));
+    })
+    .catch((error) => {
+      t.fail(error.message);
+    });
+});
+
+test.serial('should not delete entry - unauthorized', async (t) => {
+  t.context.sandbox.stub(Cigarette, 'destroy').resolves();
+
+  await request(app)
+    .delete('/cigarettes/1')
+    .send({
+      username: 'inexistent',
+      password: 'foo',
+    })
+    .expect(403)
+    .then(() => t.pass())
+    .catch((error) => {
+      t.fail(error.message);
+    });
+});
+
+test.serial('should not delete entry - readonly', async (t) => {
+  t.context.sandbox.stub(Cigarette, 'destroy').resolves();
+
+  await request(app)
+    .delete('/cigarettes/1')
+    .send({
+      username: 'readonly',
+      password: 'foo',
+    })
+    .expect(403)
+    .then(() => t.pass())
+    .catch((error) => {
+      t.fail(error.message);
+    });
+});
+
+test.serial('should fail to delete entry', async (t) => {
+  t.context.sandbox.stub(Cigarette, 'destroy').rejects(new Error('NOPE!'));
+
+  await request(app)
+    .delete('/cigarettes/1')
+    .send({
+      username: 'admin',
+      password: 'foo',
+    })
+    .expect(500)
+    .then(() => t.pass())
     .catch((error) => {
       t.fail(error.message);
     });

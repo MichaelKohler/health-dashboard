@@ -10,10 +10,8 @@ const authorizedRoles = require('../middleware/roles');
 
 const { Cigarette } = require('../models');
 
-
 const STATUS_OK = 200;
 const STATUS_CREATED = 201;
-const STATUS_NOT_FOUND = 404;
 const STATUS_ERROR = 500;
 
 const router = express.Router(); // eslint-disable-line new-cap
@@ -33,7 +31,7 @@ router.post('/', passport.authenticate(strategy, { session: false }), authorized
   debug('CREATE_CIGARETTE');
   const { rolled } = req.body;
   const params = {
-    rolled: rolled ? true : rolled,
+    rolled: rolled !== false,
   };
 
   Cigarette.create(params)
@@ -51,11 +49,6 @@ router.post('/', passport.authenticate(strategy, { session: false }), authorized
 router.delete('/:cigarette', passport.authenticate(strategy, { session: false }), authorizedRoles('admin'), async (req, res) => {
   debug('DELETE_CIGARETTE');
   const { cigarette: cigaretteId } = req.params;
-
-  if (!cigaretteId) {
-    res.status(STATUS_NOT_FOUND);
-    res.send();
-  }
 
   Cigarette.destroy({
     where: {
