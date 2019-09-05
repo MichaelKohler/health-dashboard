@@ -2,7 +2,7 @@ import test from 'ava';
 import sinon from 'sinon';
 import request from 'supertest';
 
-import app from '../..';
+import app from '../../app';
 import { Weight } from '../../models';
 
 test.beforeEach((t) => {

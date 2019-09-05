@@ -1,7 +1,7 @@
 import test from 'ava';
 import request from 'supertest';
 
-import app from '../..';
+import app from '../../app';
 
 test('should return health data - admin', async (t) => {
   await request(app)
