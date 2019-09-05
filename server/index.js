@@ -11,6 +11,7 @@ const configureLocalPassport = require('./config/passport-local-config');
 const authRoutes = require('./routes/auth');
 const healthRoutes = require('./routes/health');
 const cigarettesRoutes = require('./routes/cigarettes');
+const weightsRoutes = require('./routes/weights');
 
 const port = process.env.PORT || '3333';
 const app = express();
@@ -32,6 +33,7 @@ default:
 app.use('/auth', authRoutes);
 app.use('/health', healthRoutes);
 app.use('/cigarettes', cigarettesRoutes);
+app.use('/weights', weightsRoutes);
 
 app.listen(port, () => {
   debug(`Listening on http://localhost:${port}..`);
