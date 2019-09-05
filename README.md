@@ -38,4 +38,6 @@ $ npm run seed
 
 ### Start frontend
 
-TBD
+```
+$ npm run start:web
+```
