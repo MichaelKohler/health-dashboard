@@ -1,0 +1,16 @@
+@import '../scss/_variables';
+
+body {
+  background-color: $background-color;
+  color: $font-color;
+  margin: 0;
+  font-family: $text-font-family;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $title-font-family;
+}
+
+.container {
+  margin: 10px 50px 100px 50px;
+}

@@ -1,0 +1,6 @@
+{
+  "extends": "@michaelkohler/eslint-config-react",
+  "rules": {
+    "indent": 0
+  }
+}
