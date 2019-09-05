@@ -12,7 +12,7 @@ install:
 script:
 - cd server
 - npm run eslint
-- npm test
+- NODE_ENV=test npm test
 
 notifications:
   email:

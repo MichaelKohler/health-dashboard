@@ -3,9 +3,13 @@
 const debug = require('debug')('health:routes:cigarettes');
 const express = require('express');
 const passport = require('passport');
+const env = process.env.NODE_ENV || 'development';
+const config = require('../config/config.json')[env];
+const strategy = config.usePassportStrategy;
 const authorizedRoles = require('../middleware/roles');
 
 const { Cigarette } = require('../models');
+
 
 const STATUS_OK = 200;
 const STATUS_CREATED = 201;
@@ -14,7 +18,7 @@ const STATUS_ERROR = 500;
 
 const router = express.Router(); // eslint-disable-line new-cap
 
-router.get('/', passport.authenticate('jwt', { session: false }), authorizedRoles('admin', 'readonly'), async (req, res) => {
+router.get('/', passport.authenticate(strategy, { session: false }), authorizedRoles('admin', 'readonly'), async (req, res) => {
   debug('GET_CIGARETTES');
   Cigarette.findAll()
     .then((cigarettes) => res.json(cigarettes))
@@ -25,7 +29,7 @@ router.get('/', passport.authenticate('jwt', { session: false }), authorizedRole
     });
 });
 
-router.post('/', passport.authenticate('jwt', { session: false }), authorizedRoles('admin', 'readonly'), async (req, res) => {
+router.post('/', passport.authenticate(strategy, { session: false }), authorizedRoles('admin'), async (req, res) => {
   debug('CREATE_CIGARETTE');
   const { rolled } = req.body;
   const params = {
@@ -44,7 +48,7 @@ router.post('/', passport.authenticate('jwt', { session: false }), authorizedRol
     });
 });
 
-router.delete('/:cigarette', passport.authenticate('jwt', { session: false }), authorizedRoles('admin', 'readonly'), async (req, res) => {
+router.delete('/:cigarette', passport.authenticate(strategy, { session: false }), authorizedRoles('admin'), async (req, res) => {
   debug('DELETE_CIGARETTE');
   const { cigarette: cigaretteId } = req.params;
 

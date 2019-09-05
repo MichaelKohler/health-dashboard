@@ -13,13 +13,53 @@ test.afterEach.always((t) => {
   t.context.sandbox.restore();
 });
 
-test.skip('should return empty array', async (t) => {
+test.serial('should return all cigarettes - admin', async (t) => {
+  const cigarettes = [{
+    id: 1,
+    createdAt: Date.now(),
+  }];
+  t.context.sandbox.stub(Cigarette, 'findAll').resolves(cigarettes);
+
   await request(app)
-    .get('/cigarettes')
+    .get('/cigarettes?username=admin&password=foo')
     .expect(200)
     .then((response) => {
-      t.is(response, []);
+      t.deepEqual(response.body, cigarettes);
     })
+    .catch((error) => {
+      t.fail(error.message);
+    });
+});
+
+test.serial('should return all cigarettes - readonly', async (t) => {
+  const cigarettes = [{
+    id: 1,
+    createdAt: Date.now(),
+  }];
+  t.context.sandbox.stub(Cigarette, 'findAll').resolves(cigarettes);
+
+  await request(app)
+    .get('/cigarettes?username=readonly&password=foo')
+    .expect(200)
+    .then((response) => {
+      t.deepEqual(response.body, cigarettes);
+    })
+    .catch((error) => {
+      t.fail(error.message);
+    });
+});
+
+test.serial('should not return - no roles user', async (t) => {
+  const cigarettes = [{
+    id: 1,
+    createdAt: Date.now(),
+  }];
+  t.context.sandbox.stub(Cigarette, 'findAll').resolves(cigarettes);
+
+  await request(app)
+    .get('/cigarettes?username=inexisting&password=foo')
+    .expect(401)
+    .then(() => t.pass())
     .catch((error) => {
       t.fail(error.message);
     });
