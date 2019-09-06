@@ -4,7 +4,6 @@
   "description": "",
   "dependencies": {
     "@michaelkohler/eslint-config-base": "^6.8.10",
-    "@michaelkohler/eslint-config-test": "^6.8.10",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
     "debug": "^4.1.1",
@@ -18,7 +17,8 @@
     "sequelize": "^5.18.0"
   },
   "devDependencies": {
-    "@michaelkohler/eslint-config-node": "^6.8.10",
+    "@michaelkohler/eslint-config-node": "^6.8.11",
+    "@michaelkohler/eslint-config-test": "^6.8.12",
     "ava": "^2.3.0",
     "eslint": "^6.3.0",
     "nyc": "^14.1.1",

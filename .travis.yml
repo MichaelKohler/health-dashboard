@@ -14,8 +14,9 @@ script:
 - npm run eslint
 - NODE_ENV=test npm test
 - cd ../client
-- npm run build
+- npm run eslint
 - npm test
+- npm run build
 
 notifications:
   email:

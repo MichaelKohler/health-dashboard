@@ -1,3 +1,5 @@
+/* global process */
+
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -11,42 +13,25 @@ function getDevTool() {
 
 module.exports = {
   entry: {
-    main: './src/main.jsx'
+    main: './src/main.jsx',
   },
   output: {
-    filename: './[name].js'
+    filename: './[name].js',
   },
   devtool: getDevTool(),
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.js|\.jsx$/,
         exclude: /node_modules/,
-        enforce: 'pre',
-        loader: 'eslint-loader'
-      },
-      {
-        test: /\.js|\.jsx$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader'
-      },
-      {
+        loader: 'babel-loader',
+      }, {
         test: /\.scss$/,
-        use: [
-          process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
-          'css-loader',
-          'sass-loader'
-        ]
-      }
-    ]
+        use: [process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+      }],
   },
-  plugins: [
-    new MiniCssExtractPlugin({
+  plugins: [new MiniCssExtractPlugin({
       filename: '[name].css',
-    }),
-    new CopyWebpackPlugin([
-      { from: 'robots.txt', to: '.' },
-      { from: 'index.html', to: '.' },
-    ], { copyUnmodified: true })
-  ]
+    }), new CopyWebpackPlugin([{ from: 'robots.txt',
+to: '.' }, { from: 'index.html',
+to: '.' }], { copyUnmodified: true })],
 };

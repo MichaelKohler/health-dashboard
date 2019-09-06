@@ -1,0 +1,6 @@
+{
+  "extends": "@michaelkohler/eslint-config-test",
+  "parserOptions": {
+    "sourceType": "module"
+  }
+}
