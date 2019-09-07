@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -13,12 +15,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const data = [{
-  createdAt: '2019-08-07T08:00:03Z',
-  rolled: false,
-}];
+const mapStateToProps = (state) => ({
+  cigarettes: state.cigarettes,
+});
 
-export default function Cigarettes() {
+function Cigarettes(props) {
   const classes = useStyles();
 
   return (
@@ -27,10 +28,18 @@ export default function Cigarettes() {
           <Container maxWidth="lg" className={ classes.container }>
               <Grid container spacing={ 3 }>
                   <Grid item xs={ 12 } md={ 12 } lg={ 12 }>
-                      <Table rows={ data }/>
+                      <Table rows={ props.cigarettes }/>
                   </Grid>
               </Grid>
           </Container>
       </section>
   );
 }
+
+Cigarettes.propTypes = {
+  cigarettes: PropTypes.array,
+};
+
+export default connect(
+  mapStateToProps,
+)(Cigarettes);
