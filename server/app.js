@@ -3,6 +3,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const cors = require('cors');
 const env = process.env.NODE_ENV || 'development';
 const config = require('./config/config.json')[env];
 const configureJWTPassport = require('./config/passport-jwt-config');
@@ -14,6 +15,7 @@ const weightsRoutes = require('./routes/weights');
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(passport.initialize());

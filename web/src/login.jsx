@@ -1,4 +1,6 @@
 import React from 'react';
+import { withRouter } from 'react-router';
+import PropTypes from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -33,8 +35,34 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Login() {
+function Login(props) {
   const classes = useStyles();
+
+  function login(event) {
+    event.preventDefault();
+
+    const email = document.querySelector('#email').value;
+    const password = document.querySelector('#password').value;
+    // eslint-disable-next-line compat/compat
+    fetch('http://localhost:3333/auth/login', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    })
+    .then((rawResponse) => rawResponse.json())
+    .then((response) => {
+      if (response.token) {
+        props.history.push('/');
+      }
+    })
+    .catch((error) => console.error(error));
+  }
 
   return (
       <Container component="main" maxWidth="xs">
@@ -47,7 +75,7 @@ export default function Login() {
               <Typography component="h1" variant="h5">
                   Login
               </Typography>
-              <form className={ classes.form } noValidate>
+              <form className={ classes.form } noValidate onSubmit={ login }>
                   <TextField
                     variant="outlined"
                     margin="normal"
@@ -83,3 +111,9 @@ export default function Login() {
       </Container>
   );
 }
+
+Login.propTypes = {
+  history: PropTypes.object,
+};
+
+export default withRouter(Login);

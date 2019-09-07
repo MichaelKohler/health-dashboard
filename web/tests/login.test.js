@@ -8,7 +8,7 @@ import Login from '../src/login.jsx';
 
 it('renders correctly', () => {
   const tree = renderer
-    .create(<Login/>)
+    .create(<MemoryRouter><Login/></MemoryRouter>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

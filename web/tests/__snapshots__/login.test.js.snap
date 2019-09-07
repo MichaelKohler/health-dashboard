@@ -44,6 +44,7 @@ exports[`renders correctly 1`] = `
     <form
       className="makeStyles-form-4"
       noValidate={true}
+      onSubmit={[Function]}
     >
       <div
         className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal MuiFormControl-fullWidth"
