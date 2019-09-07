@@ -9,26 +9,26 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import PeopleIcon from '@material-ui/icons/People';
 
 export const mainListItems = (
-  <div>
-    <ListItem button>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary="Dashboard" />
-    </ListItem>
-    <Divider />
-    <ListSubheader inset>Reports</ListSubheader>
-    <ListItem button>
-      <ListItemIcon>
-        <ShoppingCartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Cigarettes" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
-      <ListItemText primary="Weight" />
-    </ListItem>
-  </div>
+    <div>
+        <ListItem button>
+            <ListItemIcon>
+                <DashboardIcon/>
+            </ListItemIcon>
+            <ListItemText primary="Dashboard"/>
+        </ListItem>
+        <Divider/>
+        <ListSubheader inset>Reports</ListSubheader>
+        <ListItem button>
+            <ListItemIcon>
+                <ShoppingCartIcon/>
+            </ListItemIcon>
+            <ListItemText primary="Cigarettes"/>
+        </ListItem>
+        <ListItem button>
+            <ListItemIcon>
+                <PeopleIcon/>
+            </ListItemIcon>
+            <ListItemText primary="Weight"/>
+        </ListItem>
+    </div>
 );

@@ -9,7 +9,6 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -18,20 +17,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { mainListItems } from './sidebar.jsx';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © ' + new Date().getFullYear() + ' - '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Michael Kohler
-      </Link>{' '}
-    </Typography>
-  );
-}
-
 const drawerWidth = 240;
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
   },
@@ -122,52 +110,57 @@ export default function Dashboard() {
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
-        <Toolbar className={classes.toolbar}>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
+      <div className={ classes.root }>
+          <CssBaseline/>
+          <AppBar position="absolute" className={ clsx(classes.appBar, open && classes.appBarShift) }>
+              <Toolbar className={ classes.toolbar }>
+                  <IconButton
+                    edge="start"
+                    color="inherit"
+                    aria-label="open drawer"
+                    onClick={ handleDrawerOpen }
+                    className={ clsx(classes.menuButton, open && classes.menuButtonHidden) }
+                  >
+                      <MenuIcon/>
+                  </IconButton>
+                  <Typography component="h1" variant="h6" color="inherit" noWrap className={ classes.title }>
+                    Dashboard
+                  </Typography>
+              </Toolbar>
+          </AppBar>
+          <Drawer
+            variant="permanent"
+            classes={ {
+              paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+            } }
+            open={ open }
           >
-            <MenuIcon />
-          </IconButton>
-          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Dashboard
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        variant="permanent"
-        classes={{
-          paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-        }}
-        open={open}
-      >
-        <div className={classes.toolbarIcon}>
-          <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon />
-          </IconButton>
-        </div>
-        <Divider />
-        <List>{mainListItems}</List>
-      </Drawer>
-      <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
-                <h1>Hi!</h1>
-              </Paper>
-            </Grid>
-          </Grid>
-        </Container>
-        <Copyright />
-      </main>
-    </div>
+              <div className={ classes.toolbarIcon }>
+                  <IconButton onClick={ handleDrawerClose }>
+                      <ChevronLeftIcon/>
+                  </IconButton>
+              </div>
+              <Divider/>
+              <List>{ mainListItems }</List>
+          </Drawer>
+          <main className={ classes.content }>
+              <div className={ classes.appBarSpacer }/>
+              <Container maxWidth="lg" className={ classes.container }>
+                  <Grid container spacing={ 3 }>
+                      <Grid item xs={ 12 } md={ 8 } lg={ 9 }>
+                          <Paper className={ fixedHeightPaper }>
+                              <h1>Hi!</h1>
+                          </Paper>
+                      </Grid>
+                  </Grid>
+              </Container>
+              <Typography variant="body2" color="textSecondary" align="center">
+                  { `Copyright © ${new Date().getFullYear()} - ` }
+                  <Link color="inherit" href="https://material-ui.com/">
+                      Michael Kohler
+                  </Link>{ ' ' }
+              </Typography>
+          </main>
+      </div>
   );
 }

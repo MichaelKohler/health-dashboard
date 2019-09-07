@@ -1,6 +1,5 @@
 /* global process */
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 function getDevTool() {
@@ -21,17 +20,23 @@ module.exports = {
   devtool: getDevTool(),
   module: {
     rules: [{
-        test: /\.js|\.jsx$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-      }, {
-        test: /\.scss$/,
-        use: [process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
-      }],
+      test: /\.js|\.jsx$/,
+      exclude: /node_modules/,
+      enforce: 'pre',
+      loader: 'eslint-loader'
+    }, {
+      test: /\.js|\.jsx$/,
+      exclude: /node_modules/,
+      loader: 'babel-loader',
+    }],
   },
-  plugins: [new MiniCssExtractPlugin({
-      filename: '[name].css',
-    }), new CopyWebpackPlugin([{ from: 'robots.txt',
-to: '.' }, { from: 'index.html',
-to: '.' }], { copyUnmodified: true })],
+  plugins: [
+    new CopyWebpackPlugin([{
+        from: 'robots.txt',
+        to: '.',
+      }, {
+        from: 'index.html',
+        to: '.',
+      }], { copyUnmodified: true })
+    ],
 };
