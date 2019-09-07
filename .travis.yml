@@ -14,7 +14,6 @@ script:
 - npm run eslint
 - NODE_ENV=test npm test
 - cd ../web
-- npm run eslint
 - npm test
 - npm run build
 
