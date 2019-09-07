@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const data = [{
-  date: '2019-08-07T08:00:03Z',
+  createdAt: '2019-08-07T08:00:03Z',
   rolled: false,
 }];
 
