@@ -8,7 +8,7 @@ import CigarettesTable from '../src/cigarette-table.jsx';
 
 it('renders correctly', () => {
   const data = [{
-    date: '2019-08-07T08:00:03Z',
+    createdAt: '2019-08-07T08:00:03Z',
     rolled: false,
   }];
 
