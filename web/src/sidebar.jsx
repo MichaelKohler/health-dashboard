@@ -6,8 +6,9 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import PeopleIcon from '@material-ui/icons/People';
+import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
+import SmokingRoomsIcon from '@material-ui/icons/SmokingRooms';
+import LockIcon from '@material-ui/icons/Lock';
 
 // The usage of React.forwardRef will no longer be required for react-router-dom v6.
 // see https://github.com/ReactTraining/react-router/issues/6056
@@ -21,19 +22,25 @@ export const mainListItems = (
             </ListItemIcon>
             <ListItemText primary="Dashboard"/>
         </ListItem>
+        <ListItem button component={ AdapterLink } to="/login">
+            <ListItemIcon>
+                <LockIcon/>
+            </ListItemIcon>
+            <ListItemText primary="Login"/>
+        </ListItem>
 
         <Divider/>
         <ListSubheader inset>Reports</ListSubheader>
 
         <ListItem button component={ AdapterLink } to="/cigarettes">
             <ListItemIcon>
-                <ShoppingCartIcon/>
+                <SmokingRoomsIcon/>
             </ListItemIcon>
             <ListItemText primary="Cigarettes"/>
         </ListItem>
         <ListItem button component={ AdapterLink } to="/weight">
             <ListItemIcon>
-                <PeopleIcon/>
+                <FitnessCenterIcon/>
             </ListItemIcon>
             <ListItemText primary="Weight"/>
         </ListItem>

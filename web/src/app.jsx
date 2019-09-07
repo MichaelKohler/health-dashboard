@@ -15,6 +15,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { mainListItems } from './sidebar.jsx';
 
+import Login from './login.jsx';
 import Overview from './overview.jsx';
 import Cigarettes from './cigarettes.jsx';
 import Weight from './weight.jsx';
@@ -23,6 +24,9 @@ const mainTheme = createMuiTheme({
   palette: {
     primary: {
       main: '#1f3352',
+    },
+    secondary: {
+      main: '#0099cc',
     },
   },
 });
@@ -142,6 +146,7 @@ export default function App() {
               <main className={ classes.content }>
                   <Switch>
                       <Route exact path="/" component={ Overview }/>
+                      <Route path="/login" component={ Login }/>
                       <Route path="/cigarettes" component={ Cigarettes }/>
                       <Route path="/weight" component={ Weight }/>
                       <Redirect to="/"/>
