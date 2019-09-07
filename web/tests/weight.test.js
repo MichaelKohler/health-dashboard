@@ -4,11 +4,11 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
-import App from '../src/app.jsx';
+import Weight from '../src/weight.jsx';
 
 it('renders correctly', () => {
   const tree = renderer
-    .create(<MemoryRouter><App/></MemoryRouter>)
+    .create(<MemoryRouter><Weight/></MemoryRouter>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

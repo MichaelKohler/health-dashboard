@@ -4,11 +4,11 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
-import App from '../src/app.jsx';
+import Cigarettes from '../src/cigarettes.jsx';
 
 it('renders correctly', () => {
   const tree = renderer
-    .create(<MemoryRouter><App/></MemoryRouter>)
+    .create(<MemoryRouter><Cigarettes/></MemoryRouter>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

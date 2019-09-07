@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Overview() {
+export default function Weight() {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
@@ -33,7 +33,7 @@ export default function Overview() {
               <Grid container spacing={ 3 }>
                   <Grid item xs={ 12 } md={ 12 } lg={ 12 }>
                       <Paper className={ fixedHeightPaper }>
-                          <h1>Hi!</h1>
+                          <h1>Weight!</h1>
                       </Paper>
                   </Grid>
               </Grid>

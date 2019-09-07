@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -15,6 +16,8 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { mainListItems } from './sidebar.jsx';
 
 import Overview from './overview.jsx';
+import Cigarettes from './cigarettes.jsx';
+import Weight from './weight.jsx';
 
 const mainTheme = createMuiTheme({
   palette: {
@@ -137,7 +140,12 @@ export default function App() {
                   <List>{ mainListItems }</List>
               </Drawer>
               <main className={ classes.content }>
-                  <Overview/>
+                  <Switch>
+                      <Route exact path="/" component={ Overview }/>
+                      <Route path="/cigarettes" component={ Cigarettes }/>
+                      <Route path="/weight" component={ Weight }/>
+                      <Redirect to="/"/>
+                  </Switch>
               </main>
           </div>
       </ThemeProvider>
