@@ -58,6 +58,7 @@ function Login(props) {
     .then((rawResponse) => rawResponse.json())
     .then((response) => {
       if (response.token) {
+        localStorage.setItem('jwt', response.token);
         props.history.push('/');
       }
     })
