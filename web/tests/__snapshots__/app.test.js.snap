@@ -242,44 +242,46 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <main
-    className="makeStyles-content-12"
+    className="makeStyles-content-11"
   >
-    <div
-      className="makeStyles-appBarSpacer-11"
-    />
-    <div
-      className="MuiContainer-root makeStyles-container-13 MuiContainer-maxWidthLg"
-    >
+    <section>
       <div
-        className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
+        className="makeStyles-appBarSpacer-150"
+      />
+      <div
+        className="MuiContainer-root makeStyles-container-151 MuiContainer-maxWidthLg"
       >
         <div
-          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-8 MuiGrid-grid-lg-9"
+          className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
         >
           <div
-            className="MuiPaper-root MuiPaper-elevation1 makeStyles-paper-14 makeStyles-fixedHeight-15 MuiPaper-rounded"
+            className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-8 MuiGrid-grid-lg-9"
           >
-            <h1>
-              Hi!
-            </h1>
+            <div
+              className="MuiPaper-root MuiPaper-elevation1 makeStyles-paper-152 makeStyles-fixedHeight-153 MuiPaper-rounded"
+            >
+              <h1>
+                Hi!
+              </h1>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <p
-      className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-alignCenter"
-    >
-      Copyright © 2019 - 
-      <a
-        className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorInherit"
-        href="https://material-ui.com/"
-        onBlur={[Function]}
-        onFocus={[Function]}
+      <p
+        className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-alignCenter"
       >
-        Michael Kohler
-      </a>
-       
-    </p>
+        Copyright © 2019 - 
+        <a
+          className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorInherit"
+          href="https://material-ui.com/"
+          onBlur={[Function]}
+          onFocus={[Function]}
+        >
+          Michael Kohler
+        </a>
+         
+      </p>
+    </section>
   </main>
 </div>
 `;
