@@ -33,8 +33,8 @@ export default function CigaretteTable(props) {
               </TableHead>
               <TableBody>
                   { props.rows.map((row) => (
-                      <TableRow key={ row.date }>
-                          <TableCell align="left">{ new Date(row.date).toLocaleString() }</TableCell>
+                      <TableRow key={ row.createdAt }>
+                          <TableCell align="left">{ new Date(row.createdAt).toLocaleString() }</TableCell>
                           <TableCell align="right">{ row.rolled ? '' : 'not rolled' }</TableCell>
                       </TableRow>
                   )) }
