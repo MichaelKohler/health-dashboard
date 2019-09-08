@@ -2,7 +2,7 @@ import { FETCH_HEALTH } from '../actions';
 
 const initialState = {
   cigarettes: [],
-  weight: [],
+  weights: [],
 };
 
 // eslint-disable-next-line no-unused-vars
@@ -12,6 +12,7 @@ export default function reducer(state = initialState, action) {
         // eslint-disable-next-line compat/compat
         return Object.assign({}, state, {
           cigarettes: action.cigarettes,
+          weights: action.weights,
         });
     default:
       return state;
