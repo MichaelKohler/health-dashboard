@@ -18,7 +18,9 @@ const router = express.Router(); // eslint-disable-line new-cap
 
 router.get('/', passport.authenticate(strategy, { session: false }), authorizedRoles('admin', 'readonly'), async (req, res) => {
   debug('GET_WEIGHT');
-  Weight.findAll()
+  Weight.findAll({
+    order: [['createdAt', 'DESC']],
+  })
     .then((weights) => res.json(weights))
     .catch((error) => {
       debug('GET_WEIGHT_ERROR', error.message);

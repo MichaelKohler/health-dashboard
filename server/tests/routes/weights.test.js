@@ -13,6 +13,25 @@ test.afterEach.always((t) => {
   t.context.sandbox.restore();
 });
 
+test.serial('should return all weights in correct order - admin', async (t) => {
+  const weights = [{
+    id: 1,
+    weight: 80.5,
+    createdAt: Date.now(),
+  }];
+  t.context.sandbox.stub(Weight, 'findAll').resolves(weights);
+
+  await request(app)
+    .get('/weights?username=admin&password=foo')
+    .expect(200)
+    .then(() => {
+      t.true(Weight.findAll.calledWith({ order: [['createdAt', 'DESC']] }));
+    })
+    .catch((error) => {
+      t.fail(error.message);
+    });
+});
+
 test.serial('should return all weights - admin', async (t) => {
   const weights = [{
     id: 1,

@@ -13,6 +13,24 @@ test.afterEach.always((t) => {
   t.context.sandbox.restore();
 });
 
+test.serial('should return all cigarettes in correct order - admin', async (t) => {
+  const cigarettes = [{
+    id: 1,
+    createdAt: Date.now(),
+  }];
+  t.context.sandbox.stub(Cigarette, 'findAll').resolves(cigarettes);
+
+  await request(app)
+    .get('/cigarettes?username=admin&password=foo')
+    .expect(200)
+    .then(() => {
+      t.true(Cigarette.findAll.calledWith({ order: [['createdAt', 'DESC']] }));
+    })
+    .catch((error) => {
+      t.fail(error.message);
+    });
+});
+
 test.serial('should return all cigarettes - admin', async (t) => {
   const cigarettes = [{
     id: 1,

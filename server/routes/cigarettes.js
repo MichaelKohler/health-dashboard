@@ -18,7 +18,9 @@ const router = express.Router(); // eslint-disable-line new-cap
 
 router.get('/', passport.authenticate(strategy, { session: false }), authorizedRoles('admin', 'readonly'), async (req, res) => {
   debug('GET_CIGARETTES');
-  Cigarette.findAll()
+  Cigarette.findAll({
+    order: [['createdAt', 'DESC']],
+  })
     .then((cigarettes) => res.json(cigarettes))
     .catch((error) => {
       debug('GET_CIGARETTE_ERROR', error.message);
