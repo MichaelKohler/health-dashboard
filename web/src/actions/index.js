@@ -1,3 +1,5 @@
+import history from '../history';
+
 export const FETCHED_HEALTH = 'FETCHED_HEALTH';
 export const FETCH_HEALTH = 'FETCH_HEALTH';
 export const FAILED_FETCH_HEALTH = 'FAILED_FETCH_HEALTH';
@@ -14,7 +16,14 @@ function fetchWithAuth(url, method) {
         Authorization: token,
       },
     })
-    .then((rawResponse) => rawResponse.json());
+    .then((rawResponse) => {
+      if (rawResponse.status === 401) {
+        history.push('/login');
+        throw new Error('NOT_AUTHORIZED');
+      }
+
+      return rawResponse.json();
+    });
 }
 
 export function fetchHealth() {
@@ -38,4 +47,8 @@ export function fetchHealth() {
       });
     });
   };
+}
+
+export function refetch() {
+  return fetchHealth();
 }

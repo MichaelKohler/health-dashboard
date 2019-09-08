@@ -20,6 +20,7 @@ export default function reducer(state = initialState, action) {
           cigarettes: action.cigarettes,
           weights: action.weights,
           isFetchingHealth: false,
+          failedFetchingHealth: false,
         });
     case FETCH_HEALTH:
         // eslint-disable-next-line compat/compat

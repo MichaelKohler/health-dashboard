@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -9,6 +10,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+
+import { refetch } from './actions';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -35,7 +38,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Login(props) {
+const mapStateToProps = (state) => state;
+
+const mapDispatchToProps = (dispatch) => ({
+  refetch: () => {
+    dispatch(refetch());
+  },
+});
+
+export function Login(props) {
   const classes = useStyles();
 
   function login(event) {
@@ -59,6 +70,7 @@ function Login(props) {
     .then((response) => {
       if (response.token) {
         localStorage.setItem('jwt', response.token);
+        props.refetch();
         props.history.push('/');
       }
     })
@@ -115,6 +127,10 @@ function Login(props) {
 
 Login.propTypes = {
   history: PropTypes.object,
+  refetch: PropTypes.func,
 };
 
-export default withRouter(Login);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(withRouter(Login));
