@@ -1,4 +1,6 @@
+export const FETCHED_HEALTH = 'FETCHED_HEALTH';
 export const FETCH_HEALTH = 'FETCH_HEALTH';
+export const FAILED_FETCH_HEALTH = 'FAILED_FETCH_HEALTH';
 
 function fetchWithAuth(url, method) {
   const token = localStorage.getItem('jwt');
@@ -16,16 +18,24 @@ function fetchWithAuth(url, method) {
 }
 
 export function fetchHealth() {
-  // eslint-disable-next-line compat/compat
-  return (dispatch) => Promise.all([fetchWithAuth('http://localhost:3333/cigarettes', 'GET'), fetchWithAuth('http://localhost:3333/weights', 'GET')])
-  .then(([cigarettes, weights]) => {
+  return (dispatch) => {
     dispatch({
       type: FETCH_HEALTH,
-      cigarettes,
-      weights,
     });
-  })
-  .catch(() => {
-    // ignore
-  });
+
+    // eslint-disable-next-line compat/compat
+    Promise.all([fetchWithAuth('http://localhost:3333/cigarettes', 'GET'), fetchWithAuth('http://localhost:3333/weights', 'GET')])
+    .then(([cigarettes, weights]) => {
+      dispatch({
+        type: FETCHED_HEALTH,
+        cigarettes,
+        weights,
+      });
+    })
+    .catch(() => {
+      dispatch({
+        type: FAILED_FETCH_HEALTH,
+      });
+    });
+  };
 }
