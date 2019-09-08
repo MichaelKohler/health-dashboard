@@ -19,7 +19,7 @@ const mapStateToProps = (state) => ({
   cigarettes: state.cigarettes,
 });
 
-function Cigarettes(props) {
+export function Cigarettes(props) {
   const classes = useStyles();
 
   return (
