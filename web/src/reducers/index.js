@@ -15,7 +15,6 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case FETCHED_HEALTH:
-        // eslint-disable-next-line compat/compat
         return Object.assign({}, state, {
           cigarettes: action.cigarettes,
           weights: action.weights,
@@ -23,12 +22,10 @@ export default function reducer(state = initialState, action) {
           failedFetchingHealth: false,
         });
     case FETCH_HEALTH:
-        // eslint-disable-next-line compat/compat
         return Object.assign({}, state, {
           isFetchingHealth: true,
         });
     case FAILED_FETCH_HEALTH:
-        // eslint-disable-next-line compat/compat
         return Object.assign({}, state, {
           isFetchingHealth: false,
           failedFetchingHealth: true,

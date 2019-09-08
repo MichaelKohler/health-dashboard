@@ -7,7 +7,6 @@ export const FAILED_FETCH_HEALTH = 'FAILED_FETCH_HEALTH';
 function fetchWithAuth(url, method) {
   const token = localStorage.getItem('jwt');
 
-  // eslint-disable-next-line compat/compat
   return fetch(url, {
       method,
       headers: {
@@ -32,7 +31,6 @@ export function fetchHealth() {
       type: FETCH_HEALTH,
     });
 
-    // eslint-disable-next-line compat/compat
     Promise.all([fetchWithAuth('http://localhost:3333/cigarettes', 'GET'), fetchWithAuth('http://localhost:3333/weights', 'GET')])
     .then(([cigarettes, weights]) => {
       dispatch({

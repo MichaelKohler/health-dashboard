@@ -54,7 +54,7 @@ export function Login(props) {
 
     const email = document.querySelector('#email').value;
     const password = document.querySelector('#password').value;
-    // eslint-disable-next-line compat/compat
+
     fetch('http://localhost:3333/auth/login', {
       method: 'POST',
       headers: {
