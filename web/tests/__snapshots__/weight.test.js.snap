@@ -15,11 +15,54 @@ exports[`renders correctly 1`] = `
         className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-12 MuiGrid-grid-lg-12"
       >
         <div
-          className="MuiPaper-root MuiPaper-elevation1 makeStyles-paper-3 makeStyles-fixedHeight-4 MuiPaper-rounded"
+          className="MuiPaper-root MuiPaper-elevation1 makeStyles-root-114 MuiPaper-rounded"
         >
-          <h1>
-            Weight!
-          </h1>
+          <table
+            className="MuiTable-root makeStyles-table-115"
+          >
+            <thead
+              className="MuiTableHead-root"
+            >
+              <tr
+                className="MuiTableRow-root MuiTableRow-head"
+              >
+                <th
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-sizeSmall MuiTableCell-head"
+                  scope="col"
+                >
+                  Date
+                </th>
+                <th
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-sizeSmall MuiTableCell-head"
+                  scope="col"
+                >
+                  Weight
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              className="MuiTableBody-root"
+            >
+              <tr
+                className="MuiTableRow-root"
+              >
+                <td
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-sizeSmall MuiTableCell-body"
+                >
+                  8/7/2019, 10:00:03 AM
+                </td>
+                <td
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-sizeSmall MuiTableCell-body"
+                >
+                  80
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

@@ -3,16 +3,16 @@
 
 import React from 'react';
 import renderer from 'react-test-renderer';
-import CigarettesTable from '../src/cigarette-table.jsx';
+import WeightTable from '../src/weight-table.jsx';
 
 it('renders correctly', () => {
   const data = [{
     createdAt: '2019-08-07T08:00:03Z',
-    rolled: false,
+    weight: 80,
   }];
 
   const tree = renderer
-    .create(<CigarettesTable rows={ data }/>)
+    .create(<WeightTable rows={ data }/>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

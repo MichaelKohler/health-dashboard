@@ -4,11 +4,16 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
-import Weight from '../src/weight.jsx';
+import { Weight } from '../src/weight.jsx';
 
 it('renders correctly', () => {
+  const data = [{
+    createdAt: '2019-08-07T08:00:03Z',
+    weight: 80,
+  }];
+
   const tree = renderer
-    .create(<MemoryRouter><Weight/></MemoryRouter>)
+    .create(<MemoryRouter><Weight weights={ data }/></MemoryRouter>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });
