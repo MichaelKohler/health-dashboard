@@ -55,7 +55,7 @@ export function Login(props) {
     const email = document.querySelector('#email').value;
     const password = document.querySelector('#password').value;
 
-    fetch('http://localhost:3333/auth/login', {
+    fetch(`${__BACKEND_URL__}/auth/login`, { // eslint-disable-line no-undef
       method: 'POST',
       headers: {
         'Accept': 'application/json',

@@ -1,6 +1,22 @@
 /* global process */
 
+const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
+const backendBaseUrl = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3333';
+
+const copyOptions = [{
+  from: 'robots.txt',
+  to: '.',
+}, {
+  from: 'index.html',
+  to: '.',
+}];
+
+const variableOptions = {
+  '__BACKEND_URL__': JSON.stringify(backendBaseUrl),
+};
 
 function getDevTool() {
   if (process.env.NODE_ENV !== 'production') {
@@ -31,12 +47,7 @@ module.exports = {
     }],
   },
   plugins: [
-    new CopyWebpackPlugin([{
-        from: 'robots.txt',
-        to: '.',
-      }, {
-        from: 'index.html',
-        to: '.',
-      }], { copyUnmodified: true })
-    ],
+    new CopyWebpackPlugin(copyOptions, { copyUnmodified: true }),
+    new webpack.DefinePlugin(variableOptions)
+  ],
 };

@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: health-dashboard-service
+spec:
+  ports:
+  - port: 3333
+    targetPort: 3333
+  selector:
+    app: health-dashboard
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: health-dashboard-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: health-dashboard
+  template:
+    metadata:
+      labels:
+        app: health-dashboard
+    spec:
+      hostname: health-dashboard
+      containers:
+        - name: health-dashboard
+          image: michaelkohler/health-dashboard:1.0.5
+          imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              cpu: "100m"
+              memory: "150M"
+            requests:
+              cpu: "30m"
+              memory: "40M"
+          ports:
+            - containerPort: 3333
+          env:
+            - name: HEALTH_CONNECT
+              valueFrom:
+                secretKeyRef:
+                  name: health
+                  key: connect

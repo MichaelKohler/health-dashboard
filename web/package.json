@@ -1,6 +1,6 @@
 {
   "name": "health-client",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "Health Dashboard",
   "main": "main.js",
   "dependencies": {

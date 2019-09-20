@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: health-dashboard-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    certmanager.k8s.io/issuer: "letsencrypt-prod"
+    certmanager.k8s.io/acme-challenge-type: http01
+spec:
+  tls:
+    - hosts:
+      - health.michaelkohler.info
+      secretName: health-dashboard-tls
+  rules:
+    - host: health.michaelkohler.info
+      http:
+        paths:
+        - path: /
+          backend:
+            serviceName: health-dashboard-service
+            servicePort: 3333

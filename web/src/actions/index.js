@@ -4,7 +4,8 @@ export const FETCHED_HEALTH = 'FETCHED_HEALTH';
 export const FETCH_HEALTH = 'FETCH_HEALTH';
 export const FAILED_FETCH_HEALTH = 'FAILED_FETCH_HEALTH';
 
-function fetchWithAuth(url, method) {
+function fetchWithAuth(endpoint, method) {
+  const url = __BACKEND_URL__ + endpoint; // eslint-disable-line no-undef
   const token = localStorage.getItem('jwt');
 
   return fetch(url, {
@@ -31,7 +32,7 @@ export function fetchHealth() {
       type: FETCH_HEALTH,
     });
 
-    Promise.all([fetchWithAuth('http://localhost:3333/cigarettes', 'GET'), fetchWithAuth('http://localhost:3333/weights', 'GET')])
+    Promise.all([fetchWithAuth('/cigarettes', 'GET'), fetchWithAuth('/weights', 'GET')])
     .then(([cigarettes, weights]) => {
       dispatch({
         type: FETCHED_HEALTH,

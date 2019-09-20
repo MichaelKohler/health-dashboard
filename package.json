@@ -1,6 +1,6 @@
 {
   "name": "health-dashboard",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "Some health dashboard.. or just something so I can play around..",
   "scripts": {
     "install": "cd server && npm install && cd ../web && npm install && cd ..",
