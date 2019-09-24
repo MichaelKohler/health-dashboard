@@ -8,10 +8,12 @@
     "usePassportStrategy": "jwt"
   },
   "test": {
-    "usePassportStrategy": "local"
+    "usePassportStrategy": "local",
+    "dialect": "mariadb"
   },
   "production": {
     "use_env_variable": "HEALTH_CONNECT",
-    "usePassportStrategy": "jwt"
+    "usePassportStrategy": "jwt",
+    "dialect": "mariadb"
   }
 }
