@@ -1,6 +1,6 @@
 {
   "name": "health-server",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "",
   "dependencies": {
     "@michaelkohler/eslint-config-base": "^6.8.11",
