@@ -26,7 +26,7 @@ spec:
       hostname: health-dashboard
       containers:
         - name: health-dashboard
-          image: michaelkohler/health-dashboard:1.0.5
+          image: michaelkohler/health-dashboard:1.0.6
           imagePullPolicy: IfNotPresent
           resources:
             limits:
