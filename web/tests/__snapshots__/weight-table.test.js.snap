@@ -39,7 +39,7 @@ exports[`renders correctly 1`] = `
           aria-sort={null}
           className="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-sizeSmall MuiTableCell-body"
         >
-          Wed Aug 07 2019 10:00:03 GMT+0200 (Central European Summer Time)
+          2019-08-07T08:00:03Z
         </td>
         <td
           aria-sort={null}
