@@ -35,7 +35,7 @@ function fetchWithAuth(endpoint, method, body) {
       }
 
       if (rawResponse.status === 201) {
-        return;
+        return {};
       }
 
       throw new Error(`FAILED: ${rawResponse.status}`);
@@ -49,21 +49,17 @@ export function fetchHealth() {
     });
 
     Promise.all([fetchWithAuth('/cigarettes', 'GET'), fetchWithAuth('/weights', 'GET')])
-    .then(([cigarettes, weights]) => dispatch({
-      type: FETCHED_HEALTH,
-      cigarettes,
-      weights,
-    }))
-    .catch(() => {
-      dispatch({
-        type: FAILED_FETCH_HEALTH,
+      .then(([cigarettes, weights]) => dispatch({
+        type: FETCHED_HEALTH,
+        cigarettes,
+        weights,
+      }))
+      .catch(() => {
+        dispatch({
+          type: FAILED_FETCH_HEALTH,
+        });
       });
-    });
   };
-}
-
-export function refetch() {
-  return fetchHealth();
 }
 
 export function login() {
@@ -84,24 +80,24 @@ export function login() {
         password,
       }),
     })
-    .then((rawResponse) => rawResponse.json())
-    .then((response) => {
-      if (!response.token) {
-        throw new Error('LOGIN_FAILED');
-      }
+      .then((rawResponse) => rawResponse.json())
+      .then((response) => {
+        if (!response.token) {
+          throw new Error('LOGIN_FAILED');
+        }
 
-      localStorage.setItem('jwt', response.token);
-      refetch();
-      history.push('/');
-      return dispatch({
-        type: LOGIN_SUCCEEDED,
+        localStorage.setItem('jwt', response.token);
+        fetchHealth()(dispatch);
+        history.push('/');
+        return dispatch({
+          type: LOGIN_SUCCEEDED,
+        });
+      })
+      .catch(() => {
+        dispatch({
+          type: LOGIN_FAILED,
+        });
       });
-    })
-    .catch(() => {
-      dispatch({
-        type: LOGIN_FAILED,
-      });
-    });
   };
 }
 
@@ -125,6 +121,7 @@ export function postCigarette() {
     fetchWithAuth('/cigarettes', 'POST', {
       rolled,
     })
+      .then(() => fetchHealth()(dispatch))
       .then(() => {
         dispatch({
           type: CIGARETTE_SUCCEEDED,
@@ -149,6 +146,7 @@ export function postWeight() {
     fetchWithAuth('/weights', 'POST', {
       weight,
     })
+      .then(() => fetchHealth()(dispatch))
       .then(() => {
         dispatch({
           type: WEIGHT_SUCCEEDED,

@@ -12,7 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 import getDefaultStyle from './styles';
-import { refetch, login } from './actions';
+import { login } from './actions';
 
 const useStyles = makeStyles((theme) => Object.assign({}, getDefaultStyle(theme), {
   paper: {
@@ -30,9 +30,6 @@ const useStyles = makeStyles((theme) => Object.assign({}, getDefaultStyle(theme)
 const mapStateToProps = (state) => state;
 
 const mapDispatchToProps = (dispatch) => ({
-  refetch: () => {
-    dispatch(refetch());
-  },
   login: () => {
     dispatch(login());
   },
