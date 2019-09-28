@@ -4,11 +4,11 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
-import { mainListItems } from '../src/sidebar.jsx';
+import { Sidebar } from '../src/sidebar.jsx';
 
 it('renders correctly', () => {
   const tree = renderer
-    .create(<MemoryRouter>{ mainListItems }</MemoryRouter>)
+    .create(<MemoryRouter><Sidebar/></MemoryRouter>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

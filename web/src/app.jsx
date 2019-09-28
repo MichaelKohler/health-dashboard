@@ -7,15 +7,15 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import { mainListItems } from './sidebar.jsx';
+import Sidebar from './sidebar.jsx';
 
 import Login from './login.jsx';
+import Logout from './logout.jsx';
 import Overview from './overview.jsx';
 import Cigarettes from './cigarettes.jsx';
 import Weight from './weight.jsx';
@@ -24,9 +24,6 @@ const mainTheme = createMuiTheme({
   palette: {
     primary: {
       main: '#1f3352',
-    },
-    secondary: {
-      main: '#0099cc',
     },
   },
 });
@@ -141,12 +138,13 @@ export default function App() {
                       </IconButton>
                   </div>
                   <Divider/>
-                  <List>{ mainListItems }</List>
+                  <Sidebar/>
               </Drawer>
               <main className={ classes.content }>
                   <Switch>
                       <Route exact path="/" component={ Overview }/>
                       <Route path="/login" component={ Login }/>
+                      <Route path="/logout" component={ Logout }/>
                       <Route path="/cigarettes" component={ Cigarettes }/>
                       <Route path="/weight" component={ Weight }/>
                       <Redirect to="/"/>

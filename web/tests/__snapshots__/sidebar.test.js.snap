@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<div>
+<ul
+  className="MuiList-root MuiList-padding"
+>
   <a
     aria-disabled={false}
     className="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
@@ -186,5 +188,5 @@ exports[`renders correctly 1`] = `
       </span>
     </div>
   </a>
-</div>
+</ul>
 `;

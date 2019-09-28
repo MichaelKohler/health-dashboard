@@ -4,13 +4,12 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
-import App from '../src/app.jsx';
-
-jest.mock('../src/sidebar', () => () => 'Sidebar');
+import { Logout } from '../src/logout.jsx';
 
 it('renders correctly', () => {
+  const logout = () => {};
   const tree = renderer
-    .create(<MemoryRouter><App/></MemoryRouter>)
+    .create(<MemoryRouter><Logout logout={logout}/></MemoryRouter>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

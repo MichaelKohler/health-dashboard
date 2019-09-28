@@ -1,17 +1,15 @@
 import React from 'react';
-import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-import { refetch, login } from './actions';
+import { logout } from './actions';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -28,10 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.primary.main,
-  },
-  form: {
-    marginTop: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -41,15 +36,12 @@ const useStyles = makeStyles((theme) => ({
 const mapStateToProps = (state) => state;
 
 const mapDispatchToProps = (dispatch) => ({
-  refetch: () => {
-    dispatch(refetch());
-  },
-  login: () => {
-    dispatch(login());
+  logout: () => {
+    dispatch(logout());
   },
 });
 
-export function Login(props) {
+export function Logout(props) {
   const classes = useStyles();
 
   return (
@@ -61,41 +53,18 @@ export function Login(props) {
                   <LockOutlinedIcon/>
               </Avatar>
               <Typography component="h1" variant="h5">
-                  Login
+                  Logout
               </Typography>
-              { props.loginFailed && (
-                  <p>Login failed</p>
-              ) }
-              <form className={ classes.form } noValidate onSubmit={ props.login }>
-                  <TextField
-                    variant="outlined"
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="email"
-                    label="Email Address"
-                    name="email"
-                    autoComplete="email"
-                  />
-                  <TextField
-                    variant="outlined"
-                    margin="normal"
-                    required
-                    fullWidth
-                    name="password"
-                    label="Password"
-                    type="password"
-                    id="password"
-                    autoComplete="current-password"
-                  />
+              <form className={ classes.form } noValidate onSubmit={ props.logout }>
+                  <p>Are you sure you want to log out?</p>
                   <Button
                     type="submit"
                     fullWidth
                     variant="contained"
-                    color="primary"
+                    color="secondary"
                     className={ classes.submit }
                   >
-                    Log in
+                    Log out
                   </Button>
               </form>
           </div>
@@ -103,12 +72,11 @@ export function Login(props) {
   );
 }
 
-Login.propTypes = {
-  loginFailed: PropTypes.bool,
-  login: PropTypes.func,
+Logout.propTypes = {
+  logout: PropTypes.func,
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(withRouter(Login));
+)(Logout);

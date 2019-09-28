@@ -4,6 +4,7 @@ import {
   FAILED_FETCH_HEALTH,
   LOGIN_SUCCEEDED,
   LOGIN_FAILED,
+  LOGOUT_SUCCEEDED,
 } from '../actions';
 
 const initialState = {
@@ -11,7 +12,7 @@ const initialState = {
   weights: [],
   isFetchingHealth: false,
   failedFetchingHealth: false,
-  isLoggedIn: false,
+  isLoggedIn: !!localStorage.getItem('jwt'),
   loginFailed: false,
 };
 
@@ -43,6 +44,10 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         isLoggedIn: false,
         loginFailed: true,
+      });
+    case LOGOUT_SUCCEEDED:
+      return Object.assign({}, state, {
+        isLoggedIn: false,
       });
     default:
       return state;
