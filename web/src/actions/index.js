@@ -6,6 +6,10 @@ export const FAILED_FETCH_HEALTH = 'FAILED_FETCH_HEALTH';
 export const LOGIN_SUCCEEDED = 'LOGIN_SUCCEEDED';
 export const LOGIN_FAILED = 'LOGIN_FAILED';
 export const LOGOUT_SUCCEEDED = 'LOGOUT_SUCCEEDED';
+export const CIGARETTE_SUCCEEDED = 'CIGARETTE_SUCCEEDED';
+export const CIGARETTE_FAILED = 'CIGARETTE_FAILED';
+export const WEIGHT_SUCCEEDED = 'WEIGHT_SUCCEEDED';
+export const WEIGHT_FAILED = 'WEIGHT_FAILED';
 
 function fetchWithAuth(endpoint, method) {
   const url = __BACKEND_URL__ + endpoint; // eslint-disable-line no-undef
@@ -101,6 +105,86 @@ export function logout() {
     history.push('/');
     dispatch({
       type: LOGOUT_SUCCEEDED,
+    });
+  };
+}
+
+export function postCigarette() {
+  return (dispatch) => {
+    event.preventDefault();
+
+    const rolled = document.querySelector('#rolled').checked;
+
+    const token = localStorage.getItem('jwt');
+
+    fetch(`${__BACKEND_URL__}/cigarettes`, { // eslint-disable-line no-undef
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': token,
+      },
+      body: JSON.stringify({
+        rolled,
+      }),
+    })
+    .then((rawResponse) => {
+      if (rawResponse.status !== 201) {
+        return dispatch({
+          type: CIGARETTE_FAILED,
+        });
+      }
+
+      dispatch({
+        type: CIGARETTE_SUCCEEDED,
+      });
+
+      history.push('/cigarettes');
+    })
+    .catch(() => {
+      dispatch({
+        type: CIGARETTE_FAILED,
+      });
+    });
+  };
+}
+
+export function postWeight() {
+  return (dispatch) => {
+    event.preventDefault();
+
+    const weight = document.querySelector('#weight').value;
+
+    const token = localStorage.getItem('jwt');
+
+    fetch(`${__BACKEND_URL__}/weights`, { // eslint-disable-line no-undef
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': token,
+      },
+      body: JSON.stringify({
+        weight,
+      }),
+    })
+    .then((rawResponse) => {
+      if (rawResponse.status !== 201) {
+        return dispatch({
+          type: WEIGHT_FAILED,
+        });
+      }
+
+      dispatch({
+        type: WEIGHT_SUCCEEDED,
+      });
+
+      history.push('/weight');
+    })
+    .catch(() => {
+      dispatch({
+        type: WEIGHT_FAILED,
+      });
     });
   };
 }

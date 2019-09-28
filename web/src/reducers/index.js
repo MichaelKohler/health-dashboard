@@ -5,6 +5,10 @@ import {
   LOGIN_SUCCEEDED,
   LOGIN_FAILED,
   LOGOUT_SUCCEEDED,
+  CIGARETTE_SUCCEEDED,
+  CIGARETTE_FAILED,
+  WEIGHT_SUCCEEDED,
+  WEIGHT_FAILED,
 } from '../actions';
 
 const initialState = {
@@ -48,6 +52,22 @@ export default function reducer(state = initialState, action) {
     case LOGOUT_SUCCEEDED:
       return Object.assign({}, state, {
         isLoggedIn: false,
+      });
+    case CIGARETTE_SUCCEEDED:
+      return Object.assign({}, state, {
+        cigarettePostFailed: false,
+      });
+    case CIGARETTE_FAILED:
+      return Object.assign({}, state, {
+        cigarettePostFailed: true,
+      });
+    case WEIGHT_SUCCEEDED:
+      return Object.assign({}, state, {
+        weightPostFailed: false,
+      });
+    case WEIGHT_FAILED:
+      return Object.assign({}, state, {
+        weightPostFailed: true,
       });
     default:
       return state;

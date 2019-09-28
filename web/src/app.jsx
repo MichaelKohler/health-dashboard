@@ -18,7 +18,9 @@ import Login from './login.jsx';
 import Logout from './logout.jsx';
 import Overview from './overview.jsx';
 import Cigarettes from './cigarettes.jsx';
+import CigaretteForm from './cigarette-form.jsx';
 import Weight from './weight.jsx';
+import WeightForm from './weight-form.jsx';
 
 const mainTheme = createMuiTheme({
   palette: {
@@ -145,7 +147,9 @@ export default function App() {
                       <Route exact path="/" component={ Overview }/>
                       <Route path="/login" component={ Login }/>
                       <Route path="/logout" component={ Logout }/>
+                      <Route path="/cigarettes/add" component={ CigaretteForm }/>
                       <Route path="/cigarettes" component={ Cigarettes }/>
+                      <Route path="/weight/add" component={ WeightForm }/>
                       <Route path="/weight" component={ Weight }/>
                       <Redirect to="/"/>
                   </Switch>

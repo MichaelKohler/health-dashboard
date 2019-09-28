@@ -15,10 +15,10 @@ exports[`renders correctly 1`] = `
         className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-12 MuiGrid-grid-lg-12"
       >
         <div
-          className="MuiPaper-root MuiPaper-elevation1 makeStyles-root-114 MuiPaper-rounded"
+          className="MuiPaper-root MuiPaper-elevation1 makeStyles-root-115 MuiPaper-rounded"
         >
           <table
-            className="MuiTable-root makeStyles-table-115"
+            className="MuiTable-root makeStyles-table-116"
           >
             <thead
               className="MuiTableHead-root"
@@ -66,6 +66,41 @@ exports[`renders correctly 1`] = `
         </div>
       </div>
     </div>
+    <button
+      aria-label="Add"
+      className="MuiButtonBase-root MuiFab-root makeStyles-fab-4 MuiFab-primary"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiFab-label"
+      >
+        <svg
+          aria-hidden="true"
+          className="MuiSvgIcon-root"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+          />
+        </svg>
+      </span>
+    </button>
   </div>
 </section>
 `;
