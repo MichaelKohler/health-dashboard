@@ -11,7 +11,7 @@ export const CIGARETTE_FAILED = 'CIGARETTE_FAILED';
 export const WEIGHT_SUCCEEDED = 'WEIGHT_SUCCEEDED';
 export const WEIGHT_FAILED = 'WEIGHT_FAILED';
 
-function fetchWithAuth(endpoint, method) {
+function fetchWithAuth(endpoint, method, body) {
   const url = __BACKEND_URL__ + endpoint; // eslint-disable-line no-undef
   const token = localStorage.getItem('jwt');
 
@@ -22,6 +22,7 @@ function fetchWithAuth(endpoint, method) {
         'Content-Type': 'application/json',
         Authorization: token,
       },
+      body: JSON.stringify(body),
     })
     .then((rawResponse) => {
       if (rawResponse.status === 401) {
@@ -29,7 +30,15 @@ function fetchWithAuth(endpoint, method) {
         throw new Error('NOT_AUTHORIZED');
       }
 
-      return rawResponse.json();
+      if (rawResponse.status === 200) {
+        return rawResponse.json();
+      }
+
+      if (rawResponse.status === 201) {
+        return;
+      }
+
+      throw new Error(`FAILED: ${rawResponse.status}`);
     });
 }
 
@@ -40,13 +49,11 @@ export function fetchHealth() {
     });
 
     Promise.all([fetchWithAuth('/cigarettes', 'GET'), fetchWithAuth('/weights', 'GET')])
-    .then(([cigarettes, weights]) => {
-      dispatch({
-        type: FETCHED_HEALTH,
-        cigarettes,
-        weights,
-      });
-    })
+    .then(([cigarettes, weights]) => dispatch({
+      type: FETCHED_HEALTH,
+      cigarettes,
+      weights,
+    }))
     .catch(() => {
       dispatch({
         type: FAILED_FETCH_HEALTH,
@@ -86,7 +93,7 @@ export function login() {
       localStorage.setItem('jwt', response.token);
       refetch();
       history.push('/');
-      dispatch({
+      return dispatch({
         type: LOGIN_SUCCEEDED,
       });
     })
@@ -115,37 +122,21 @@ export function postCigarette() {
 
     const rolled = document.querySelector('#rolled').checked;
 
-    const token = localStorage.getItem('jwt');
-
-    fetch(`${__BACKEND_URL__}/cigarettes`, { // eslint-disable-line no-undef
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': token,
-      },
-      body: JSON.stringify({
-        rolled,
-      }),
+    fetchWithAuth('/cigarettes', 'POST', {
+      rolled,
     })
-    .then((rawResponse) => {
-      if (rawResponse.status !== 201) {
-        return dispatch({
+      .then(() => {
+        dispatch({
+          type: CIGARETTE_SUCCEEDED,
+        });
+
+        history.push('/cigarettes');
+      })
+      .catch(() => {
+        dispatch({
           type: CIGARETTE_FAILED,
         });
-      }
-
-      dispatch({
-        type: CIGARETTE_SUCCEEDED,
       });
-
-      history.push('/cigarettes');
-    })
-    .catch(() => {
-      dispatch({
-        type: CIGARETTE_FAILED,
-      });
-    });
   };
 }
 
@@ -155,36 +146,20 @@ export function postWeight() {
 
     const weight = document.querySelector('#weight').value;
 
-    const token = localStorage.getItem('jwt');
-
-    fetch(`${__BACKEND_URL__}/weights`, { // eslint-disable-line no-undef
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': token,
-      },
-      body: JSON.stringify({
-        weight,
-      }),
+    fetchWithAuth('/weights', 'POST', {
+      weight,
     })
-    .then((rawResponse) => {
-      if (rawResponse.status !== 201) {
-        return dispatch({
+      .then(() => {
+        dispatch({
+          type: WEIGHT_SUCCEEDED,
+        });
+
+        history.push('/weight');
+      })
+      .catch(() => {
+        dispatch({
           type: WEIGHT_FAILED,
         });
-      }
-
-      dispatch({
-        type: WEIGHT_SUCCEEDED,
       });
-
-      history.push('/weight');
-    })
-    .catch(() => {
-      dispatch({
-        type: WEIGHT_FAILED,
-      });
-    });
   };
 }
