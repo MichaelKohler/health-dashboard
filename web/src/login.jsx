@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-import { refetch } from './actions';
+import { refetch, login } from './actions';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -44,38 +44,13 @@ const mapDispatchToProps = (dispatch) => ({
   refetch: () => {
     dispatch(refetch());
   },
+  login: () => {
+    dispatch(login());
+  },
 });
 
 export function Login(props) {
   const classes = useStyles();
-
-  function login(event) {
-    event.preventDefault();
-
-    const email = document.querySelector('#email').value;
-    const password = document.querySelector('#password').value;
-
-    fetch(`${__BACKEND_URL__}/auth/login`, { // eslint-disable-line no-undef
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    })
-    .then((rawResponse) => rawResponse.json())
-    .then((response) => {
-      if (response.token) {
-        localStorage.setItem('jwt', response.token);
-        props.refetch();
-        props.history.push('/');
-      }
-    })
-    .catch((error) => console.error(error));
-  }
 
   return (
       <Container component="main" maxWidth="xs">
@@ -88,7 +63,10 @@ export function Login(props) {
               <Typography component="h1" variant="h5">
                   Login
               </Typography>
-              <form className={ classes.form } noValidate onSubmit={ login }>
+              { props.loginFailed && (
+                  <p>Login failed</p>
+              ) }
+              <form className={ classes.form } noValidate onSubmit={ props.login }>
                   <TextField
                     variant="outlined"
                     margin="normal"
@@ -126,8 +104,8 @@ export function Login(props) {
 }
 
 Login.propTypes = {
-  history: PropTypes.object,
-  refetch: PropTypes.func,
+  loginFailed: PropTypes.bool,
+  login: PropTypes.func,
 };
 
 export default connect(

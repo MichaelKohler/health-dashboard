@@ -7,8 +7,9 @@ import renderer from 'react-test-renderer';
 import { Login } from '../src/login.jsx';
 
 it('renders correctly', () => {
+  const login = () => {};
   const tree = renderer
-    .create(<MemoryRouter><Login/></MemoryRouter>)
+    .create(<MemoryRouter><Login login={login}/></MemoryRouter>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

@@ -3,6 +3,8 @@ import history from '../history';
 export const FETCHED_HEALTH = 'FETCHED_HEALTH';
 export const FETCH_HEALTH = 'FETCH_HEALTH';
 export const FAILED_FETCH_HEALTH = 'FAILED_FETCH_HEALTH';
+export const LOGIN_SUCCEEDED = 'LOGIN_SUCCEEDED';
+export const LOGIN_FAILED = 'LOGIN_FAILED';
 
 function fetchWithAuth(endpoint, method) {
   const url = __BACKEND_URL__ + endpoint; // eslint-disable-line no-undef
@@ -50,4 +52,43 @@ export function fetchHealth() {
 
 export function refetch() {
   return fetchHealth();
+}
+
+export function login() {
+  return (dispatch) => {
+    event.preventDefault();
+
+    const email = document.querySelector('#email').value;
+    const password = document.querySelector('#password').value;
+
+    fetch(`${__BACKEND_URL__}/auth/login`, { // eslint-disable-line no-undef
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    })
+    .then((rawResponse) => rawResponse.json())
+    .then((response) => {
+      if (response.token) {
+        localStorage.setItem('jwt', response.token);
+        refetch();
+        history.push('/');
+        dispatch({
+          type: LOGIN_SUCCEEDED,
+        });
+      }
+
+      throw new Error('LOGIN_FAILED');
+    })
+    .catch(() => {
+      dispatch({
+        type: LOGIN_FAILED,
+      });
+    });
+  };
 }
