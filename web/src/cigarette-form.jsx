@@ -49,6 +49,8 @@ export function CigaretteForm(props) {
                       control={
                           <Checkbox
                             id="rolled"
+                            checked
+                            color="primary"
                             value="checked"
                           />
                       }
