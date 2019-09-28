@@ -5,18 +5,9 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 
-const useStyles = makeStyles((theme) => ({
-  appBarSpacer: theme.mixins.toolbar,
-  container: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
-  },
-  paper: {
-    padding: theme.spacing(2),
-    display: 'flex',
-    overflow: 'auto',
-    flexDirection: 'column',
-  },
+import getDefaultStyle from './styles';
+
+const useStyles = makeStyles((theme) => Object.assign({}, getDefaultStyle(theme), {
   fixedHeight: {
     height: 120,
   },

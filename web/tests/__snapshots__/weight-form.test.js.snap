@@ -8,7 +8,7 @@ exports[`renders correctly 1`] = `
     className="makeStyles-appBarSpacer-1"
   />
   <div
-    className="makeStyles-paper-2"
+    className="makeStyles-paper-3"
   >
     <h1
       className="MuiTypography-root MuiTypography-h5"
@@ -16,7 +16,7 @@ exports[`renders correctly 1`] = `
       Add Weight
     </h1>
     <form
-      className="makeStyles-form-3"
+      className="makeStyles-form-5"
       noValidate={true}
     >
       <div
@@ -54,7 +54,7 @@ exports[`renders correctly 1`] = `
           />
           <fieldset
             aria-hidden={true}
-            className="PrivateNotchedOutline-root-100 MuiOutlinedInput-notchedOutline"
+            className="PrivateNotchedOutline-root-102 MuiOutlinedInput-notchedOutline"
             style={
               Object {
                 "paddingLeft": 8,
@@ -62,7 +62,7 @@ exports[`renders correctly 1`] = `
             }
           >
             <legend
-              className="PrivateNotchedOutline-legend-101"
+              className="PrivateNotchedOutline-legend-103"
               style={
                 Object {
                   "width": 0.01,
@@ -81,7 +81,7 @@ exports[`renders correctly 1`] = `
         </div>
       </div>
       <button
-        className="MuiButtonBase-root MuiButton-root makeStyles-submit-4 MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+        className="MuiButtonBase-root MuiButton-root makeStyles-submit-6 MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
         disabled={false}
         onBlur={[Function]}
         onDragLeave={[Function]}

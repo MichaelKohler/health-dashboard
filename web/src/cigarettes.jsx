@@ -9,27 +9,11 @@ import Fab from '@material-ui/core/Fab';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import AddIcon from '@material-ui/icons/Add';
 
+import getDefaultStyle from './styles';
 import history from './history';
 import Table from './cigarette-table.jsx';
 
-const useStyles = makeStyles((theme) => ({
-  appBarSpacer: theme.mixins.toolbar,
-  container: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
-  },
-  paper: {
-    padding: theme.spacing(2),
-    display: 'flex',
-    overflow: 'auto',
-    flexDirection: 'column',
-  },
-  fab: {
-    position: 'absolute',
-    bottom: theme.spacing(2),
-    right: theme.spacing(2),
-  },
-}));
+const useStyles = makeStyles((theme) => Object.assign({}, getDefaultStyle(theme)));
 
 const mapStateToProps = (state) => ({
   cigarettes: state.cigarettes,
@@ -62,7 +46,7 @@ export function Cigarettes(props) {
                       ) }
                   </Grid>
               </Grid>
-              <Fab aria-label="Add" className={classes.fab} color="primary" onClick={ () => history.push('/cigarettes/add')}>
+              <Fab aria-label="Add" className={ classes.fab } color="primary" onClick={ () => history.push('/cigarettes/add') }>
                   <AddIcon/>
               </Fab>
           </Container>

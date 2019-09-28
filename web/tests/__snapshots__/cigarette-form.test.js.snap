@@ -8,7 +8,7 @@ exports[`renders correctly 1`] = `
     className="makeStyles-appBarSpacer-1"
   />
   <div
-    className="makeStyles-paper-2"
+    className="makeStyles-paper-3"
   >
     <h1
       className="MuiTypography-root MuiTypography-h5"
@@ -16,7 +16,7 @@ exports[`renders correctly 1`] = `
       Add Cigarette
     </h1>
     <form
-      className="makeStyles-form-3"
+      className="makeStyles-form-5"
       noValidate={true}
     >
       <label
@@ -24,7 +24,7 @@ exports[`renders correctly 1`] = `
       >
         <span
           aria-disabled={false}
-          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-54 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-56 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
           onBlur={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
@@ -42,7 +42,7 @@ exports[`renders correctly 1`] = `
             className="MuiIconButton-label"
           >
             <input
-              className="PrivateSwitchBase-input-57"
+              className="PrivateSwitchBase-input-59"
               data-indeterminate={false}
               id="rolled"
               onChange={[Function]}
@@ -69,7 +69,7 @@ exports[`renders correctly 1`] = `
         </span>
       </label>
       <button
-        className="MuiButtonBase-root MuiButton-root makeStyles-submit-4 MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+        className="MuiButtonBase-root MuiButton-root makeStyles-submit-6 MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
         disabled={false}
         onBlur={[Function]}
         onDragLeave={[Function]}

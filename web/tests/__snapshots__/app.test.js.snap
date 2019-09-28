@@ -119,7 +119,7 @@ exports[`renders correctly 1`] = `
             className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-12 MuiGrid-grid-lg-12"
           >
             <div
-              className="MuiPaper-root MuiPaper-elevation1 makeStyles-paper-123 makeStyles-fixedHeight-124 MuiPaper-rounded"
+              className="MuiPaper-root MuiPaper-elevation1 makeStyles-paper-123 makeStyles-fixedHeight-127 MuiPaper-rounded"
             >
               <h1>
                 Hi!

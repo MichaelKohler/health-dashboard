@@ -8,10 +8,10 @@ exports[`renders correctly 1`] = `
     className="makeStyles-appBarSpacer-1"
   />
   <div
-    className="makeStyles-paper-2"
+    className="makeStyles-paper-3"
   >
     <div
-      className="MuiAvatar-root makeStyles-avatar-3 MuiAvatar-colorDefault"
+      className="MuiAvatar-root makeStyles-avatar-7 MuiAvatar-colorDefault"
     >
       <svg
         aria-hidden="true"
@@ -42,6 +42,7 @@ exports[`renders correctly 1`] = `
       Logout
     </h1>
     <form
+      className="makeStyles-form-5"
       noValidate={true}
       onSubmit={[Function]}
     >
@@ -49,7 +50,7 @@ exports[`renders correctly 1`] = `
         Are you sure you want to log out?
       </p>
       <button
-        className="MuiButtonBase-root MuiButton-root makeStyles-submit-4 MuiButton-contained MuiButton-containedSecondary MuiButton-fullWidth"
+        className="MuiButtonBase-root MuiButton-root makeStyles-submit-6 MuiButton-contained MuiButton-containedSecondary MuiButton-fullWidth"
         disabled={false}
         onBlur={[Function]}
         onDragLeave={[Function]}
