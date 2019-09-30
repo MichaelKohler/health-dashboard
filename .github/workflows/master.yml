@@ -54,7 +54,7 @@ jobs:
       env:
         CI: true
     - name: Publish Docker
-      if: github.ref === 'master'
+      if: github.ref == 'master'
       run: |
         echo $DOCKER_PASSWORD | docker login --username michaelkohler --password-stdin
         docker push michaelkohler/health-dashboard:$GITHUB_SHA
