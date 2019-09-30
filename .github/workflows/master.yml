@@ -35,11 +35,11 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Lint/Test Web
+    - name: Build/Test Web
       run: |
         cd web
         npm ci
-        npm run eslint
         npm test
+        npm run build
       env:
         CI: true
