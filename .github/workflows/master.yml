@@ -71,4 +71,4 @@ jobs:
         TELEGRAM_TO: ${{ secrets.TELEGRAM_TO }}
       with:
         message: |
-          ${{ github.repo }}.. ${{ github.sha }} has been published.
+          ${{ github.repository }}.. ${{ github.sha }} has been published.
