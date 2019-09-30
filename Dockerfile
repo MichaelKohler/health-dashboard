@@ -12,6 +12,7 @@ WORKDIR '/app'
 
 RUN cd server && npm ci && cd ..
 RUN cd web && npm ci && NODE_ENV=production npm run build && cd ..
+RUN mkdir -p /app/server/public/
 RUN mv /app/web/dist/* /app/server/public/
 
 EXPOSE 3333
