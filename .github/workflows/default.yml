@@ -1,4 +1,4 @@
-name: Master
+name: Default
 
 on:
   push:
@@ -63,12 +63,11 @@ jobs:
     - name: Publish Docker
       if: github.ref == 'refs/heads/master'
       env:
+        CI: true
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       run: |
         docker login -u michaelkohler -p $DOCKER_PASSWORD
         docker push michaelkohler/health-dashboard:$GITHUB_SHA
-      env:
-        CI: true
   notify:
     needs: [docker-build]
     runs-on: ubuntu-latest
