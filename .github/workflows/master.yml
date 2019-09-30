@@ -60,3 +60,15 @@ jobs:
         docker push michaelkohler/health-dashboard:$GITHUB_SHA
       env:
         CI: true
+  notify:
+    needs: [docker-build]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: appleboy/telegram-action@master
+      name: Send Notification
+      env:
+        TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+        TELEGRAM_TO: ${{ secrets.TELEGRAM_TO }}
+      with:
+        message: |
+          ${{ github.repository }}.. ${{ github.sha }} has been published.
