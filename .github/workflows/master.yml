@@ -61,7 +61,7 @@ jobs:
       env:
         CI: true
     - name: Publish Docker
-      if: github.ref == 'master'
+      if: github.ref == 'refs/heads/master'
       run: |
         echo $DOCKER_PASSWORD | docker login --username michaelkohler --password-stdin
         docker push michaelkohler/health-dashboard:$GITHUB_SHA
@@ -73,6 +73,7 @@ jobs:
     steps:
     - uses: appleboy/telegram-action@master
       name: Send Notification
+      if: github.ref == 'refs/heads/master'
       env:
         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
         TELEGRAM_TO: ${{ secrets.TELEGRAM_TO }}
