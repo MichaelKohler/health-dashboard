@@ -1,0 +1,42 @@
+name: Master
+
+on:
+  push:
+    branches:    
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x]
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Lint Server
+      run: |
+        cd server
+        npm run eslint
+      env:
+        CI: true
+    - name: Test Server
+      run: |
+        cd server
+        npm test
+      env:
+        CI: true
+    - name: Lint Web
+      run: |
+        cd web
+        npm run eslint
+      env:
+        CI: true
+    - name: Test Web
+      run: |
+        cd web
+        npm test
+      env:
+        CI: true
