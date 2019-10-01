@@ -42,10 +42,11 @@
   "nyc": {
     "check-coverage": true,
     "statements": 90,
-    "branches": 70,
+    "branches": 75,
     "functions": 90,
     "lines": 90,
     "include": [
+      "lib/**/*.js",
       "middleware/**/*.js",
       "models/**/*.js",
       "routes/**/*.js"
