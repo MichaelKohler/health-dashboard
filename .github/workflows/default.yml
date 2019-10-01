@@ -82,7 +82,7 @@ jobs:
       env:
         DIGITALOCEAN_ACCESS_TOKEN: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
       with:
-        args: kubernetes cluster kubeconfig show actions-example > .kubeconfig
+        args: kubernetes cluster kubeconfig show k8s-michaelkohler-fra-personal > .kubeconfig
     - name: Deploy to DigitalOcean Kubernetes
       uses: docker://lachlanevenson/k8s-kubectl
       with:
