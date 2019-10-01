@@ -10,6 +10,9 @@ export const CIGARETTE_SUCCEEDED = 'CIGARETTE_SUCCEEDED';
 export const CIGARETTE_FAILED = 'CIGARETTE_FAILED';
 export const WEIGHT_SUCCEEDED = 'WEIGHT_SUCCEEDED';
 export const WEIGHT_FAILED = 'WEIGHT_FAILED';
+export const FETCH_STATS = 'FETCH_STATS';
+export const FETCHED_STATS = 'FETCHED_STATS';
+export const FAILED_FETCH_STATS = 'FAILED_FETCH_STATS';
 
 function fetchWithAuth(endpoint, method, body) {
   const url = __BACKEND_URL__ + endpoint; // eslint-disable-line no-undef
@@ -57,6 +60,25 @@ export function fetchHealth() {
       .catch(() => {
         dispatch({
           type: FAILED_FETCH_HEALTH,
+        });
+      });
+  };
+}
+
+export function fetchStats() {
+  return (dispatch) => {
+    dispatch({
+      type: FETCH_STATS,
+    });
+
+    fetchWithAuth('/stats', 'GET')
+      .then((stats) => dispatch({
+        type: FETCHED_STATS,
+        stats,
+      }))
+      .catch(() => {
+        dispatch({
+          type: FAILED_FETCH_STATS,
         });
       });
   };

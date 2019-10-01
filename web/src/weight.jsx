@@ -12,6 +12,7 @@ import AddIcon from '@material-ui/icons/Add';
 import getDefaultStyle from './styles';
 import history from './history';
 import Table from './weight-table.jsx';
+import WeightChart from './weight-chart.jsx';
 
 const useStyles = makeStyles((theme) => Object.assign({}, getDefaultStyle(theme), {
   paper: {
@@ -36,6 +37,7 @@ export function Weight(props) {
           <div className={ classes.appBarSpacer }/>
           <Container maxWidth="lg" className={ classes.container }>
               <Grid container spacing={ 3 }>
+                  <WeightChart/>
                   <Grid item xs={ 12 } md={ 12 } lg={ 12 }>
                       { props.isFetchingHealth && (
                       <Paper className={ classes.paper }>

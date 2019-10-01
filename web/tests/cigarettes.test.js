@@ -6,6 +6,8 @@ import { MemoryRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import { Cigarettes } from '../src/cigarettes.jsx';
 
+jest.mock('../src/cigarette-chart', () => () => 'CigaretteChart');
+
 it('renders correctly', () => {
   const data = [{
     createdAt: '2019-08-07T08:00:03Z',

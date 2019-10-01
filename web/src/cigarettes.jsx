@@ -11,6 +11,7 @@ import AddIcon from '@material-ui/icons/Add';
 
 import getDefaultStyle from './styles';
 import history from './history';
+import CigarettesChart from './cigarette-chart.jsx';
 import Table from './cigarette-table.jsx';
 
 const useStyles = makeStyles((theme) => Object.assign({}, getDefaultStyle(theme)));
@@ -29,6 +30,7 @@ export function Cigarettes(props) {
           <div className={ classes.appBarSpacer }/>
           <Container maxWidth="lg" className={ classes.container }>
               <Grid container spacing={ 3 }>
+                  <CigarettesChart/>
                   <Grid item xs={ 12 } md={ 12 } lg={ 12 }>
                       { props.isFetchingHealth && (
                       <Paper className={ classes.paper }>
