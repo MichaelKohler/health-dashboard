@@ -75,7 +75,7 @@ jobs:
     steps:
     - name: Update deployment file
       run: |
-        sed -i 's|<TAG>|'${$GITHUB_SHA}'|' $GITHUB_WORKSPACE/k8s/deployment.yml
+        sed -i 's|<TAG>|'${GITHUB_SHA}'|' $GITHUB_WORKSPACE/k8s/deployment.yml
     - name: Save DigitalOcean kubeconfig
       uses: digitalocean/action-doctl@master
       env:
@@ -91,7 +91,7 @@ jobs:
       with:
         args: --kubeconfig=$GITHUB_WORKSPACE/.kubeconfig rollout status deployment/health-dashboard-deployment
   notify:
-    needs: [docker-build]
+    needs: [kube-deploy]
     runs-on: ubuntu-latest
     steps:
     - uses: appleboy/telegram-action@master
