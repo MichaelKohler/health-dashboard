@@ -69,6 +69,27 @@ jobs:
       run: |
         docker login -u michaelkohler -p $DOCKER_PASSWORD
         docker push michaelkohler/health-dashboard:$GITHUB_SHA
+  kube-deploy:
+    needs: [docker-build]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Update deployment file
+      run: |
+        sed -i 's|<TAG>|'${$GITHUB_SHA}'|' $GITHUB_WORKSPACE/k8s/deployment.yml
+    - name: Save DigitalOcean kubeconfig
+      uses: digitalocean/action-doctl@master
+      env:
+        DIGITALOCEAN_ACCESS_TOKEN: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      with:
+        args: kubernetes cluster kubeconfig show actions-example > $GITHUB_WORKSPACE/.kubeconfig
+    - name: Deploy to DigitalOcean Kubernetes
+      uses: docker://lachlanevenson/k8s-kubectl
+      with:
+        args: --kubeconfig=$GITHUB_WORKSPACE/.kubeconfig apply -f $GITHUB_WORKSPACE/k8s/deployment.yml
+    - name: Verify deployment
+      uses: docker://lachlanevenson/k8s-kubectl
+      with:
+        args: --kubeconfig=$GITHUB_WORKSPACE/.kubeconfig rollout status deployment/health-dashboard-deployment
   notify:
     needs: [docker-build]
     runs-on: ubuntu-latest
