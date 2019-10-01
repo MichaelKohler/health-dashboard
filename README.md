@@ -4,6 +4,8 @@
 
 Some health dashboard.. or just something so I can play around..
 
+![](screenshot.png?raw=true)
+
 ## Prerequisites
 
 * Docker and docker-compose
