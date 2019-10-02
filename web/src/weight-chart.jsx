@@ -25,7 +25,7 @@ export function WeightChart(props) {
               >
                   <CartesianGrid strokeDasharray="3 3"/>
                   <XAxis dataKey="createdAt"/>
-                  <YAxis/>
+                  <YAxis type="number" domain={['dataMin - 20', 'dataMax + 10']}/>
                   <Tooltip/>
                   <Line type="monotone" dataKey="weight" stroke="#1f3352" activeDot={ { r: 8 } }/>
               </LineChart>
