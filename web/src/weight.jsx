@@ -14,14 +14,7 @@ import history from './history';
 import Table from './weight-table.jsx';
 import WeightChart from './weight-chart.jsx';
 
-const useStyles = makeStyles((theme) => Object.assign({}, getDefaultStyle(theme), {
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-}));
+const useStyles = makeStyles((theme) => Object.assign({}, getDefaultStyle(theme)));
 
 const mapStateToProps = (state) => ({
   weights: state.weights,

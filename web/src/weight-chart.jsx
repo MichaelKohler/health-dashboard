@@ -8,28 +8,35 @@ import {
 
 const mapStateToProps = (state) => ({
   stats: state.stats,
+  statsFailed: state.statsFailed,
 });
 
 export function WeightChart(props) {
   return (
       <Grid item xs={ 12 } md={ 12 } lg={ 12 }>
-          <LineChart
-            width={ 1100 }
-            height={ 300 }
-            data={ props.stats.weight }
-          >
-              <CartesianGrid strokeDasharray="3 3"/>
-              <XAxis dataKey="createdAt"/>
-              <YAxis/>
-              <Tooltip/>
-              <Line type="monotone" dataKey="weight" stroke="#1f3352" activeDot={ { r: 8 } }/>
-          </LineChart>
+          { props.statsFailed && (
+              <p>Oh no, something went wrong while fetching the stats!</p>
+          ) }
+          { props.stats.weight && (
+              <LineChart
+                width={ 1100 }
+                height={ 300 }
+                data={ props.stats.weight }
+              >
+                  <CartesianGrid strokeDasharray="3 3"/>
+                  <XAxis dataKey="createdAt"/>
+                  <YAxis/>
+                  <Tooltip/>
+                  <Line type="monotone" dataKey="weight" stroke="#1f3352" activeDot={ { r: 8 } }/>
+              </LineChart>
+          ) }
       </Grid>
   );
 }
 
 WeightChart.propTypes = {
   stats: PropTypes.object,
+  statsFailed: PropTypes.bool,
 };
 
 export default connect(

@@ -67,10 +67,6 @@ export function fetchHealth() {
 
 export function fetchStats() {
   return (dispatch) => {
-    dispatch({
-      type: FETCH_STATS,
-    });
-
     fetchWithAuth('/stats', 'GET')
       .then((stats) => dispatch({
         type: FETCHED_STATS,

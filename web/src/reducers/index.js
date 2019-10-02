@@ -10,6 +10,7 @@ import {
   WEIGHT_SUCCEEDED,
   WEIGHT_FAILED,
   FETCHED_STATS,
+  FAILED_FETCH_STATS,
 } from '../actions';
 
 const initialState = {
@@ -74,6 +75,11 @@ export default function reducer(state = initialState, action) {
     case FETCHED_STATS:
       return Object.assign({}, state, {
         stats: action.stats,
+        statsFailed: false,
+      });
+    case FAILED_FETCH_STATS:
+      return Object.assign({}, state, {
+        statsFailed: true,
       });
     default:
       return state;
