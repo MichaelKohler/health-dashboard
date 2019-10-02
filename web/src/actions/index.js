@@ -84,6 +84,11 @@ export function fetchStats() {
   };
 }
 
+export function fetchAll(dispatch) {
+  fetchHealth()(dispatch);
+  fetchStats()(dispatch);
+}
+
 export function login() {
   return (dispatch) => {
     event.preventDefault();
@@ -109,7 +114,7 @@ export function login() {
         }
 
         localStorage.setItem('jwt', response.token);
-        fetchHealth()(dispatch);
+        fetchAll(dispatch);
         history.push('/');
         return dispatch({
           type: LOGIN_SUCCEEDED,
@@ -143,7 +148,7 @@ export function postCigarette() {
     fetchWithAuth('/cigarettes', 'POST', {
       rolled,
     })
-      .then(() => fetchHealth()(dispatch))
+      .then(() => fetchAll(dispatch))
       .then(() => {
         dispatch({
           type: CIGARETTE_SUCCEEDED,
@@ -168,7 +173,7 @@ export function postWeight() {
     fetchWithAuth('/weights', 'POST', {
       weight,
     })
-      .then(() => fetchHealth()(dispatch))
+      .then(() => fetchAll(dispatch))
       .then(() => {
         dispatch({
           type: WEIGHT_SUCCEEDED,
