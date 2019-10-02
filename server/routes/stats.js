@@ -32,7 +32,7 @@ router.get('/', passport.authenticate(strategy, { session: false }), authorizedR
   Promise.all([cigarettesPromise, weightsPromise])
     .then(([cigarettesStats, weightStats]) => res.json({
       cigarettes: cigarettesStats,
-      weight: weightStats,
+      weight: weightStats.reverse(),
     }))
     .catch((error) => {
       debug('GET_STATS_ERROR', error.message);
