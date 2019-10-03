@@ -20,6 +20,7 @@ router.get('/', passport.authenticate(strategy, { session: false }), authorizedR
   debug('GET_STATS');
   const cigarettesPromise = Cigarette.findAll({
     attributes: [[Sequelize.literal(`DATE(createdAt)`), 'date'], [Sequelize.literal(`COUNT(*)`), 'count']],
+    order: [['createdAt', 'DESC']],
     group: ['date'],
     limit: STATS_LIMIT,
   });
@@ -31,7 +32,7 @@ router.get('/', passport.authenticate(strategy, { session: false }), authorizedR
 
   Promise.all([cigarettesPromise, weightsPromise])
     .then(([cigarettesStats, weightStats]) => res.json({
-      cigarettes: cigarettesStats,
+      cigarettes: cigarettesStats.reverse(),
       weight: weightStats.reverse(),
     }))
     .catch((error) => {
