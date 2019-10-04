@@ -27,7 +27,6 @@ router.get('/', passport.authenticate(strategy, { session: false }), authorizedR
 
   const weightsPromise = Weight.findAll({
     order: [['createdAt', 'DESC']],
-    limit: STATS_LIMIT,
   });
 
   Promise.all([cigarettesPromise, weightsPromise])
