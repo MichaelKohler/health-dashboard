@@ -10,6 +10,8 @@ export const CIGARETTE_SUCCEEDED = 'CIGARETTE_SUCCEEDED';
 export const CIGARETTE_FAILED = 'CIGARETTE_FAILED';
 export const WEIGHT_SUCCEEDED = 'WEIGHT_SUCCEEDED';
 export const WEIGHT_FAILED = 'WEIGHT_FAILED';
+export const STAIRS_SUCCEEDED = 'STAIRS_SUCCEEDED';
+export const STAIRS_FAILED = 'STAIRS_FAILED';
 export const FETCH_STATS = 'FETCH_STATS';
 export const FETCHED_STATS = 'FETCHED_STATS';
 export const FAILED_FETCH_STATS = 'FAILED_FETCH_STATS';
@@ -51,11 +53,12 @@ export function fetchHealth() {
       type: FETCH_HEALTH,
     });
 
-    Promise.all([fetchWithAuth('/cigarettes', 'GET'), fetchWithAuth('/weights', 'GET')])
-      .then(([cigarettes, weights]) => dispatch({
+    Promise.all([fetchWithAuth('/cigarettes', 'GET'), fetchWithAuth('/weights', 'GET'), fetchWithAuth('/stairs', 'GET')])
+      .then(([cigarettes, weights, stairs]) => dispatch({
         type: FETCHED_HEALTH,
         cigarettes,
         weights,
+        stairs,
       }))
       .catch(() => {
         dispatch({
@@ -180,6 +183,31 @@ export function postWeight() {
       .catch(() => {
         dispatch({
           type: WEIGHT_FAILED,
+        });
+      });
+  };
+}
+
+export function postStairs() {
+  return (dispatch) => {
+    event.preventDefault();
+
+    const stairs = document.querySelector('#stairs').value;
+
+    fetchWithAuth('/stairs', 'POST', {
+      stairs,
+    })
+      .then(() => fetchAll(dispatch))
+      .then(() => {
+        dispatch({
+          type: STAIRS_SUCCEEDED,
+        });
+
+        history.push('/stairs');
+      })
+      .catch(() => {
+        dispatch({
+          type: STAIRS_FAILED,
         });
       });
   };

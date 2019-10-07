@@ -7,6 +7,7 @@ import getDefaultStyle from './styles';
 
 import CigarettesChart from './cigarette-chart.jsx';
 import WeightChart from './weight-chart.jsx';
+import StairsChart from './stairs-chart.jsx';
 
 const useStyles = makeStyles((theme) => Object.assign({}, getDefaultStyle(theme), {
   fixedHeight: {
@@ -28,6 +29,9 @@ export default function Overview() {
 
                       <h1>Weight</h1>
                       <WeightChart/>
+
+                      <h1>Stairs</h1>
+                      <StairsChart/>
                   </Grid>
               </Grid>
           </Container>

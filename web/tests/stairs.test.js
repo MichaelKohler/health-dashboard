@@ -4,16 +4,18 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
-import App from '../src/app.jsx';
+import { Stairs } from '../src/stairs.jsx';
 
-jest.mock('../src/sidebar', () => () => 'Sidebar');
-jest.mock('../src/cigarette-chart', () => () => 'CigaretteChart');
 jest.mock('../src/stairs-chart', () => () => 'StairsChart');
-jest.mock('../src/weight-chart', () => () => 'WeightChart');
 
 it('renders correctly', () => {
+  const data = [{
+    createdAt: '2019-08-07T08:00:03Z',
+    stairs: 7,
+  }];
+
   const tree = renderer
-    .create(<MemoryRouter><App/></MemoryRouter>)
+    .create(<MemoryRouter><Stairs stairs={ data }/></MemoryRouter>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

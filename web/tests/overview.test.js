@@ -7,6 +7,7 @@ import renderer from 'react-test-renderer';
 import Overview from '../src/overview.jsx';
 
 jest.mock('../src/cigarette-chart', () => () => 'CigaretteChart');
+jest.mock('../src/stairs-chart', () => () => 'StairsChart');
 jest.mock('../src/weight-chart', () => () => 'WeightChart');
 
 it('renders correctly', () => {

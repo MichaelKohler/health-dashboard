@@ -21,6 +21,8 @@ import Cigarettes from './cigarettes.jsx';
 import CigaretteForm from './cigarette-form.jsx';
 import Weight from './weight.jsx';
 import WeightForm from './weight-form.jsx';
+import Stairs from './stairs.jsx';
+import StairsForm from './stairs-form.jsx';
 
 const mainTheme = createMuiTheme({
   palette: {
@@ -151,6 +153,8 @@ export default function App() {
                       <Route path="/cigarettes" component={ Cigarettes }/>
                       <Route path="/weight/add" component={ WeightForm }/>
                       <Route path="/weight" component={ Weight }/>
+                      <Route path="/stairs/add" component={ StairsForm }/>
+                      <Route path="/stairs" component={ Stairs }/>
                       <Redirect to="/"/>
                   </Switch>
               </main>

@@ -22,6 +22,10 @@ exports[`renders correctly 1`] = `
           Weight
         </h1>
         WeightChart
+        <h1>
+          Stairs
+        </h1>
+        StairsChart
       </div>
     </div>
   </div>

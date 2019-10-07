@@ -13,6 +13,7 @@ import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 import SmokingRoomsIcon from '@material-ui/icons/SmokingRooms';
 import LockIcon from '@material-ui/icons/Lock';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
+import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
 
 // The usage of React.forwardRef will no longer be required for react-router-dom v6.
 // see https://github.com/ReactTraining/react-router/issues/6056
@@ -61,6 +62,12 @@ export function Sidebar(props) {
                   <FitnessCenterIcon/>
               </ListItemIcon>
               <ListItemText primary="Weight"/>
+          </ListItem>
+          <ListItem button component={ AdapterLink } to="/stairs">
+              <ListItemIcon>
+                  <DirectionsRunIcon/>
+              </ListItemIcon>
+              <ListItemText primary="Stairs"/>
           </ListItem>
       </List>
   );

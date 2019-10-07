@@ -9,7 +9,7 @@ const strategy = config.usePassportStrategy;
 const authorizedRoles = require('../middleware/roles');
 const Sequelize = require('sequelize');
 
-const { Cigarette, Weight } = require('../models');
+const { Cigarette, Stairs, Weight } = require('../models');
 
 const STATUS_ERROR = 500;
 const STATS_LIMIT = 5;
@@ -24,15 +24,22 @@ router.get('/', passport.authenticate(strategy, { session: false }), authorizedR
     group: ['date'],
     limit: STATS_LIMIT,
   });
+  const stairsPromise = Stairs.findAll({
+    attributes: [[Sequelize.literal(`DATE(createdAt)`), 'date'], [Sequelize.literal(`SUM(stairs)`), 'count']],
+    order: [['createdAt', 'DESC']],
+    group: ['date'],
+    limit: STATS_LIMIT,
+  });
 
   const weightsPromise = Weight.findAll({
     order: [['createdAt', 'DESC']],
   });
 
-  Promise.all([cigarettesPromise, weightsPromise])
-    .then(([cigarettesStats, weightStats]) => res.json({
+  Promise.all([cigarettesPromise, weightsPromise, stairsPromise])
+    .then(([cigarettesStats, weightStats, stairsStats]) => res.json({
       cigarettes: cigarettesStats.reverse(),
       weight: weightStats.reverse(),
+      stairs: stairsStats.reverse(),
     }))
     .catch((error) => {
       debug('GET_STATS_ERROR', error.message);

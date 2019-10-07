@@ -9,6 +9,8 @@ import {
   CIGARETTE_FAILED,
   WEIGHT_SUCCEEDED,
   WEIGHT_FAILED,
+  STAIRS_SUCCEEDED,
+  STAIRS_FAILED,
   FETCHED_STATS,
   FAILED_FETCH_STATS,
 } from '../actions';
@@ -16,6 +18,7 @@ import {
 const initialState = {
   cigarettes: [],
   weights: [],
+  stairs: [],
   isFetchingHealth: false,
   failedFetchingHealth: false,
   isLoggedIn: !!localStorage.getItem('jwt'),
@@ -30,6 +33,7 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         cigarettes: action.cigarettes,
         weights: action.weights,
+        stairs: action.stairs,
         isFetchingHealth: false,
         failedFetchingHealth: false,
       });
@@ -71,6 +75,14 @@ export default function reducer(state = initialState, action) {
     case WEIGHT_FAILED:
       return Object.assign({}, state, {
         weightPostFailed: true,
+      });
+    case STAIRS_SUCCEEDED:
+      return Object.assign({}, state, {
+        stairsPostFailed: false,
+      });
+    case STAIRS_FAILED:
+      return Object.assign({}, state, {
+        stairsPostFailed: true,
       });
     case FETCHED_STATS:
       return Object.assign({}, state, {
