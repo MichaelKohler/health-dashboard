@@ -3,7 +3,7 @@ import sinon from 'sinon';
 import request from 'supertest';
 
 import app from '../../app';
-import { Cigarette, Weight } from '../../models';
+import { Cigarette, Stairs, Weight } from '../../models';
 
 test.beforeEach((t) => {
   t.context.sandbox = sinon.createSandbox();
@@ -15,6 +15,7 @@ test.afterEach.always((t) => {
 
 test.serial('should get all stats - admin', async (t) => {
   t.context.sandbox.stub(Cigarette, 'findAll').resolves([]);
+  t.context.sandbox.stub(Stairs, 'findAll').resolves([]);
   t.context.sandbox.stub(Weight, 'findAll').resolves([]);
 
   await request(app)
@@ -31,7 +32,6 @@ test.serial('should get all stats - admin', async (t) => {
 
 test.serial('should fail to get stats', async (t) => {
   t.context.sandbox.stub(Cigarette, 'findAll').rejects(new Error('NOPE'));
-  t.context.sandbox.stub(Weight, 'findAll').rejects(new Error('NOPE'));
 
   await request(app)
     .get('/stats?username=readonly&password=foo')
@@ -44,6 +44,7 @@ test.serial('should fail to get stats', async (t) => {
 
 test.serial('should not return anything - no roles user', async (t) => {
   t.context.sandbox.stub(Cigarette, 'findAll').resolves([]);
+  t.context.sandbox.stub(Stairs, 'findAll').resolves([]);
   t.context.sandbox.stub(Weight, 'findAll').resolves([]);
 
   await request(app)
