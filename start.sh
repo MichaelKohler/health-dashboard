@@ -1,5 +1,5 @@
 #!/bin/bash
 
 cd server
-npm run migrate
+NODE_ENV=production npm run migrate
 pm2-runtime ecosystem.config.js
