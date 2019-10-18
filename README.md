@@ -27,6 +27,14 @@ $ docker-compose up
 
 ### Start backend server
 
+Copy the MQTT config example and adjust it to your use case. If you don't want MQTT functionality, do not copy the config.
+
+```
+$ cp server/config/mqtt-config-example.js server/config/mqtt-config.js
+```
+
+Then you can start the server:
+
 ```
 $ npm run start:server
 ```
@@ -43,3 +51,15 @@ $ npm run seed
 ```
 $ npm run start:web
 ```
+
+## MQTT Config
+
+Topic Key is the mqtt topic name.
+
+Topic Properties:
+* action: action to call on message (see below for values)
+* useValue: (optional) boolean value to indicate whether to use the message's value for the action
+
+Possible values for `action`:
+* ADD_CIGARETTE
+* ADD_STAIRS

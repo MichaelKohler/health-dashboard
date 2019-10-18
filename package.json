@@ -17,5 +17,6 @@
   "bugs": {
     "url": "https://github.com/MichaelKohler/health-dashboard/issues"
   },
-  "homepage": "https://github.com/MichaelKohler/health-dashboard#readme"
+  "homepage": "https://github.com/MichaelKohler/health-dashboard#readme",
+  "dependencies": {}
 }

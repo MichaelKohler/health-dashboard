@@ -24,6 +24,10 @@ spec:
         app: health-dashboard
     spec:
       hostname: health-dashboard
+      volumes:
+        - name: config-volume
+          configMap:
+            name: health-config
       containers:
         - name: health-dashboard
           image: michaelkohler/health-dashboard:<TAG>
@@ -43,3 +47,6 @@ spec:
                 secretKeyRef:
                   name: health
                   key: connect
+          volumeMounts:
+            - name: config-volume
+              mountPath: /app/server/config/

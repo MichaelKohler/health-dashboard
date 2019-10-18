@@ -12,6 +12,7 @@
     "jsonwebtoken": "^8.5.1",
     "lodash.intersection": "^4.4.0",
     "mariadb": "^2.1.1",
+    "mqtt": "^3.0.0",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
@@ -42,7 +43,7 @@
   "nyc": {
     "check-coverage": true,
     "statements": 90,
-    "branches": 75,
+    "branches": 66,
     "functions": 90,
     "lines": 90,
     "include": [
