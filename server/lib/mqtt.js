@@ -8,7 +8,7 @@ let config;
 let instance;
 
 try {
-  config = require('../config/mqtt-config');
+  config = require('../config/mqtt/mqtt-config');
 }
 catch (err) {
   debug('Did not find MQTT config file..');

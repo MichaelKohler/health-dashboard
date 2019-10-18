@@ -49,4 +49,4 @@ spec:
                   key: connect
           volumeMounts:
             - name: config-volume
-              mountPath: /app/server/config/
+              mountPath: /app/server/config/mqtt/

@@ -30,7 +30,7 @@ $ docker-compose up
 Copy the MQTT config example and adjust it to your use case. If you don't want MQTT functionality, do not copy the config.
 
 ```
-$ cp server/config/mqtt-config-example.js server/config/mqtt-config.js
+$ cp server/config/mqtt/mqtt-config-example.js server/config/mqtt/mqtt-config.js
 ```
 
 Then you can start the server:

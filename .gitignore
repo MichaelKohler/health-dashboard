@@ -61,4 +61,4 @@ typings/
 .next
 
 web/dist
-server/config/mqtt-config.json
+server/config/mqtt/mqtt-config.json
