@@ -59,6 +59,7 @@ export function StairsForm(props) {
                     variant="contained"
                     color="primary"
                     className={ classes.submit }
+                    disabled={ props.isSubmitting }
                   >
                     Add
                   </Button>
@@ -71,6 +72,7 @@ export function StairsForm(props) {
 StairsForm.propTypes = {
   stairsPostFailed: PropTypes.bool,
   postStairs: PropTypes.func,
+  isSubmitting: PropTypes.bool,
 };
 
 export default connect(

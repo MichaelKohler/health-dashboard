@@ -62,6 +62,7 @@ export function CigaretteForm(props) {
                     variant="contained"
                     color="primary"
                     className={ classes.submit }
+                    disabled={ props.isSubmitting }
                   >
                     Add
                   </Button>
@@ -74,6 +75,7 @@ export function CigaretteForm(props) {
 CigaretteForm.propTypes = {
   cigarettePostFailed: PropTypes.bool,
   postCigarette: PropTypes.func,
+  isSubmitting: PropTypes.bool,
 };
 
 export default connect(

@@ -15,6 +15,7 @@ export const STAIRS_FAILED = 'STAIRS_FAILED';
 export const FETCH_STATS = 'FETCH_STATS';
 export const FETCHED_STATS = 'FETCHED_STATS';
 export const FAILED_FETCH_STATS = 'FAILED_FETCH_STATS';
+export const START_SUBMISSION = 'START_SUBMISSION';
 
 function fetchWithAuth(endpoint, method, body) {
   const url = __BACKEND_URL__ + endpoint; // eslint-disable-line no-undef
@@ -144,6 +145,10 @@ export function postCigarette() {
 
     const rolled = document.querySelector('#rolled').checked;
 
+    dispatch({
+      type: START_SUBMISSION,
+    });
+
     fetchWithAuth('/cigarettes', 'POST', {
       rolled,
     })
@@ -168,6 +173,10 @@ export function postCigarette() {
 export function postWeight() {
   return (dispatch) => {
     event.preventDefault();
+
+    dispatch({
+      type: START_SUBMISSION,
+    });
 
     const weight = document.querySelector('#weight').value;
 
@@ -195,6 +204,10 @@ export function postWeight() {
 export function postStairs() {
   return (dispatch) => {
     event.preventDefault();
+
+    dispatch({
+      type: START_SUBMISSION,
+    });
 
     const stairs = document.querySelector('#stairs').value;
 

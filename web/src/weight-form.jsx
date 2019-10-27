@@ -59,6 +59,7 @@ export function WeightForm(props) {
                     variant="contained"
                     color="primary"
                     className={ classes.submit }
+                    disabled={ props.isSubmitting }
                   >
                     Add
                   </Button>
@@ -71,6 +72,7 @@ export function WeightForm(props) {
 WeightForm.propTypes = {
   weightPostFailed: PropTypes.bool,
   postWeight: PropTypes.func,
+  isSubmitting: PropTypes.bool,
 };
 
 export default connect(
