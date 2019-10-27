@@ -45,6 +45,10 @@ function fetchWithAuth(endpoint, method, body) {
           .catch(() => ({}));
       }
 
+      if (rawResponse.status === 201) {
+        return {};
+      }
+
       throw new Error(`FAILED: ${rawResponse.status}`);
     });
 }
