@@ -62,6 +62,6 @@
     "files": [
       "tests/**/*.test.js"
     ],
-    "timeout": "5s"
+    "timeout": "10s"
   }
 }
