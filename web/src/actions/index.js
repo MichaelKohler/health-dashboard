@@ -154,6 +154,8 @@ export function postCigarette() {
         });
 
         history.push('/cigarettes');
+
+        return true;
       })
       .catch(() => {
         dispatch({
@@ -179,6 +181,8 @@ export function postWeight() {
         });
 
         history.push('/weight');
+
+        return true;
       })
       .catch(() => {
         dispatch({
@@ -204,6 +208,8 @@ export function postStairs() {
         });
 
         history.push('/stairs');
+
+        return true;
       })
       .catch(() => {
         dispatch({
