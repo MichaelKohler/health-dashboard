@@ -7,6 +7,7 @@ import renderer from 'react-test-renderer';
 import { Stairs } from '../src/stairs.jsx';
 
 jest.mock('../src/stairs-chart', () => () => 'StairsChart');
+jest.mock('../src/stairs-table', () => () => 'StairsTable');
 
 it('renders correctly', () => {
   const data = [{

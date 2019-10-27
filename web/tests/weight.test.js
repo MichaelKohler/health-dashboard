@@ -7,6 +7,7 @@ import renderer from 'react-test-renderer';
 import { Weight } from '../src/weight.jsx';
 
 jest.mock('../src/weight-chart', () => () => 'WeightChart');
+jest.mock('../src/weight-table', () => () => 'WeightTable');
 
 it('renders correctly', () => {
   const data = [{

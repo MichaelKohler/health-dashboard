@@ -3,7 +3,7 @@
 
 import React from 'react';
 import renderer from 'react-test-renderer';
-import CigarettesTable from '../src/cigarette-table.jsx';
+import { CigaretteTable } from '../src/cigarette-table.jsx';
 
 it('renders correctly', () => {
   const data = [{
@@ -12,7 +12,7 @@ it('renders correctly', () => {
   }];
 
   const tree = renderer
-    .create(<CigarettesTable rows={ data }/>)
+    .create(<CigaretteTable rows={ data }/>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

@@ -18,8 +18,12 @@ export const FAILED_FETCH_STATS = 'FAILED_FETCH_STATS';
 export const START_SUBMISSION = 'START_SUBMISSION';
 
 function fetchWithAuth(endpoint, method, body) {
-  const url = __BACKEND_URL__ + endpoint; // eslint-disable-line no-undef
+  let url = __BACKEND_URL__ + endpoint; // eslint-disable-line no-undef
   const token = localStorage.getItem('jwt');
+
+  if (method === 'DELETE' && typeof body.id !== 'undefined') {
+    url = `${url}/${body.id}`;
+  }
 
   return fetch(url, {
       method,
@@ -37,11 +41,8 @@ function fetchWithAuth(endpoint, method, body) {
       }
 
       if (rawResponse.status === 200) {
-        return rawResponse.json();
-      }
-
-      if (rawResponse.status === 201) {
-        return {};
+        return rawResponse.json()
+          .catch(() => ({}));
       }
 
       throw new Error(`FAILED: ${rawResponse.status}`);
@@ -170,6 +171,22 @@ export function postCigarette() {
   };
 }
 
+export function deleteCigarette(id) {
+  return (dispatch) => {
+    event.preventDefault();
+
+    fetchWithAuth('/cigarettes', 'DELETE', {
+      id,
+    })
+      .then(() => fetchAll(dispatch))
+      .catch(() => {
+        dispatch({
+          type: CIGARETTE_FAILED,
+        });
+      });
+  };
+}
+
 export function postWeight() {
   return (dispatch) => {
     event.preventDefault();
@@ -201,6 +218,22 @@ export function postWeight() {
   };
 }
 
+export function deleteWeight(id) {
+  return (dispatch) => {
+    event.preventDefault();
+
+    fetchWithAuth('/weights', 'DELETE', {
+      id,
+    })
+      .then(() => fetchAll(dispatch))
+      .catch(() => {
+        dispatch({
+          type: WEIGHT_FAILED,
+        });
+      });
+  };
+}
+
 export function postStairs() {
   return (dispatch) => {
     event.preventDefault();
@@ -224,6 +257,22 @@ export function postStairs() {
 
         return true;
       })
+      .catch(() => {
+        dispatch({
+          type: STAIRS_FAILED,
+        });
+      });
+  };
+}
+
+export function deleteStairs(id) {
+  return (dispatch) => {
+    event.preventDefault();
+
+    fetchWithAuth('/stairs', 'DELETE', {
+      id,
+    })
+      .then(() => fetchAll(dispatch))
       .catch(() => {
         dispatch({
           type: STAIRS_FAILED,

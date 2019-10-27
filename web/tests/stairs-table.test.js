@@ -3,7 +3,7 @@
 
 import React from 'react';
 import renderer from 'react-test-renderer';
-import StairsTable from '../src/stairs-table.jsx';
+import { StairsTable } from '../src/stairs-table.jsx';
 
 it('renders correctly', () => {
   const data = [{

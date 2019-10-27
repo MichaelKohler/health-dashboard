@@ -7,6 +7,7 @@ import renderer from 'react-test-renderer';
 import { Cigarettes } from '../src/cigarettes.jsx';
 
 jest.mock('../src/cigarette-chart', () => () => 'CigaretteChart');
+jest.mock('../src/cigarette-table', () => () => 'CigaretteTable');
 
 it('renders correctly', () => {
   const data = [{

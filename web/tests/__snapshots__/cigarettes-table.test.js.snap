@@ -27,6 +27,13 @@ exports[`renders correctly 1`] = `
         >
           Rolled
         </th>
+        <th
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-sizeSmall MuiTableCell-head"
+          scope="col"
+        >
+          Actions
+        </th>
       </tr>
     </thead>
     <tbody
@@ -46,6 +53,35 @@ exports[`renders correctly 1`] = `
           className="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-sizeSmall MuiTableCell-body"
         >
           not rolled
+        </td>
+        <td
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-sizeSmall MuiTableCell-body"
+        >
+          <button
+            className="MuiButtonBase-root MuiButton-root makeStyles-button-3 MuiButton-text MuiButton-textSecondary"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Delete
+            </span>
+          </button>
         </td>
       </tr>
     </tbody>

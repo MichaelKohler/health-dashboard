@@ -3,7 +3,7 @@
 
 import React from 'react';
 import renderer from 'react-test-renderer';
-import WeightTable from '../src/weight-table.jsx';
+import { WeightTable } from '../src/weight-table.jsx';
 
 it('renders correctly', () => {
   const data = [{
