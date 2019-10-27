@@ -24,7 +24,7 @@ function initialize() {
 
     Cigarette.create(params)
       .then(() => {
-        debug('Cigartte added through action');
+        debug('Cigarette added through action');
       })
       .catch((error) => {
         debug('CREATE_CIGARETTE_ACTION_ERROR', error.message);
