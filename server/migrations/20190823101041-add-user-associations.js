@@ -26,7 +26,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         primaryKey: true,
       },
-    }
+    },
   ),
 
   down: (queryInterface) => queryInterface.dropTable('UserUserRole'),

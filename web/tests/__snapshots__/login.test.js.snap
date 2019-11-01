@@ -53,6 +53,7 @@ exports[`renders correctly 1`] = `
           className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-required Mui-required"
           data-shrink={false}
           htmlFor="email"
+          id="email-label"
         >
           Email Address
           <span
@@ -82,7 +83,7 @@ exports[`renders correctly 1`] = `
           />
           <fieldset
             aria-hidden={true}
-            className="PrivateNotchedOutline-root-115 MuiOutlinedInput-notchedOutline"
+            className="PrivateNotchedOutline-root-116 MuiOutlinedInput-notchedOutline"
             style={
               Object {
                 "paddingLeft": 8,
@@ -90,7 +91,7 @@ exports[`renders correctly 1`] = `
             }
           >
             <legend
-              className="PrivateNotchedOutline-legend-116"
+              className="PrivateNotchedOutline-legend-117"
               style={
                 Object {
                   "width": 0.01,
@@ -115,6 +116,7 @@ exports[`renders correctly 1`] = `
           className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-required Mui-required"
           data-shrink={false}
           htmlFor="password"
+          id="password-label"
         >
           Password
           <span
@@ -144,7 +146,7 @@ exports[`renders correctly 1`] = `
           />
           <fieldset
             aria-hidden={true}
-            className="PrivateNotchedOutline-root-115 MuiOutlinedInput-notchedOutline"
+            className="PrivateNotchedOutline-root-116 MuiOutlinedInput-notchedOutline"
             style={
               Object {
                 "paddingLeft": 8,
@@ -152,7 +154,7 @@ exports[`renders correctly 1`] = `
             }
           >
             <legend
-              className="PrivateNotchedOutline-legend-116"
+              className="PrivateNotchedOutline-legend-117"
               style={
                 Object {
                   "width": 0.01,
@@ -171,7 +173,7 @@ exports[`renders correctly 1`] = `
         </div>
       </div>
       <button
-        className="MuiButtonBase-root MuiButton-root makeStyles-submit-6 MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+        className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-submit-6 MuiButton-containedPrimary MuiButton-fullWidth"
         disabled={false}
         onBlur={[Function]}
         onDragLeave={[Function]}

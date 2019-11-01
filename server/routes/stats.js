@@ -9,7 +9,11 @@ const strategy = config.usePassportStrategy;
 const authorizedRoles = require('../middleware/roles');
 const Sequelize = require('sequelize');
 
-const { Cigarette, Stairs, Weight } = require('../models');
+const {
+  Cigarette,
+  Stairs,
+  Weight,
+} = require('../models');
 
 const STATUS_ERROR = 500;
 const STATS_LIMIT = 5;
@@ -35,8 +39,16 @@ router.get('/', passport.authenticate(strategy, { session: false }), authorizedR
     order: [['createdAt', 'DESC']],
   });
 
-  Promise.all([cigarettesPromise, weightsPromise, stairsPromise])
-    .then(([cigarettesStats, weightStats, stairsStats]) => res.json({
+  Promise.all([
+    cigarettesPromise,
+    weightsPromise,
+    stairsPromise,
+  ])
+    .then(([
+      cigarettesStats,
+      weightStats,
+      stairsStats,
+    ]) => res.json({
       cigarettes: cigarettesStats.reverse(),
       weight: weightStats.reverse(),
       stairs: stairsStats.reverse(),

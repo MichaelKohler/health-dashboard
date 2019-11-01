@@ -24,7 +24,9 @@ test.afterEach.always((t) => {
 });
 
 test('should call next if user has role', async (t) => {
-  const { req, res, next } = t.context;
+  const {
+    req, res, next,
+  } = t.context;
   const check = await roleCheck('admin');
   await check(req, res, next);
   t.true(req.user.getUserRoles.calledOnce);
@@ -32,7 +34,9 @@ test('should call next if user has role', async (t) => {
 });
 
 test('should call next if user has role (multiple user roles)', async (t) => {
-  const { req, res, next } = t.context;
+  const {
+    req, res, next,
+  } = t.context;
   req.user.getUserRoles.resolves([{ dataValues: { name: 'foo' } }, { dataValues: { name: 'meh' } }]);
   const check = await roleCheck('foo');
   await check(req, res, next);
@@ -41,7 +45,9 @@ test('should call next if user has role (multiple user roles)', async (t) => {
 });
 
 test('should call next if user has role (multiple user roles to check)', async (t) => {
-  const { req, res, next } = t.context;
+  const {
+    req, res, next,
+  } = t.context;
   const check = await roleCheck('foo', 'admin');
   await check(req, res, next);
   t.true(req.user.getUserRoles.calledOnce);
@@ -49,7 +55,9 @@ test('should call next if user has role (multiple user roles to check)', async (
 });
 
 test('should send 403 if user does not have role', async (t) => {
-  const { req, res, next } = t.context;
+  const {
+    req, res, next,
+  } = t.context;
   const check = await roleCheck('inexistingrole');
   await check(req, res, next);
   t.true(req.user.getUserRoles.calledOnce);
@@ -59,7 +67,9 @@ test('should send 403 if user does not have role', async (t) => {
 });
 
 test('should send 403 if user does not have role (multiple user roles to check)', async (t) => {
-  const { req, res, next } = t.context;
+  const {
+    req, res, next,
+  } = t.context;
   const check = await roleCheck('inexistingrole', 'inexisting2');
   await check(req, res, next);
   t.true(req.user.getUserRoles.calledOnce);

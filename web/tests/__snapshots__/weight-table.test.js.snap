@@ -59,7 +59,7 @@ exports[`renders correctly 1`] = `
           className="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-sizeSmall MuiTableCell-body"
         >
           <button
-            className="MuiButtonBase-root MuiButton-root makeStyles-button-3 MuiButton-text MuiButton-textSecondary"
+            className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-3 MuiButton-textSecondary"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}

@@ -3,7 +3,9 @@ import sinon from 'sinon';
 import request from 'supertest';
 
 import app from '../../app';
-import { Cigarette, Stairs, Weight } from '../../models';
+import {
+  Cigarette, Stairs, Weight,
+} from '../../models';
 
 test.beforeEach((t) => {
   t.context.sandbox = sinon.createSandbox();

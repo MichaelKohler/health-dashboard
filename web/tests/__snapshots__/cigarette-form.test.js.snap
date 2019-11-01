@@ -73,7 +73,7 @@ exports[`renders button disabled 1`] = `
         </span>
       </label>
       <button
-        className="MuiButtonBase-root MuiButton-root makeStyles-submit-6 MuiButton-contained MuiButton-containedPrimary Mui-disabled MuiButton-fullWidth Mui-disabled"
+        className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-submit-6 MuiButton-containedPrimary Mui-disabled MuiButton-fullWidth Mui-disabled"
         disabled={true}
         onBlur={[Function]}
         onDragLeave={[Function]}
@@ -170,7 +170,7 @@ exports[`renders correctly 1`] = `
         </span>
       </label>
       <button
-        className="MuiButtonBase-root MuiButton-root makeStyles-submit-6 MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+        className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-submit-6 MuiButton-containedPrimary MuiButton-fullWidth"
         disabled={false}
         onBlur={[Function]}
         onDragLeave={[Function]}

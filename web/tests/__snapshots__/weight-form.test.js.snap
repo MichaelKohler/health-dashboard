@@ -26,6 +26,7 @@ exports[`renders button disabled 1`] = `
           className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-required Mui-required"
           data-shrink={false}
           htmlFor="weight"
+          id="weight-label"
         >
           Weight in kg
           <span
@@ -54,7 +55,7 @@ exports[`renders button disabled 1`] = `
           />
           <fieldset
             aria-hidden={true}
-            className="PrivateNotchedOutline-root-102 MuiOutlinedInput-notchedOutline"
+            className="PrivateNotchedOutline-root-103 MuiOutlinedInput-notchedOutline"
             style={
               Object {
                 "paddingLeft": 8,
@@ -62,7 +63,7 @@ exports[`renders button disabled 1`] = `
             }
           >
             <legend
-              className="PrivateNotchedOutline-legend-103"
+              className="PrivateNotchedOutline-legend-104"
               style={
                 Object {
                   "width": 0.01,
@@ -81,7 +82,7 @@ exports[`renders button disabled 1`] = `
         </div>
       </div>
       <button
-        className="MuiButtonBase-root MuiButton-root makeStyles-submit-6 MuiButton-contained MuiButton-containedPrimary Mui-disabled MuiButton-fullWidth Mui-disabled"
+        className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-submit-6 MuiButton-containedPrimary Mui-disabled MuiButton-fullWidth Mui-disabled"
         disabled={true}
         onBlur={[Function]}
         onDragLeave={[Function]}
@@ -134,6 +135,7 @@ exports[`renders correctly 1`] = `
           className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-required Mui-required"
           data-shrink={false}
           htmlFor="weight"
+          id="weight-label"
         >
           Weight in kg
           <span
@@ -162,7 +164,7 @@ exports[`renders correctly 1`] = `
           />
           <fieldset
             aria-hidden={true}
-            className="PrivateNotchedOutline-root-102 MuiOutlinedInput-notchedOutline"
+            className="PrivateNotchedOutline-root-103 MuiOutlinedInput-notchedOutline"
             style={
               Object {
                 "paddingLeft": 8,
@@ -170,7 +172,7 @@ exports[`renders correctly 1`] = `
             }
           >
             <legend
-              className="PrivateNotchedOutline-legend-103"
+              className="PrivateNotchedOutline-legend-104"
               style={
                 Object {
                   "width": 0.01,
@@ -189,7 +191,7 @@ exports[`renders correctly 1`] = `
         </div>
       </div>
       <button
-        className="MuiButtonBase-root MuiButton-root makeStyles-submit-6 MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+        className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-submit-6 MuiButton-containedPrimary MuiButton-fullWidth"
         disabled={false}
         onBlur={[Function]}
         onDragLeave={[Function]}

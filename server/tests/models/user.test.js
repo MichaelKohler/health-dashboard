@@ -49,7 +49,9 @@ test('should associate relationship', (t) => {
 });
 
 test.serial('checkValidPassword: should return value of compare - true', (t) => {
-  const { stubs, DataTypes, sandbox } = t.context;
+  const {
+    stubs, DataTypes, sandbox,
+  } = t.context;
   const User = user(stubs.sequelizeStub, DataTypes);
   const newUser = new User();
   sandbox.stub(bcrypt, 'compareSync').returns(true);
@@ -58,7 +60,9 @@ test.serial('checkValidPassword: should return value of compare - true', (t) => 
 });
 
 test.serial('checkValidPassword: should return value of compare - false', (t) => {
-  const { stubs, DataTypes, sandbox } = t.context;
+  const {
+    stubs, DataTypes, sandbox,
+  } = t.context;
   const User = user(stubs.sequelizeStub, DataTypes);
   const newUser = new User();
   sandbox.stub(bcrypt, 'compareSync').returns(false);

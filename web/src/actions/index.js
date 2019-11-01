@@ -59,8 +59,16 @@ export function fetchHealth() {
       type: FETCH_HEALTH,
     });
 
-    Promise.all([fetchWithAuth('/cigarettes', 'GET'), fetchWithAuth('/weights', 'GET'), fetchWithAuth('/stairs', 'GET')])
-      .then(([cigarettes, weights, stairs]) => dispatch({
+    Promise.all([
+      fetchWithAuth('/cigarettes', 'GET'),
+      fetchWithAuth('/weights', 'GET'),
+      fetchWithAuth('/stairs', 'GET'),
+    ])
+      .then(([
+        cigarettes,
+        weights,
+        stairs,
+      ]) => dispatch({
         type: FETCHED_HEALTH,
         cigarettes,
         weights,
