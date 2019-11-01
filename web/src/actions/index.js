@@ -60,9 +60,9 @@ export function fetchHealth() {
     });
 
     Promise.all([
-      fetchWithAuth('/cigarettes', 'GET'),
-      fetchWithAuth('/weights', 'GET'),
-      fetchWithAuth('/stairs', 'GET'),
+      fetchWithAuth('/cigarettes?limit=150', 'GET'),
+      fetchWithAuth('/weights?limit=100', 'GET'),
+      fetchWithAuth('/stairs?limit=100', 'GET'),
     ])
       .then(([
         cigarettes,

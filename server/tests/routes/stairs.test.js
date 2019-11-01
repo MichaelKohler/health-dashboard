@@ -13,6 +13,28 @@ test.afterEach.always((t) => {
   t.context.sandbox.restore();
 });
 
+test.serial('should get with limit', async (t) => {
+  const stairs = [{
+    id: 1,
+    stairs: 5,
+    createdAt: Date.now(),
+  }];
+  t.context.sandbox.stub(Stairs, 'findAll').resolves(stairs);
+
+  await request(app)
+    .get('/stairs?username=admin&password=foo&limit=1')
+    .expect(200)
+    .then(() => {
+      t.true(Stairs.findAll.calledWith({
+        order: [['createdAt', 'DESC']],
+        limit: 1,
+      }));
+    })
+    .catch((error) => {
+      t.fail(error.message);
+    });
+});
+
 test.serial('should return all stairs in correct order - admin', async (t) => {
   const stairs = [{
     id: 1,

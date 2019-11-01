@@ -18,9 +18,15 @@ const router = express.Router(); // eslint-disable-line new-cap
 
 router.get('/', passport.authenticate(strategy, { session: false }), authorizedRoles('admin', 'readonly'), async (req, res) => {
   debug('GET_STAIRS');
-  Stairs.findAll({
+  const options = {
     order: [['createdAt', 'DESC']],
-  })
+  };
+
+  if (req.query.limit !== undefined) {
+    options.limit = parseInt(req.query.limit, 10);
+  }
+
+  Stairs.findAll(options)
     .then((stairs) => res.json(stairs))
     .catch((error) => {
       debug('GET_STAIRS_ERROR', error.message);
