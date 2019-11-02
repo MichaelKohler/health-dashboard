@@ -6,16 +6,12 @@ export const FAILED_FETCH_HEALTH = 'FAILED_FETCH_HEALTH';
 export const LOGIN_SUCCEEDED = 'LOGIN_SUCCEEDED';
 export const LOGIN_FAILED = 'LOGIN_FAILED';
 export const LOGOUT_SUCCEEDED = 'LOGOUT_SUCCEEDED';
-export const CIGARETTE_SUCCEEDED = 'CIGARETTE_SUCCEEDED';
-export const CIGARETTE_FAILED = 'CIGARETTE_FAILED';
-export const WEIGHT_SUCCEEDED = 'WEIGHT_SUCCEEDED';
-export const WEIGHT_FAILED = 'WEIGHT_FAILED';
-export const STAIRS_SUCCEEDED = 'STAIRS_SUCCEEDED';
-export const STAIRS_FAILED = 'STAIRS_FAILED';
+export const START_SUBMISSION = 'START_SUBMISSION';
+export const SUBMISSION_SUCCEEDED = 'SUBMISSION_SUCCEEDED';
+export const SUBMISSION_FAILED = 'SUBMISSION_FAILED';
 export const FETCH_STATS = 'FETCH_STATS';
 export const FETCHED_STATS = 'FETCHED_STATS';
 export const FAILED_FETCH_STATS = 'FAILED_FETCH_STATS';
-export const START_SUBMISSION = 'START_SUBMISSION';
 
 function fetchWithAuth(endpoint, method, body) {
   let url = __BACKEND_URL__ + endpoint; // eslint-disable-line no-undef
@@ -41,7 +37,7 @@ function fetchWithAuth(endpoint, method, body) {
       }
 
       if (rawResponse.status === 200) {
-        return rawResponse.json()
+        return rawResponse.json() // eslint-disable-line promise/no-nesting
           .catch(() => ({}));
       }
 
@@ -79,11 +75,7 @@ export function fetchHealth() {
           type: FAILED_FETCH_HEALTH,
         });
       });
-  };
-}
 
-export function fetchStats() {
-  return (dispatch) => {
     fetchWithAuth('/stats', 'GET')
       .then((stats) => dispatch({
         type: FETCHED_STATS,
@@ -95,11 +87,6 @@ export function fetchStats() {
         });
       });
   };
-}
-
-export function fetchAll(dispatch) {
-  fetchHealth()(dispatch);
-  fetchStats()(dispatch);
 }
 
 export function login() {
@@ -127,7 +114,7 @@ export function login() {
         }
 
         localStorage.setItem('jwt', response.token);
-        fetchAll(dispatch);
+        dispatch(fetchHealth());
         history.push('/');
         return dispatch({
           type: LOGIN_SUCCEEDED,
@@ -152,50 +139,35 @@ export function logout() {
   };
 }
 
+function add(dispatch, endpoint, body, frontendPath) {
+  dispatch({
+    type: START_SUBMISSION,
+  });
+
+  fetchWithAuth(endpoint, 'POST', body)
+    .then(() => dispatch(fetchHealth()))
+    .then(() => {
+      dispatch({
+        type: SUBMISSION_SUCCEEDED,
+      });
+
+      history.push(frontendPath);
+
+      return true;
+    })
+    .catch(() => {
+      dispatch({
+        type: SUBMISSION_FAILED,
+      });
+    });
+}
+
 export function postCigarette() {
   return (dispatch) => {
     event.preventDefault();
 
     const rolled = document.querySelector('#rolled').checked;
-
-    dispatch({
-      type: START_SUBMISSION,
-    });
-
-    fetchWithAuth('/cigarettes', 'POST', {
-      rolled,
-    })
-      .then(() => fetchAll(dispatch))
-      .then(() => {
-        dispatch({
-          type: CIGARETTE_SUCCEEDED,
-        });
-
-        history.push('/cigarettes');
-
-        return true;
-      })
-      .catch(() => {
-        dispatch({
-          type: CIGARETTE_FAILED,
-        });
-      });
-  };
-}
-
-export function deleteCigarette(id) {
-  return (dispatch) => {
-    event.preventDefault();
-
-    fetchWithAuth('/cigarettes', 'DELETE', {
-      id,
-    })
-      .then(() => fetchAll(dispatch))
-      .catch(() => {
-        dispatch({
-          type: CIGARETTE_FAILED,
-        });
-      });
+    add(dispatch, '/cigarettes', { rolled }, '/cigarettes');
   };
 }
 
@@ -203,46 +175,8 @@ export function postWeight() {
   return (dispatch) => {
     event.preventDefault();
 
-    dispatch({
-      type: START_SUBMISSION,
-    });
-
     const weight = document.querySelector('#weight').value;
-
-    fetchWithAuth('/weights', 'POST', {
-      weight,
-    })
-      .then(() => fetchAll(dispatch))
-      .then(() => {
-        dispatch({
-          type: WEIGHT_SUCCEEDED,
-        });
-
-        history.push('/weight');
-
-        return true;
-      })
-      .catch(() => {
-        dispatch({
-          type: WEIGHT_FAILED,
-        });
-      });
-  };
-}
-
-export function deleteWeight(id) {
-  return (dispatch) => {
-    event.preventDefault();
-
-    fetchWithAuth('/weights', 'DELETE', {
-      id,
-    })
-      .then(() => fetchAll(dispatch))
-      .catch(() => {
-        dispatch({
-          type: WEIGHT_FAILED,
-        });
-      });
+    add(dispatch, '/weights', { weight }, '/weight');
   };
 }
 
@@ -250,45 +184,38 @@ export function postStairs() {
   return (dispatch) => {
     event.preventDefault();
 
-    dispatch({
-      type: START_SUBMISSION,
-    });
-
     const stairs = document.querySelector('#stairs').value;
+    add(dispatch, '/stairs', { stairs }, '/stairs');
+  };
+}
 
-    fetchWithAuth('/stairs', 'POST', {
-      stairs,
-    })
-      .then(() => fetchAll(dispatch))
-      .then(() => {
-        dispatch({
-          type: STAIRS_SUCCEEDED,
-        });
-
-        history.push('/stairs');
-
-        return true;
-      })
-      .catch(() => {
-        dispatch({
-          type: STAIRS_FAILED,
-        });
+function deleteRemotely(endpoint, query, dispatch) {
+  fetchWithAuth(endpoint, 'DELETE', query)
+    .then(() => dispatch(fetchHealth()))
+    .catch(() => {
+      dispatch({
+        type: SUBMISSION_FAILED,
       });
+    });
+}
+
+export function deleteCigarette(id) {
+  return (dispatch) => {
+    event.preventDefault();
+    deleteRemotely('/cigarettes', { id }, dispatch);
+  };
+}
+
+export function deleteWeight(id) {
+  return (dispatch) => {
+    event.preventDefault();
+    deleteRemotely('/weights', { id }, dispatch);
   };
 }
 
 export function deleteStairs(id) {
   return (dispatch) => {
     event.preventDefault();
-
-    fetchWithAuth('/stairs', 'DELETE', {
-      id,
-    })
-      .then(() => fetchAll(dispatch))
-      .catch(() => {
-        dispatch({
-          type: STAIRS_FAILED,
-        });
-      });
+    deleteRemotely('/stairs', { id }, dispatch);
   };
 }

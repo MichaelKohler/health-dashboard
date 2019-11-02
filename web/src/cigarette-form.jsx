@@ -41,9 +41,6 @@ export function CigaretteForm(props) {
               <Typography component="h1" variant="h5">
                   Add Cigarette
               </Typography>
-              { props.cigarettePostFailed && (
-                  <p>Adding Cigarette failed</p>
-              ) }
               <form className={ classes.form } noValidate onSubmit={ props.postCigarette }>
                   <FormControlLabel
                       control={
@@ -73,7 +70,6 @@ export function CigaretteForm(props) {
 }
 
 CigaretteForm.propTypes = {
-  cigarettePostFailed: PropTypes.bool,
   postCigarette: PropTypes.func,
   isSubmitting: PropTypes.bool,
 };

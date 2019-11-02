@@ -5,15 +5,11 @@ import {
   LOGIN_SUCCEEDED,
   LOGIN_FAILED,
   LOGOUT_SUCCEEDED,
-  CIGARETTE_SUCCEEDED,
-  CIGARETTE_FAILED,
-  WEIGHT_SUCCEEDED,
-  WEIGHT_FAILED,
-  STAIRS_SUCCEEDED,
-  STAIRS_FAILED,
+  START_SUBMISSION,
+  SUBMISSION_SUCCEEDED,
+  SUBMISSION_FAILED,
   FETCHED_STATS,
   FAILED_FETCH_STATS,
-  START_SUBMISSION,
 } from '../actions';
 
 const initialState = {
@@ -62,34 +58,18 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         isLoggedIn: false,
       });
-    case CIGARETTE_SUCCEEDED:
+    case START_SUBMISSION:
       return Object.assign({}, state, {
-        cigarettePostFailed: false,
+        isSubmitting: true,
+      });
+    case SUBMISSION_SUCCEEDED:
+      return Object.assign({}, state, {
+        postFailed: false,
         isSubmitting: false,
       });
-    case CIGARETTE_FAILED:
+    case SUBMISSION_FAILED:
       return Object.assign({}, state, {
-        cigarettePostFailed: true,
-        isSubmitting: false,
-      });
-    case WEIGHT_SUCCEEDED:
-      return Object.assign({}, state, {
-        weightPostFailed: false,
-        isSubmitting: false,
-      });
-    case WEIGHT_FAILED:
-      return Object.assign({}, state, {
-        weightPostFailed: true,
-        isSubmitting: false,
-      });
-    case STAIRS_SUCCEEDED:
-      return Object.assign({}, state, {
-        stairsPostFailed: false,
-        isSubmitting: false,
-      });
-    case STAIRS_FAILED:
-      return Object.assign({}, state, {
-        stairsPostFailed: true,
+        postFailed: true,
         isSubmitting: false,
       });
     case FETCHED_STATS:
@@ -100,10 +80,6 @@ export default function reducer(state = initialState, action) {
     case FAILED_FETCH_STATS:
       return Object.assign({}, state, {
         statsFailed: true,
-      });
-    case START_SUBMISSION:
-      return Object.assign({}, state, {
-        isSubmitting: true,
       });
     default:
       return state;

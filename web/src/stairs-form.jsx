@@ -40,9 +40,6 @@ export function StairsForm(props) {
               <Typography component="h1" variant="h5">
                   Add Stairs
               </Typography>
-              { props.stairsPostFailed && (
-                  <p>Adding Stairs failed</p>
-              ) }
               <form className={ classes.form } noValidate onSubmit={ props.postStairs }>
                   <TextField
                     variant="outlined"
@@ -70,7 +67,6 @@ export function StairsForm(props) {
 }
 
 StairsForm.propTypes = {
-  stairsPostFailed: PropTypes.bool,
   postStairs: PropTypes.func,
   isSubmitting: PropTypes.bool,
 };

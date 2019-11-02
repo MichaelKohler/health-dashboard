@@ -40,9 +40,6 @@ export function WeightForm(props) {
               <Typography component="h1" variant="h5">
                   Add Weight
               </Typography>
-              { props.weightPostFailed && (
-                  <p>Adding Weight failed</p>
-              ) }
               <form className={ classes.form } noValidate onSubmit={ props.postWeight }>
                   <TextField
                     variant="outlined"
@@ -70,7 +67,6 @@ export function WeightForm(props) {
 }
 
 WeightForm.propTypes = {
-  weightPostFailed: PropTypes.bool,
   postWeight: PropTypes.func,
   isSubmitting: PropTypes.bool,
 };
