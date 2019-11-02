@@ -12,6 +12,8 @@ export const SUBMISSION_FAILED = 'SUBMISSION_FAILED';
 export const FETCH_STATS = 'FETCH_STATS';
 export const FETCHED_STATS = 'FETCHED_STATS';
 export const FAILED_FETCH_STATS = 'FAILED_FETCH_STATS';
+export const SNACKBAR_SHOW = 'SNACKBAR_SHOW';
+export const SNACKBAR_CLEAR = 'SNACKBAR_CLEAR';
 
 function fetchWithAuth(endpoint, method, body) {
   let url = __BACKEND_URL__ + endpoint; // eslint-disable-line no-undef
@@ -151,6 +153,12 @@ function add(dispatch, endpoint, body, frontendPath) {
         type: SUBMISSION_SUCCEEDED,
       });
 
+      dispatch({
+        type: SNACKBAR_SHOW,
+        message: 'Successfully added!',
+        snackbarType: 'success',
+      });
+
       history.push(frontendPath);
 
       return true;
@@ -158,6 +166,12 @@ function add(dispatch, endpoint, body, frontendPath) {
     .catch(() => {
       dispatch({
         type: SUBMISSION_FAILED,
+      });
+
+      dispatch({
+        type: SNACKBAR_SHOW,
+        message: 'Adding failed!',
+        snackbarType: 'error',
       });
     });
 }
@@ -191,10 +205,21 @@ export function postStairs() {
 
 function deleteRemotely(endpoint, query, dispatch) {
   fetchWithAuth(endpoint, 'DELETE', query)
+    .then(() => dispatch({
+      type: SNACKBAR_SHOW,
+      message: 'Successfully deleted!',
+      snackbarType: 'success',
+    }))
     .then(() => dispatch(fetchHealth()))
     .catch(() => {
       dispatch({
         type: SUBMISSION_FAILED,
+      });
+
+      dispatch({
+        type: SNACKBAR_SHOW,
+        message: 'Deletion failed!',
+        snackbarType: 'error',
       });
     });
 }
@@ -217,5 +242,13 @@ export function deleteStairs(id) {
   return (dispatch) => {
     event.preventDefault();
     deleteRemotely('/stairs', { id }, dispatch);
+  };
+}
+
+export function clearSnackbar() {
+  return (dispatch) => {
+    dispatch({
+      type: SNACKBAR_CLEAR,
+    });
   };
 }

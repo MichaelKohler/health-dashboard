@@ -1,68 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<div
-  className="makeStyles-root-1"
->
-  <header
-    className="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionAbsolute makeStyles-appBar-4 MuiAppBar-colorPrimary"
-  >
-    <div
-      className="MuiToolbar-root MuiToolbar-regular makeStyles-toolbar-2 MuiToolbar-gutters"
-    >
-      <button
-        aria-label="open drawer"
-        className="MuiButtonBase-root MuiIconButton-root makeStyles-menuButton-6 MuiIconButton-colorInherit MuiIconButton-edgeStart"
-        disabled={false}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
-      >
-        <span
-          className="MuiIconButton-label"
-        >
-          <svg
-            aria-hidden="true"
-            className="MuiSvgIcon-root"
-            focusable="false"
-            role="presentation"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
-            />
-          </svg>
-        </span>
-      </button>
-      <h1
-        className="MuiTypography-root makeStyles-title-8 MuiTypography-h6 MuiTypography-colorInherit MuiTypography-noWrap"
-      >
-        Dashboard
-      </h1>
-    </div>
-  </header>
+Array [
+  "Snackbar",
   <div
-    className="MuiDrawer-root MuiDrawer-docked"
+    className="makeStyles-root-1"
   >
-    <div
-      className="MuiPaper-root MuiPaper-elevation0 MuiDrawer-paper makeStyles-drawerPaper-9 makeStyles-drawerPaperClose-10 MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft"
+    <header
+      className="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionAbsolute makeStyles-appBar-4 MuiAppBar-colorPrimary"
     >
       <div
-        className="makeStyles-toolbarIcon-3"
+        className="MuiToolbar-root MuiToolbar-regular makeStyles-toolbar-2 MuiToolbar-gutters"
       >
         <button
-          className="MuiButtonBase-root MuiIconButton-root"
+          aria-label="open drawer"
+          className="MuiButtonBase-root MuiIconButton-root makeStyles-menuButton-6 MuiIconButton-colorInherit MuiIconButton-edgeStart"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
@@ -90,50 +42,101 @@ exports[`renders correctly 1`] = `
               viewBox="0 0 24 24"
             >
               <path
-                d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+                d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
               />
             </svg>
           </span>
         </button>
+        <h1
+          className="MuiTypography-root makeStyles-title-8 MuiTypography-h6 MuiTypography-colorInherit MuiTypography-noWrap"
+        >
+          Dashboard
+        </h1>
       </div>
-      <hr
-        className="MuiDivider-root"
-      />
-      Sidebar
-    </div>
-  </div>
-  <main
-    className="makeStyles-content-11"
-  >
-    <section>
+    </header>
+    <div
+      className="MuiDrawer-root MuiDrawer-docked"
+    >
       <div
-        className="makeStyles-appBarSpacer-121"
-      />
-      <div
-        className="MuiContainer-root makeStyles-container-122 MuiContainer-maxWidthLg"
+        className="MuiPaper-root MuiPaper-elevation0 MuiDrawer-paper makeStyles-drawerPaper-9 makeStyles-drawerPaperClose-10 MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft"
       >
         <div
-          className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
+          className="makeStyles-toolbarIcon-3"
+        >
+          <button
+            className="MuiButtonBase-root MuiIconButton-root"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+                />
+              </svg>
+            </span>
+          </button>
+        </div>
+        <hr
+          className="MuiDivider-root"
+        />
+        Sidebar
+      </div>
+    </div>
+    <main
+      className="makeStyles-content-11"
+    >
+      <section>
+        <div
+          className="makeStyles-appBarSpacer-121"
+        />
+        <div
+          className="MuiContainer-root makeStyles-container-122 MuiContainer-maxWidthLg"
         >
           <div
-            className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-12 MuiGrid-grid-lg-12"
+            className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
           >
-            <h1>
-              Cigarettes
-            </h1>
-            CigaretteChart
-            <h1>
-              Weight
-            </h1>
-            WeightChart
-            <h1>
-              Stairs
-            </h1>
-            StairsChart
+            <div
+              className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-12 MuiGrid-grid-lg-12"
+            >
+              <h1>
+                Cigarettes
+              </h1>
+              CigaretteChart
+              <h1>
+                Weight
+              </h1>
+              WeightChart
+              <h1>
+                Stairs
+              </h1>
+              StairsChart
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
-</div>
+      </section>
+    </main>
+  </div>,
+]
 `;

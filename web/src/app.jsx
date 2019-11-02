@@ -27,11 +27,14 @@ import Weight from './weight.jsx';
 import WeightForm from './weight-form.jsx';
 import Stairs from './stairs.jsx';
 import StairsForm from './stairs-form.jsx';
+import Snackbar from './snackbar.jsx';
 
 const mainTheme = createMuiTheme({
   palette: {
     primary: {
       main: '#1f3352',
+      success: '#40bf40',
+      error: '#ff1a1a',
     },
   },
 });
@@ -115,6 +118,7 @@ export default function App() {
 
   return (
       <ThemeProvider theme={ mainTheme }>
+          <Snackbar/>
           <div className={ classes.root }>
               <CssBaseline/>
               <AppBar position="absolute" className={ clsx(classes.appBar, open && classes.appBarShift) }>

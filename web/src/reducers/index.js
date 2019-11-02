@@ -10,6 +10,8 @@ import {
   SUBMISSION_FAILED,
   FETCHED_STATS,
   FAILED_FETCH_STATS,
+  SNACKBAR_SHOW,
+  SNACKBAR_CLEAR,
 } from '../actions';
 
 const initialState = {
@@ -22,6 +24,7 @@ const initialState = {
   loginFailed: false,
   stats: {},
   isSubmitting: false,
+  snackbarOpen: false,
 };
 
 // eslint-disable-next-line no-unused-vars
@@ -91,6 +94,18 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         statsFailed: true,
+      };
+    case SNACKBAR_SHOW:
+      return {
+        ...state,
+        snackbarOpen: true,
+        snackbarMessage: action.message,
+        snackbarType: action.snackbarType,
+      };
+    case SNACKBAR_CLEAR:
+      return {
+        ...state,
+        snackbarOpen: false,
       };
     default:
       return state;

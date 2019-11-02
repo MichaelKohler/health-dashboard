@@ -7,6 +7,7 @@ import renderer from 'react-test-renderer';
 import App from '../src/app.jsx';
 
 jest.mock('../src/sidebar', () => () => 'Sidebar');
+jest.mock('../src/snackbar', () => () => 'Snackbar');
 jest.mock('../src/cigarette-chart', () => () => 'CigaretteChart');
 jest.mock('../src/stairs-chart', () => () => 'StairsChart');
 jest.mock('../src/weight-chart', () => () => 'WeightChart');
