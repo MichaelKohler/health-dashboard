@@ -28,59 +28,70 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case FETCHED_HEALTH:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         cigarettes: action.cigarettes,
         weights: action.weights,
         stairs: action.stairs,
         isFetchingHealth: false,
         failedFetchingHealth: false,
-      });
+      };
     case FETCH_HEALTH:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isFetchingHealth: true,
-      });
+      };
     case FAILED_FETCH_HEALTH:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isFetchingHealth: false,
         failedFetchingHealth: true,
-      });
+      };
     case LOGIN_SUCCEEDED:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isLoggedIn: true,
         loginFailed: false,
-      });
+      };
     case LOGIN_FAILED:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isLoggedIn: false,
         loginFailed: true,
-      });
+      };
     case LOGOUT_SUCCEEDED:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isLoggedIn: false,
-      });
+      };
     case START_SUBMISSION:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isSubmitting: true,
-      });
+      };
     case SUBMISSION_SUCCEEDED:
-      return Object.assign({}, state, {
-        postFailed: false,
+      return {
+        ...state,
+        submissionFailed: false,
         isSubmitting: false,
-      });
+      };
     case SUBMISSION_FAILED:
-      return Object.assign({}, state, {
-        postFailed: true,
+      return {
+        ...state,
+        submissionFailed: true,
         isSubmitting: false,
-      });
+      };
     case FETCHED_STATS:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         stats: action.stats,
         statsFailed: false,
-      });
+      };
     case FAILED_FETCH_STATS:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         statsFailed: true,
-      });
+      };
     default:
       return state;
   }
