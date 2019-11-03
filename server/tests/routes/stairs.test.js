@@ -125,7 +125,7 @@ test.serial('should create entry - default', async (t) => {
   t.context.sandbox.stub(Stairs, 'create').resolves();
 
   await request(app)
-    .post('/stairs')
+    .put('/stairs')
     .send({
       stairs: 5,
       username: 'admin',
@@ -144,7 +144,7 @@ test.serial('should not create entry - unauthorized', async (t) => {
   t.context.sandbox.stub(Stairs, 'create').resolves();
 
   await request(app)
-    .post('/stairs')
+    .put('/stairs')
     .send({
       stairs: 5,
       username: 'inexistent',
@@ -161,7 +161,7 @@ test.serial('should not create entry - readonly', async (t) => {
   t.context.sandbox.stub(Stairs, 'create').resolves();
 
   await request(app)
-    .post('/stairs')
+    .put('/stairs')
     .send({
       stairs: 5,
       username: 'readonly',
@@ -178,7 +178,7 @@ test.serial('should fail to create entry', async (t) => {
   t.context.sandbox.stub(Stairs, 'create').rejects(new Error('NOPE'));
 
   await request(app)
-    .post('/stairs')
+    .put('/stairs')
     .send({
       stairs: 5,
       username: 'admin',

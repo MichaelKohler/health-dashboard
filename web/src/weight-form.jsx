@@ -10,7 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 import getDefaultStyle from './styles';
-import { postWeight } from './actions';
+import { addWeight } from './actions';
 
 const useStyles = makeStyles((theme) => Object.assign({}, getDefaultStyle(theme), {
   paper: {
@@ -24,8 +24,8 @@ const useStyles = makeStyles((theme) => Object.assign({}, getDefaultStyle(theme)
 const mapStateToProps = (state) => state;
 
 const mapDispatchToProps = (dispatch) => ({
-  postWeight: () => {
-    dispatch(postWeight());
+  addWeight: () => {
+    dispatch(addWeight());
   },
 });
 
@@ -40,7 +40,7 @@ export function WeightForm(props) {
               <Typography component="h1" variant="h5">
                   Add Weight
               </Typography>
-              <form className={ classes.form } noValidate onSubmit={ props.postWeight }>
+              <form className={ classes.form } noValidate onSubmit={ props.addWeight }>
                   <TextField
                     variant="outlined"
                     margin="normal"
@@ -67,7 +67,7 @@ export function WeightForm(props) {
 }
 
 WeightForm.propTypes = {
-  postWeight: PropTypes.func,
+  addWeight: PropTypes.func,
   isSubmitting: PropTypes.bool,
 };
 

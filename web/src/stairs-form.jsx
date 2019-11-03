@@ -10,7 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 import getDefaultStyle from './styles';
-import { postStairs } from './actions';
+import { addStairs } from './actions';
 
 const useStyles = makeStyles((theme) => Object.assign({}, getDefaultStyle(theme), {
   paper: {
@@ -24,8 +24,8 @@ const useStyles = makeStyles((theme) => Object.assign({}, getDefaultStyle(theme)
 const mapStateToProps = (state) => state;
 
 const mapDispatchToProps = (dispatch) => ({
-  postStairs: () => {
-    dispatch(postStairs());
+  addStairs: () => {
+    dispatch(addStairs());
   },
 });
 
@@ -40,7 +40,7 @@ export function StairsForm(props) {
               <Typography component="h1" variant="h5">
                   Add Stairs
               </Typography>
-              <form className={ classes.form } noValidate onSubmit={ props.postStairs }>
+              <form className={ classes.form } noValidate onSubmit={ props.addStairs }>
                   <TextField
                     variant="outlined"
                     margin="normal"
@@ -67,7 +67,7 @@ export function StairsForm(props) {
 }
 
 StairsForm.propTypes = {
-  postStairs: PropTypes.func,
+  addStairs: PropTypes.func,
   isSubmitting: PropTypes.bool,
 };
 

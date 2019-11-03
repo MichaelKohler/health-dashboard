@@ -11,7 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 import getDefaultStyle from './styles';
-import { postCigarette } from './actions';
+import { addCigarette } from './actions';
 
 const useStyles = makeStyles((theme) => Object.assign({}, getDefaultStyle(theme), {
   paper: {
@@ -25,8 +25,8 @@ const useStyles = makeStyles((theme) => Object.assign({}, getDefaultStyle(theme)
 const mapStateToProps = (state) => state;
 
 const mapDispatchToProps = (dispatch) => ({
-  postCigarette: () => {
-    dispatch(postCigarette());
+  addCigarette: () => {
+    dispatch(addCigarette());
   },
 });
 
@@ -41,7 +41,7 @@ export function CigaretteForm(props) {
               <Typography component="h1" variant="h5">
                   Add Cigarette
               </Typography>
-              <form className={ classes.form } noValidate onSubmit={ props.postCigarette }>
+              <form className={ classes.form } noValidate onSubmit={ props.addCigarette }>
                   <FormControlLabel
                       control={
                           <Checkbox
@@ -70,7 +70,7 @@ export function CigaretteForm(props) {
 }
 
 CigaretteForm.propTypes = {
-  postCigarette: PropTypes.func,
+  addCigarette: PropTypes.func,
   isSubmitting: PropTypes.bool,
 };
 

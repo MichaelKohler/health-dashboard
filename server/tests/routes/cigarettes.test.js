@@ -120,7 +120,7 @@ test.serial('should create entry - not rolled', async (t) => {
   t.context.sandbox.stub(Cigarette, 'create').resolves();
 
   await request(app)
-    .post('/cigarettes')
+    .put('/cigarettes')
     .send({
       rolled: false,
       username: 'admin',
@@ -140,7 +140,7 @@ test.serial('should create entry - rolled', async (t) => {
   t.context.sandbox.stub(Cigarette, 'create').resolves();
 
   await request(app)
-    .post('/cigarettes')
+    .put('/cigarettes')
     .send({
       rolled: true,
       username: 'admin',
@@ -159,7 +159,7 @@ test.serial('should create entry - default', async (t) => {
   t.context.sandbox.stub(Cigarette, 'create').resolves();
 
   await request(app)
-    .post('/cigarettes')
+    .put('/cigarettes')
     .send({
       username: 'admin',
       password: 'foo',
@@ -177,7 +177,7 @@ test.serial('should not create entry - unauthorized', async (t) => {
   t.context.sandbox.stub(Cigarette, 'create').resolves();
 
   await request(app)
-    .post('/cigarettes')
+    .put('/cigarettes')
     .send({
       username: 'inexistent',
       password: 'foo',
@@ -193,7 +193,7 @@ test.serial('should not create entry - readonly', async (t) => {
   t.context.sandbox.stub(Cigarette, 'create').resolves();
 
   await request(app)
-    .post('/cigarettes')
+    .put('/cigarettes')
     .send({
       username: 'readonly',
       password: 'foo',
@@ -209,7 +209,7 @@ test.serial('should fail to create entry', async (t) => {
   t.context.sandbox.stub(Cigarette, 'create').rejects(new Error('NOPE'));
 
   await request(app)
-    .post('/cigarettes')
+    .put('/cigarettes')
     .send({
       username: 'admin',
       password: 'foo',

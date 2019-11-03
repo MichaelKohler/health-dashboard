@@ -35,7 +35,7 @@ router.get('/', passport.authenticate(strategy, { session: false }), authorizedR
     });
 });
 
-router.post('/', passport.authenticate(strategy, { session: false }), authorizedRoles('admin'), async (req, res) => {
+router.put('/', passport.authenticate(strategy, { session: false }), authorizedRoles('admin'), async (req, res) => {
   debug('CREATE_WEIGHT');
   const { weight } = req.body;
   const params = {

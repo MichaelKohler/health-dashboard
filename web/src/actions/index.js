@@ -146,7 +146,7 @@ function add(dispatch, endpoint, body, frontendPath) {
     type: START_SUBMISSION,
   });
 
-  fetchWithAuth(endpoint, 'POST', body)
+  fetchWithAuth(endpoint, 'PUT', body)
     .then(() => dispatch(fetchHealth()))
     .then(() => {
       dispatch({
@@ -176,7 +176,7 @@ function add(dispatch, endpoint, body, frontendPath) {
     });
 }
 
-export function postCigarette() {
+export function addCigarette() {
   return (dispatch) => {
     event.preventDefault();
 
@@ -185,7 +185,7 @@ export function postCigarette() {
   };
 }
 
-export function postWeight() {
+export function addWeight() {
   return (dispatch) => {
     event.preventDefault();
 
@@ -194,7 +194,7 @@ export function postWeight() {
   };
 }
 
-export function postStairs() {
+export function addStairs() {
   return (dispatch) => {
     event.preventDefault();
 
