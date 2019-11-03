@@ -1,5 +1,3 @@
-/* eslint-disable array-bracket-newline */
-
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
@@ -69,5 +67,3 @@ export default function AppSnackbar() {
       />
   );
 }
-
-/* eslint-enable array-bracket-newline */
