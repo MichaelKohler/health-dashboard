@@ -35,12 +35,12 @@ export function WeightForm(props) {
   return (
       <Container component="main" maxWidth="xs">
           <CssBaseline/>
-          <div className={ classes.appBarSpacer }/>
-          <div className={ classes.paper }>
+          <div className={classes.appBarSpacer}/>
+          <div className={classes.paper}>
               <Typography component="h1" variant="h5">
                   Add Weight
               </Typography>
-              <form className={ classes.form } noValidate onSubmit={ props.addWeight }>
+              <form className={classes.form} noValidate onSubmit={props.addWeight}>
                   <TextField
                     variant="outlined"
                     margin="normal"
@@ -55,8 +55,8 @@ export function WeightForm(props) {
                     fullWidth
                     variant="contained"
                     color="primary"
-                    className={ classes.submit }
-                    disabled={ props.isSubmitting }
+                    className={classes.submit}
+                    disabled={props.isSubmitting}
                   >
                     Add
                   </Button>

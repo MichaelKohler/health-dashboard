@@ -27,28 +27,28 @@ export function Weight(props) {
 
   return (
       <section>
-          <div className={ classes.appBarSpacer }/>
-          <Container maxWidth="lg" className={ classes.container }>
-              <Grid container spacing={ 3 }>
+          <div className={classes.appBarSpacer}/>
+          <Container maxWidth="lg" className={classes.container}>
+              <Grid container spacing={3}>
                   <WeightChart/>
-                  <Grid item xs={ 12 } md={ 12 } lg={ 12 }>
-                      { props.isFetchingHealth && (
-                      <Paper className={ classes.paper }>
+                  <Grid item xs={12} md={12} lg={12}>
+                      {props.isFetchingHealth && (
+                      <Paper className={classes.paper}>
                           <p>Fetching...</p>
-                          <CircularProgress size={ 15 }/>
+                          <CircularProgress size={15}/>
                       </Paper>
-                      ) }
-                      { props.weights.length > 0 && (
-                      <Table rows={ props.weights }/>
-                      ) }
-                      { props.failedFetchingHealth && (
-                      <Paper className={ classes.paper }>
+                      )}
+                      {props.weights.length > 0 && (
+                      <Table rows={props.weights}/>
+                      )}
+                      {props.failedFetchingHealth && (
+                      <Paper className={classes.paper}>
                           <p>Oh no, something went wrong!</p>
                       </Paper>
-                      ) }
+                      )}
                   </Grid>
               </Grid>
-              <Fab aria-label="Add" className={ classes.fab } color="primary" onClick={ () => history.push('/weight/add') }>
+              <Fab aria-label="Add" className={classes.fab} color="primary" onClick={() => history.push('/weight/add')}>
                   <AddIcon/>
               </Fab>
           </Container>

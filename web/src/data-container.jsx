@@ -18,7 +18,7 @@ class DataContainer extends React.Component {
 
   render() {
     return (
-        <section>{ this.props.children }</section>
+        <section>{this.props.children}</section>
     );
   }
 }

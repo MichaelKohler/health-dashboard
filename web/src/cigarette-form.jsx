@@ -36,12 +36,12 @@ export function CigaretteForm(props) {
   return (
       <Container component="main" maxWidth="xs">
           <CssBaseline/>
-          <div className={ classes.appBarSpacer }/>
-          <div className={ classes.paper }>
+          <div className={classes.appBarSpacer}/>
+          <div className={classes.paper}>
               <Typography component="h1" variant="h5">
                   Add Cigarette
               </Typography>
-              <form className={ classes.form } noValidate onSubmit={ props.addCigarette }>
+              <form className={classes.form} noValidate onSubmit={props.addCigarette}>
                   <FormControlLabel
                       control={
                           <Checkbox
@@ -58,8 +58,8 @@ export function CigaretteForm(props) {
                     fullWidth
                     variant="contained"
                     color="primary"
-                    className={ classes.submit }
-                    disabled={ props.isSubmitting }
+                    className={classes.submit}
+                    disabled={props.isSubmitting}
                   >
                     Add
                   </Button>

@@ -39,8 +39,8 @@ export function WeightTable(props) {
   const classes = useStyles();
 
   return (
-      <Paper className={ classes.root }>
-          <Table className={ classes.table } size="small">
+      <Paper className={classes.root}>
+          <Table className={classes.table} size="small">
               <TableHead>
                   <TableRow>
                       <TableCell align="left">Date</TableCell>
@@ -49,18 +49,18 @@ export function WeightTable(props) {
                   </TableRow>
               </TableHead>
               <TableBody>
-                  { props.rows.map((row) => (
-                      <TableRow key={ row.createdAt }>
-                          <TableCell align="left">{ row.createdAt }</TableCell>
-                          <TableCell align="right">{ row.weight }</TableCell>
+                  {props.rows.map((row) => (
+                      <TableRow key={row.createdAt}>
+                          <TableCell align="left">{row.createdAt}</TableCell>
+                          <TableCell align="right">{row.weight}</TableCell>
                           <TableCell align="right">
-                              <Button color="secondary" className={ classes.button }
-                                      onClick={ () => props.deleteWeight(row.id) }>
+                              <Button color="secondary" className={classes.button}
+                                      onClick={() => props.deleteWeight(row.id)}>
                                 Delete
                               </Button>
                           </TableCell>
                       </TableRow>
-                  )) }
+                  ))}
               </TableBody>
           </Table>
       </Paper>

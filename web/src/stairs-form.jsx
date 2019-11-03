@@ -35,12 +35,12 @@ export function StairsForm(props) {
   return (
       <Container component="main" maxWidth="xs">
           <CssBaseline/>
-          <div className={ classes.appBarSpacer }/>
-          <div className={ classes.paper }>
+          <div className={classes.appBarSpacer}/>
+          <div className={classes.paper}>
               <Typography component="h1" variant="h5">
                   Add Stairs
               </Typography>
-              <form className={ classes.form } noValidate onSubmit={ props.addStairs }>
+              <form className={classes.form} noValidate onSubmit={props.addStairs}>
                   <TextField
                     variant="outlined"
                     margin="normal"
@@ -55,8 +55,8 @@ export function StairsForm(props) {
                     fullWidth
                     variant="contained"
                     color="primary"
-                    className={ classes.submit }
-                    disabled={ props.isSubmitting }
+                    className={classes.submit}
+                    disabled={props.isSubmitting}
                   >
                     Add
                   </Button>

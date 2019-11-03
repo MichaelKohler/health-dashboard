@@ -25,45 +25,45 @@ const mapStateToProps = (state) => state;
 export function Sidebar(props) {
   return (
       <List>
-          <ListItem button component={ AdapterLink } to="/">
+          <ListItem button component={AdapterLink} to="/">
               <ListItemIcon>
                   <DashboardIcon/>
               </ListItemIcon>
               <ListItemText primary="Dashboard"/>
           </ListItem>
-          { !props.isLoggedIn && (
-              <ListItem button component={ AdapterLink } to="/login">
+          {!props.isLoggedIn && (
+              <ListItem button component={AdapterLink} to="/login">
                   <ListItemIcon>
                       <LockIcon/>
                   </ListItemIcon>
                   <ListItemText primary="Login"/>
               </ListItem>
-          ) }
-          { props.isLoggedIn && (
-              <ListItem button component={ AdapterLink } to="/logout">
+          )}
+          {props.isLoggedIn && (
+              <ListItem button component={AdapterLink} to="/logout">
                   <ListItemIcon>
                       <LockOpenIcon/>
                   </ListItemIcon>
                   <ListItemText primary="Logout"/>
               </ListItem>
-        ) }
+        )}
 
           <Divider/>
           <ListSubheader inset>Reports</ListSubheader>
 
-          <ListItem button component={ AdapterLink } to="/cigarettes">
+          <ListItem button component={AdapterLink} to="/cigarettes">
               <ListItemIcon>
                   <SmokingRoomsIcon/>
               </ListItemIcon>
               <ListItemText primary="Cigarettes"/>
           </ListItem>
-          <ListItem button component={ AdapterLink } to="/weight">
+          <ListItem button component={AdapterLink} to="/weight">
               <ListItemIcon>
                   <FitnessCenterIcon/>
               </ListItemIcon>
               <ListItemText primary="Weight"/>
           </ListItem>
-          <ListItem button component={ AdapterLink } to="/stairs">
+          <ListItem button component={AdapterLink} to="/stairs">
               <ListItemIcon>
                   <DirectionsRunIcon/>
               </ListItemIcon>

@@ -39,8 +39,8 @@ export function CigaretteTable(props) {
   const classes = useStyles();
 
   return (
-      <Paper className={ classes.root }>
-          <Table className={ classes.table } size="small">
+      <Paper className={classes.root}>
+          <Table className={classes.table} size="small">
               <TableHead>
                   <TableRow>
                       <TableCell align="left">Date</TableCell>
@@ -50,12 +50,12 @@ export function CigaretteTable(props) {
               </TableHead>
               <TableBody>
                   { props.rows.map((row) => (
-                      <TableRow key={ row.createdAt }>
-                          <TableCell align="left">{ row.createdAt }</TableCell>
-                          <TableCell align="right">{ row.rolled ? '' : 'not rolled' }</TableCell>
+                      <TableRow key={row.createdAt}>
+                          <TableCell align="left">{row.createdAt}</TableCell>
+                          <TableCell align="right">{row.rolled ? '' : 'not rolled'}</TableCell>
                           <TableCell align="right">
-                              <Button color="secondary" className={ classes.button }
-                                      onClick={ () => props.deleteCigarette(row.id) }>
+                              <Button color="secondary" className={classes.button}
+                                      onClick={() => props.deleteCigarette(row.id)}>
                                 Delete
                               </Button>
                           </TableCell>

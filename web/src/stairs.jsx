@@ -27,28 +27,28 @@ export function Stairs(props) {
 
   return (
       <section>
-          <div className={ classes.appBarSpacer }/>
-          <Container maxWidth="lg" className={ classes.container }>
-              <Grid container spacing={ 3 }>
+          <div className={classes.appBarSpacer}/>
+          <Container maxWidth="lg" className={classes.container}>
+              <Grid container spacing={3}>
                   <StairsChart/>
-                  <Grid item xs={ 12 } md={ 12 } lg={ 12 }>
-                      { props.isFetchingHealth && (
-                      <Paper className={ classes.paper }>
+                  <Grid item xs={12} md={12} lg={12}>
+                      {props.isFetchingHealth && (
+                      <Paper className={classes.paper}>
                           <p>Fetching...</p>
-                          <CircularProgress size={ 15 }/>
+                          <CircularProgress size={15}/>
                       </Paper>
-                      ) }
-                      { props.stairs.length > 0 && (
-                      <Table rows={ props.stairs }/>
-                      ) }
-                      { props.failedFetchingHealth && (
-                      <Paper className={ classes.paper }>
+                      )}
+                      {props.stairs.length > 0 && (
+                      <Table rows={props.stairs}/>
+                      )}
+                      {props.failedFetchingHealth && (
+                      <Paper className={classes.paper}>
                           <p>Oh no, something went wrong!</p>
                       </Paper>
-                      ) }
+                      )}
                   </Grid>
               </Grid>
-              <Fab aria-label="Add" className={ classes.fab } color="primary" onClick={ () => history.push('/stairs/add') }>
+              <Fab aria-label="Add" className={classes.fab} color="primary" onClick={() => history.push('/stairs/add')}>
                   <AddIcon/>
               </Fab>
           </Container>

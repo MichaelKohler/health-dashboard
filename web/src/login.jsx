@@ -41,18 +41,18 @@ export function Login(props) {
   return (
       <Container component="main" maxWidth="xs">
           <CssBaseline/>
-          <div className={ classes.appBarSpacer }/>
-          <div className={ classes.paper }>
-              <Avatar className={ classes.avatar }>
+          <div className={classes.appBarSpacer}/>
+          <div className={classes.paper}>
+              <Avatar className={classes.avatar}>
                   <LockOutlinedIcon/>
               </Avatar>
               <Typography component="h1" variant="h5">
                   Login
               </Typography>
-              { props.loginFailed && (
+              {props.loginFailed && (
                   <p>Login failed</p>
-              ) }
-              <form className={ classes.form } noValidate onSubmit={ props.login }>
+              )}
+              <form className={classes.form} noValidate onSubmit={props.login}>
                   <TextField
                     variant="outlined"
                     margin="normal"
@@ -79,7 +79,7 @@ export function Login(props) {
                     fullWidth
                     variant="contained"
                     color="primary"
-                    className={ classes.submit }
+                    className={classes.submit}
                   >
                     Log in
                   </Button>

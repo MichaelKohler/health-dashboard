@@ -39,22 +39,22 @@ export function Logout(props) {
   return (
       <Container component="main" maxWidth="xs">
           <CssBaseline/>
-          <div className={ classes.appBarSpacer }/>
-          <div className={ classes.paper }>
-              <Avatar className={ classes.avatar }>
+          <div className={classes.appBarSpacer}/>
+          <div className={classes.paper}>
+              <Avatar className={ classes.avatar}>
                   <LockOutlinedIcon/>
               </Avatar>
               <Typography component="h1" variant="h5">
                   Logout
               </Typography>
-              <form className={ classes.form } noValidate onSubmit={ props.logout }>
+              <form className={classes.form} noValidate onSubmit={props.logout}>
                   <p>Are you sure you want to log out?</p>
                   <Button
                     type="submit"
                     fullWidth
                     variant="contained"
                     color="secondary"
-                    className={ classes.submit }
+                    className={classes.submit}
                   >
                     Log out
                   </Button>

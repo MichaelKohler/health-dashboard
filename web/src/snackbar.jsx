@@ -44,28 +44,28 @@ export default function AppSnackbar() {
             vertical: 'bottom',
             horizontal: 'center',
           } }
-          open={ snackbarOpen }
-          autoHideDuration={ 4000 }
-          onClose={ handleClose }
-          ContentProps={ {
+          open={snackbarOpen}
+          autoHideDuration={4000}
+          onClose={handleClose}
+          ContentProps={{
             'aria-describedby': 'client-snackbar',
             className: classes[snackbarType],
-          } }
+          }}
           message={
               <span id="client-snackbar">
-                  { snackbarMessage }
+                  {snackbarMessage}
               </span>
           }
-          action={ [
+          action={[
               <IconButton
                 key="close"
                 aria-label="close"
                 color="inherit"
-                onClick={ handleClose }
+                onClick={handleClose}
               >
                   <CloseIcon/>
               </IconButton>,
-          ] }
+          ]}
       />
   );
 }

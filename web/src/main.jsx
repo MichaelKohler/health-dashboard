@@ -12,9 +12,9 @@ import DataContainer from './data-container.jsx';
 const store = createStore(reducers, applyMiddleware(thunk));
 
 ReactDOM.render(
-    <Provider store={ store }>
+    <Provider store={store}>
         <DataContainer>
-            <Router history={ history }>
+            <Router history={history}>
                 <App/>
             </Router>
         </DataContainer>

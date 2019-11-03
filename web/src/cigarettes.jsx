@@ -27,28 +27,28 @@ export function Cigarettes(props) {
 
   return (
       <section>
-          <div className={ classes.appBarSpacer }/>
-          <Container maxWidth="lg" className={ classes.container }>
-              <Grid container spacing={ 3 }>
+          <div className={classes.appBarSpacer}/>
+          <Container maxWidth="lg" className={classes.container}>
+              <Grid container spacing={3}>
                   <CigarettesChart/>
-                  <Grid item xs={ 12 } md={ 12 } lg={ 12 }>
-                      { props.isFetchingHealth && (
-                      <Paper className={ classes.paper }>
+                  <Grid item xs={12} md={12} lg={12}>
+                      {props.isFetchingHealth && (
+                      <Paper className={classes.paper}>
                           <p>Fetching...</p>
-                          <CircularProgress size={ 15 }/>
+                          <CircularProgress size={15}/>
                       </Paper>
+                      )}
+                      {props.cigarettes.length > 0 && (
+                      <Table rows={props.cigarettes}/>
                       ) }
-                      { props.cigarettes.length > 0 && (
-                      <Table rows={ props.cigarettes }/>
-                      ) }
-                      { props.failedFetchingHealth && (
-                      <Paper className={ classes.paper }>
+                      {props.failedFetchingHealth && (
+                      <Paper className={classes.paper}>
                           <p>Oh no, something went wrong!</p>
                       </Paper>
-                      ) }
+                      )}
                   </Grid>
               </Grid>
-              <Fab aria-label="Add" className={ classes.fab } color="primary" onClick={ () => history.push('/cigarettes/add') }>
+              <Fab aria-label="Add" className={classes.fab} color="primary" onClick={ () => history.push('/cigarettes/add') }>
                   <AddIcon/>
               </Fab>
           </Container>
