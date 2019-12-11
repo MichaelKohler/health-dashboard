@@ -49,6 +49,7 @@ export function StairsForm(props) {
                     id="stairs"
                     label="Stairs"
                     name="stairs"
+                    defaultValue="1"
                   />
                   <Button
                     type="submit"

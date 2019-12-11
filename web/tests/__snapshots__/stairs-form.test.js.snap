@@ -43,6 +43,7 @@ exports[`renders button disabled 1`] = `
           <input
             aria-invalid={false}
             className="MuiInputBase-input MuiOutlinedInput-input"
+            defaultValue="1"
             disabled={false}
             id="stairs"
             name="stairs"
@@ -132,8 +133,8 @@ exports[`renders correctly 1`] = `
         className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal MuiFormControl-fullWidth"
       >
         <label
-          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-required Mui-required"
-          data-shrink={false}
+          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled Mui-required Mui-required"
+          data-shrink={true}
           htmlFor="stairs"
           id="stairs-label"
         >
@@ -152,6 +153,7 @@ exports[`renders correctly 1`] = `
           <input
             aria-invalid={false}
             className="MuiInputBase-input MuiOutlinedInput-input"
+            defaultValue="1"
             disabled={false}
             id="stairs"
             name="stairs"
@@ -175,7 +177,7 @@ exports[`renders correctly 1`] = `
               className="PrivateNotchedOutline-legend-104"
               style={
                 Object {
-                  "width": 0.01,
+                  "width": 0,
                 }
               }
             >
