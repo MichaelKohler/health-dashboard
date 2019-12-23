@@ -24,7 +24,7 @@
     "ava": "^2.4.0",
     "eslint": "^6.6.0",
     "eslint-plugin-unicorn": "^15.0.0",
-    "nyc": "^14.1.1",
+    "nyc": "^15.0.0",
     "sequelize-cli": "^5.5.1",
     "sinon": "^8.0.0",
     "supertest": "^4.0.2"
