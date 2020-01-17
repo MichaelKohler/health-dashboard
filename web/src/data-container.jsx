@@ -14,6 +14,12 @@ const mapDispatchToProps = (dispatch) => ({
 class DataContainer extends React.Component {
   componentDidMount() {
     this.props.fetchHealth();
+
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) {
+        this.props.fetchHealth();
+      }
+    });
   }
 
   render() {
