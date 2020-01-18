@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -16,14 +15,13 @@ import StairsChart from './stairs-chart.jsx';
 
 const useStyles = makeStyles((theme) => Object.assign({}, getDefaultStyle(theme)));
 
-const mapStateToProps = (state) => ({
-  stairs: state.stairs,
-  isFetchingHealth: state.isFetchingHealth,
-  failedFetchingHealth: state.failedFetchingHealth,
-});
-
-export function Stairs(props) {
+export default function Stairs() {
   const classes = useStyles();
+  const {
+    stairs,
+    isFetchingHealth,
+    failedFetchingHealth,
+  } = useSelector((state) => state);
 
   return (
       <section>
@@ -32,16 +30,16 @@ export function Stairs(props) {
               <Grid container spacing={3}>
                   <StairsChart/>
                   <Grid item xs={12} md={12} lg={12}>
-                      {props.isFetchingHealth && (
+                      {isFetchingHealth && (
                       <Paper className={classes.paper}>
                           <p>Fetching...</p>
                           <CircularProgress size={15}/>
                       </Paper>
                       )}
-                      {props.stairs.length > 0 && (
-                      <Table rows={props.stairs}/>
+                      {stairs.length > 0 && (
+                      <Table rows={stairs}/>
                       )}
-                      {props.failedFetchingHealth && (
+                      {failedFetchingHealth && (
                       <Paper className={classes.paper}>
                           <p>Oh no, something went wrong!</p>
                       </Paper>
@@ -55,13 +53,3 @@ export function Stairs(props) {
       </section>
   );
 }
-
-Stairs.propTypes = {
-  stairs: PropTypes.array,
-  isFetchingHealth: PropTypes.bool,
-  failedFetchingHealth: PropTypes.bool,
-};
-
-export default connect(
-  mapStateToProps,
-)(Stairs);

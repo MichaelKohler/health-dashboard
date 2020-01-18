@@ -2,23 +2,43 @@
 /* eslint-disable react/jsx-filename-extension */
 
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
-import renderer from 'react-test-renderer';
-import { Stairs } from '../src/stairs.jsx';
+import { useSelector } from 'react-redux';
+import { shallowToJson  } from 'enzyme-to-json';
+import { shallow } from 'enzyme';
 
-jest.mock('../src/stairs-chart', () => () => 'StairsChart');
-jest.mock('../src/stairs-table', () => () => 'StairsTable');
+import Stairs from '../src/stairs.jsx';
+
+jest.mock('react-redux', () => ({
+  useSelector: jest.fn(),
+}));
 
 it('renders correctly', () => {
-  const data = [{
-    createdAt: '2019-08-07T08:00:03Z',
-    stairs: 7,
-  }];
+  useSelector.mockImplementation(
+    (selectorFn) => selectorFn({
+      stairs: [{
+        createdAt: '2019-08-07T08:00:03Z',
+        stairs: 7,
+      }],
+      isFetchingHealth: false,
+      failedFetchingHealth: false,
+    }),
+  );
 
-  const tree = renderer
-    .create(<MemoryRouter><Stairs stairs={ data }/></MemoryRouter>)
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+  const wrapper = shallow(<Stairs />);
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
+it('shows fetching paper', () => {
+  useSelector.mockImplementation(
+    (selectorFn) => selectorFn({
+      stairs: [],
+      isFetchingHealth: true,
+      failedFetchingHealth: false,
+    }),
+  );
+
+  const wrapper = shallow(<Stairs />);
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
 /* eslint-enable react/jsx-filename-extension */

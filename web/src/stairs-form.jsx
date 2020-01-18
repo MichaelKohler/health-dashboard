@@ -1,7 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -21,16 +19,10 @@ const useStyles = makeStyles((theme) => Object.assign({}, getDefaultStyle(theme)
   },
 }));
 
-const mapStateToProps = (state) => state;
-
-const mapDispatchToProps = (dispatch) => ({
-  addStairs: () => {
-    dispatch(addStairs());
-  },
-});
-
-export function StairsForm(props) {
+export default function StairsForm() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const isSubmitting = useSelector((state) => state.isSubmitting);
 
   return (
       <Container component="main" maxWidth="xs">
@@ -40,7 +32,7 @@ export function StairsForm(props) {
               <Typography component="h1" variant="h5">
                   Add Stairs
               </Typography>
-              <form className={classes.form} noValidate onSubmit={props.addStairs}>
+              <form className={classes.form} noValidate onSubmit={() => dispatch(addStairs())}>
                   <TextField
                     variant="outlined"
                     margin="normal"
@@ -57,7 +49,7 @@ export function StairsForm(props) {
                     variant="contained"
                     color="primary"
                     className={classes.submit}
-                    disabled={props.isSubmitting}
+                    disabled={isSubmitting}
                   >
                     Add
                   </Button>
@@ -66,13 +58,3 @@ export function StairsForm(props) {
       </Container>
   );
 }
-
-StairsForm.propTypes = {
-  addStairs: PropTypes.func,
-  isSubmitting: PropTypes.bool,
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(withRouter(StairsForm));

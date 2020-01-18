@@ -34,8 +34,6 @@ export default function AppSnackbar() {
     dispatch(clearSnackbar());
   }
 
-  console.log('snackbarType', snackbarType); // eslint-disable-line no-console
-
   return (
       <Snackbar
           anchorOrigin={ {

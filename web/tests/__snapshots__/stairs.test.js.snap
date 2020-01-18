@@ -5,54 +5,85 @@ exports[`renders correctly 1`] = `
   <div
     className="makeStyles-appBarSpacer-1"
   />
-  <div
-    className="MuiContainer-root makeStyles-container-2 MuiContainer-maxWidthLg"
+  <WithStyles(ForwardRef(Container))
+    className="makeStyles-container-2"
+    maxWidth="lg"
   >
-    <div
-      className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
+    <WithStyles(ForwardRef(Grid))
+      container={true}
+      spacing={3}
     >
-      StairsChart
-      <div
-        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-12 MuiGrid-grid-lg-12"
+      <StairsChart />
+      <WithStyles(ForwardRef(Grid))
+        item={true}
+        lg={12}
+        md={12}
+        xs={12}
       >
-        StairsTable
-      </div>
-    </div>
-    <button
+        <StairsTable
+          rows={
+            Array [
+              Object {
+                "createdAt": "2019-08-07T08:00:03Z",
+                "stairs": 7,
+              },
+            ]
+          }
+        />
+      </WithStyles(ForwardRef(Grid))>
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Fab))
       aria-label="Add"
-      className="MuiButtonBase-root MuiFab-root makeStyles-fab-4 MuiFab-primary"
-      disabled={false}
-      onBlur={[Function]}
+      className="makeStyles-fab-4"
+      color="primary"
       onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
     >
-      <span
-        className="MuiFab-label"
+      <AddIcon />
+    </WithStyles(ForwardRef(Fab))>
+  </WithStyles(ForwardRef(Container))>
+</section>
+`;
+
+exports[`shows fetching paper 1`] = `
+<section>
+  <div
+    className="makeStyles-appBarSpacer-1"
+  />
+  <WithStyles(ForwardRef(Container))
+    className="makeStyles-container-2"
+    maxWidth="lg"
+  >
+    <WithStyles(ForwardRef(Grid))
+      container={true}
+      spacing={3}
+    >
+      <StairsChart />
+      <WithStyles(ForwardRef(Grid))
+        item={true}
+        lg={12}
+        md={12}
+        xs={12}
       >
-        <svg
-          aria-hidden="true"
-          className="MuiSvgIcon-root"
-          focusable="false"
-          role="presentation"
-          viewBox="0 0 24 24"
+        <WithStyles(ForwardRef(Paper))
+          className="makeStyles-paper-3"
         >
-          <path
-            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+          <p>
+            Fetching...
+          </p>
+          <WithStyles(ForwardRef(CircularProgress))
+            size={15}
           />
-        </svg>
-      </span>
-    </button>
-  </div>
+        </WithStyles(ForwardRef(Paper))>
+      </WithStyles(ForwardRef(Grid))>
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Fab))
+      aria-label="Add"
+      className="makeStyles-fab-4"
+      color="primary"
+      onClick={[Function]}
+    >
+      <AddIcon />
+    </WithStyles(ForwardRef(Fab))>
+  </WithStyles(ForwardRef(Container))>
 </section>
 `;

@@ -2,8 +2,13 @@
 /* eslint-disable react/jsx-filename-extension */
 
 import React from 'react';
-import renderer from 'react-test-renderer';
-import { StairsTable } from '../src/stairs-table.jsx';
+import { shallowToJson  } from 'enzyme-to-json';
+import { shallow } from 'enzyme';
+import StairsTable from '../src/stairs-table.jsx';
+
+jest.mock('react-redux', () => ({
+  useDispatch: () => jest.fn(),
+}));
 
 it('renders correctly', () => {
   const data = [{
@@ -11,10 +16,8 @@ it('renders correctly', () => {
     stairs: 5,
   }];
 
-  const tree = renderer
-    .create(<StairsTable rows={ data }/>)
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+  const wrapper = shallow(<StairsTable rows={ data }/>);
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
 /* eslint-enable react/jsx-filename-extension */
