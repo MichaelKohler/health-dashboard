@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -16,14 +15,13 @@ import Table from './cigarette-table.jsx';
 
 const useStyles = makeStyles((theme) => Object.assign({}, getDefaultStyle(theme)));
 
-const mapStateToProps = (state) => ({
-  cigarettes: state.cigarettes,
-  isFetchingHealth: state.isFetchingHealth,
-  failedFetchingHealth: state.failedFetchingHealth,
-});
-
-export function Cigarettes(props) {
+export default function Cigarettes() {
   const classes = useStyles();
+  const {
+    cigarettes,
+    isFetchingHealth,
+    failedFetchingHealth,
+  } = useSelector((state) => state);
 
   return (
       <section>
@@ -32,16 +30,16 @@ export function Cigarettes(props) {
               <Grid container spacing={3}>
                   <CigarettesChart/>
                   <Grid item xs={12} md={12} lg={12}>
-                      {props.isFetchingHealth && (
+                      {isFetchingHealth && (
                       <Paper className={classes.paper}>
                           <p>Fetching...</p>
                           <CircularProgress size={15}/>
                       </Paper>
                       )}
-                      {props.cigarettes.length > 0 && (
-                      <Table rows={props.cigarettes}/>
+                      {cigarettes.length > 0 && (
+                      <Table rows={cigarettes}/>
                       ) }
-                      {props.failedFetchingHealth && (
+                      {failedFetchingHealth && (
                       <Paper className={classes.paper}>
                           <p>Oh no, something went wrong!</p>
                       </Paper>
@@ -55,13 +53,3 @@ export function Cigarettes(props) {
       </section>
   );
 }
-
-Cigarettes.propTypes = {
-  cigarettes: PropTypes.array,
-  isFetchingHealth: PropTypes.bool,
-  failedFetchingHealth: PropTypes.bool,
-};
-
-export default connect(
-  mapStateToProps,
-)(Cigarettes);

@@ -1,7 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -22,16 +20,10 @@ const useStyles = makeStyles((theme) => Object.assign({}, getDefaultStyle(theme)
   },
 }));
 
-const mapStateToProps = (state) => state;
-
-const mapDispatchToProps = (dispatch) => ({
-  addCigarette: () => {
-    dispatch(addCigarette());
-  },
-});
-
-export function CigaretteForm(props) {
+export default function CigaretteForm() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const isSubmitting = useSelector((state) => state.isSubmitting);
 
   return (
       <Container component="main" maxWidth="xs">
@@ -41,7 +33,7 @@ export function CigaretteForm(props) {
               <Typography component="h1" variant="h5">
                   Add Cigarette
               </Typography>
-              <form className={classes.form} noValidate onSubmit={props.addCigarette}>
+              <form className={classes.form} noValidate onSubmit={() => dispatch(addCigarette())}>
                   <FormControlLabel
                       control={
                           <Checkbox
@@ -59,7 +51,7 @@ export function CigaretteForm(props) {
                     variant="contained"
                     color="primary"
                     className={classes.submit}
-                    disabled={props.isSubmitting}
+                    disabled={isSubmitting}
                   >
                     Add
                   </Button>
@@ -68,13 +60,3 @@ export function CigaretteForm(props) {
       </Container>
   );
 }
-
-CigaretteForm.propTypes = {
-  addCigarette: PropTypes.func,
-  isSubmitting: PropTypes.bool,
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(withRouter(CigaretteForm));

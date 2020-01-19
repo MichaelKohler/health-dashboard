@@ -2,8 +2,14 @@
 /* eslint-disable react/jsx-filename-extension */
 
 import React from 'react';
-import renderer from 'react-test-renderer';
-import { CigaretteTable } from '../src/cigarette-table.jsx';
+import { shallowToJson  } from 'enzyme-to-json';
+import { shallow } from 'enzyme';
+
+import CigaretteTable from '../src/cigarette-table.jsx';
+
+jest.mock('react-redux', () => ({
+  useDispatch: () => jest.fn(),
+}));
 
 it('renders correctly', () => {
   const data = [{
@@ -11,10 +17,8 @@ it('renders correctly', () => {
     rolled: false,
   }];
 
-  const tree = renderer
-    .create(<CigaretteTable rows={ data }/>)
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+  const wrapper = shallow(<CigaretteTable rows={ data }/>);
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
 /* eslint-enable react/jsx-filename-extension */

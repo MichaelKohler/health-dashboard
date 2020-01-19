@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Table from '@material-ui/core/Table';
@@ -12,14 +11,6 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
 import { deleteCigarette } from './actions';
-
-const mapStateToProps = (state) => state;
-
-const mapDispatchToProps = (dispatch) => ({
-  deleteCigarette: (id) => {
-    dispatch(deleteCigarette(id));
-  },
-});
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,8 +26,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export function CigaretteTable(props) {
+export default function CigaretteTable(props) {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   return (
       <Paper className={classes.root}>
@@ -55,7 +47,7 @@ export function CigaretteTable(props) {
                           <TableCell align="right">{row.rolled ? '' : 'not rolled'}</TableCell>
                           <TableCell align="right">
                               <Button color="secondary" className={classes.button}
-                                      onClick={() => props.deleteCigarette(row.id)}>
+                                      onClick={() => dispatch(deleteCigarette(row.id))}>
                                 Delete
                               </Button>
                           </TableCell>
@@ -69,10 +61,4 @@ export function CigaretteTable(props) {
 
 CigaretteTable.propTypes = {
   rows: PropTypes.array,
-  deleteCigarette: PropTypes.func,
 };
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(withRouter(CigaretteTable));

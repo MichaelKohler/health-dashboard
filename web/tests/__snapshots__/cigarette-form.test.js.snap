@@ -1,198 +1,99 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders button disabled 1`] = `
-<main
-  className="MuiContainer-root MuiContainer-maxWidthXs"
+<WithStyles(ForwardRef(Container))
+  component="main"
+  maxWidth="xs"
 >
+  <CssBaseline />
   <div
     className="makeStyles-appBarSpacer-1"
   />
   <div
     className="makeStyles-paper-3"
   >
-    <h1
-      className="MuiTypography-root MuiTypography-h5"
+    <WithStyles(ForwardRef(Typography))
+      component="h1"
+      variant="h5"
     >
       Add Cigarette
-    </h1>
+    </WithStyles(ForwardRef(Typography))>
     <form
       className="makeStyles-form-5"
       noValidate={true}
+      onSubmit={[Function]}
     >
-      <label
-        className="MuiFormControlLabel-root"
-      >
-        <span
-          aria-disabled={false}
-          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-56 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-57 Mui-checked MuiIconButton-colorPrimary"
-          onBlur={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={null}
-        >
-          <span
-            className="MuiIconButton-label"
-          >
-            <input
-              checked={true}
-              className="PrivateSwitchBase-input-59"
-              data-indeterminate={false}
-              id="rolled"
-              onChange={[Function]}
-              type="checkbox"
-              value="checked"
-            />
-            <svg
-              aria-hidden="true"
-              className="MuiSvgIcon-root"
-              focusable="false"
-              role="presentation"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-              />
-            </svg>
-          </span>
-          <span
-            className="MuiTouchRipple-root"
+      <WithStyles(ForwardRef(FormControlLabel))
+        control={
+          <ForwardRef(WithStyles)
+            checked={true}
+            color="primary"
+            id="rolled"
+            value="checked"
           />
-        </span>
-        <span
-          className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
-        >
-          rolled
-        </span>
-      </label>
-      <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-submit-6 MuiButton-containedPrimary Mui-disabled MuiButton-fullWidth Mui-disabled"
+        }
+        label="rolled"
+      />
+      <WithStyles(ForwardRef(Button))
+        className="makeStyles-submit-6"
+        color="primary"
         disabled={true}
-        onBlur={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={-1}
+        fullWidth={true}
         type="submit"
+        variant="contained"
       >
-        <span
-          className="MuiButton-label"
-        >
-          Add
-        </span>
-      </button>
+        Add
+      </WithStyles(ForwardRef(Button))>
     </form>
   </div>
-</main>
+</WithStyles(ForwardRef(Container))>
 `;
 
 exports[`renders correctly 1`] = `
-<main
-  className="MuiContainer-root MuiContainer-maxWidthXs"
+<WithStyles(ForwardRef(Container))
+  component="main"
+  maxWidth="xs"
 >
+  <CssBaseline />
   <div
     className="makeStyles-appBarSpacer-1"
   />
   <div
     className="makeStyles-paper-3"
   >
-    <h1
-      className="MuiTypography-root MuiTypography-h5"
+    <WithStyles(ForwardRef(Typography))
+      component="h1"
+      variant="h5"
     >
       Add Cigarette
-    </h1>
+    </WithStyles(ForwardRef(Typography))>
     <form
       className="makeStyles-form-5"
       noValidate={true}
+      onSubmit={[Function]}
     >
-      <label
-        className="MuiFormControlLabel-root"
-      >
-        <span
-          aria-disabled={false}
-          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-56 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-57 Mui-checked MuiIconButton-colorPrimary"
-          onBlur={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={null}
-        >
-          <span
-            className="MuiIconButton-label"
-          >
-            <input
-              checked={true}
-              className="PrivateSwitchBase-input-59"
-              data-indeterminate={false}
-              id="rolled"
-              onChange={[Function]}
-              type="checkbox"
-              value="checked"
-            />
-            <svg
-              aria-hidden="true"
-              className="MuiSvgIcon-root"
-              focusable="false"
-              role="presentation"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-              />
-            </svg>
-          </span>
-        </span>
-        <span
-          className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
-        >
-          rolled
-        </span>
-      </label>
-      <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-submit-6 MuiButton-containedPrimary MuiButton-fullWidth"
+      <WithStyles(ForwardRef(FormControlLabel))
+        control={
+          <ForwardRef(WithStyles)
+            checked={true}
+            color="primary"
+            id="rolled"
+            value="checked"
+          />
+        }
+        label="rolled"
+      />
+      <WithStyles(ForwardRef(Button))
+        className="makeStyles-submit-6"
+        color="primary"
         disabled={false}
-        onBlur={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
+        fullWidth={true}
         type="submit"
+        variant="contained"
       >
-        <span
-          className="MuiButton-label"
-        >
-          Add
-        </span>
-      </button>
+        Add
+      </WithStyles(ForwardRef(Button))>
     </form>
   </div>
-</main>
+</WithStyles(ForwardRef(Container))>
 `;

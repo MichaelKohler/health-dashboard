@@ -1,58 +1,130 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`renders correctly - fetch error 1`] = `
+<section>
+  <div
+    className="makeStyles-appBarSpacer-1"
+  />
+  <WithStyles(ForwardRef(Container))
+    className="makeStyles-container-2"
+    maxWidth="lg"
+  >
+    <WithStyles(ForwardRef(Grid))
+      container={true}
+      spacing={3}
+    >
+      <CigarettesChart />
+      <WithStyles(ForwardRef(Grid))
+        item={true}
+        lg={12}
+        md={12}
+        xs={12}
+      >
+        <WithStyles(ForwardRef(Paper))
+          className="makeStyles-paper-3"
+        >
+          <p>
+            Oh no, something went wrong!
+          </p>
+        </WithStyles(ForwardRef(Paper))>
+      </WithStyles(ForwardRef(Grid))>
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Fab))
+      aria-label="Add"
+      className="makeStyles-fab-4"
+      color="primary"
+      onClick={[Function]}
+    >
+      <AddIcon />
+    </WithStyles(ForwardRef(Fab))>
+  </WithStyles(ForwardRef(Container))>
+</section>
+`;
+
+exports[`renders correctly - fetching 1`] = `
+<section>
+  <div
+    className="makeStyles-appBarSpacer-1"
+  />
+  <WithStyles(ForwardRef(Container))
+    className="makeStyles-container-2"
+    maxWidth="lg"
+  >
+    <WithStyles(ForwardRef(Grid))
+      container={true}
+      spacing={3}
+    >
+      <CigarettesChart />
+      <WithStyles(ForwardRef(Grid))
+        item={true}
+        lg={12}
+        md={12}
+        xs={12}
+      >
+        <WithStyles(ForwardRef(Paper))
+          className="makeStyles-paper-3"
+        >
+          <p>
+            Fetching...
+          </p>
+          <WithStyles(ForwardRef(CircularProgress))
+            size={15}
+          />
+        </WithStyles(ForwardRef(Paper))>
+      </WithStyles(ForwardRef(Grid))>
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Fab))
+      aria-label="Add"
+      className="makeStyles-fab-4"
+      color="primary"
+      onClick={[Function]}
+    >
+      <AddIcon />
+    </WithStyles(ForwardRef(Fab))>
+  </WithStyles(ForwardRef(Container))>
+</section>
+`;
+
 exports[`renders correctly 1`] = `
 <section>
   <div
     className="makeStyles-appBarSpacer-1"
   />
-  <div
-    className="MuiContainer-root makeStyles-container-2 MuiContainer-maxWidthLg"
+  <WithStyles(ForwardRef(Container))
+    className="makeStyles-container-2"
+    maxWidth="lg"
   >
-    <div
-      className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
+    <WithStyles(ForwardRef(Grid))
+      container={true}
+      spacing={3}
     >
-      CigaretteChart
-      <div
-        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-12 MuiGrid-grid-lg-12"
+      <CigarettesChart />
+      <WithStyles(ForwardRef(Grid))
+        item={true}
+        lg={12}
+        md={12}
+        xs={12}
       >
-        CigaretteTable
-      </div>
-    </div>
-    <button
+        <CigaretteTable
+          rows={
+            Array [
+              Object {
+                "createdAt": "2019-08-07T08:00:03Z",
+                "rolled": false,
+              },
+            ]
+          }
+        />
+      </WithStyles(ForwardRef(Grid))>
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Fab))
       aria-label="Add"
-      className="MuiButtonBase-root MuiFab-root makeStyles-fab-4 MuiFab-primary"
-      disabled={false}
-      onBlur={[Function]}
+      className="makeStyles-fab-4"
+      color="primary"
       onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
     >
-      <span
-        className="MuiFab-label"
-      >
-        <svg
-          aria-hidden="true"
-          className="MuiSvgIcon-root"
-          focusable="false"
-          role="presentation"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-          />
-        </svg>
-      </span>
-    </button>
-  </div>
+      <AddIcon />
+    </WithStyles(ForwardRef(Fab))>
+  </WithStyles(ForwardRef(Container))>
 </section>
 `;

@@ -1,27 +1,26 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
 } from 'recharts';
 
-const mapStateToProps = (state) => ({
-  stats: state.stats,
-  statsFailed: state.statsFailed,
-});
+export default function CigarettesChart() {
+  const {
+    stats,
+    statsFailed,
+  } = useSelector((state) => state);
 
-export function CigarettesChart(props) {
   return (
       <Grid item xs={12} md={12} lg={12}>
-          {props.statsFailed && (
+          {statsFailed && (
               <p>Oh no, something went wrong while fetching the stats!</p>
           )}
-          {props.stats.cigarettes && (
+          {stats.cigarettes && (
               <BarChart
                 width={1100}
                 height={300}
-                data={props.stats.cigarettes}
+                data={stats.cigarettes}
               >
                   <CartesianGrid strokeDasharray="3 3"/>
                   <XAxis dataKey="date"/>
@@ -33,12 +32,3 @@ export function CigarettesChart(props) {
       </Grid>
   );
 }
-
-CigarettesChart.propTypes = {
-  stats: PropTypes.object,
-  statsFailed: PropTypes.bool,
-};
-
-export default connect(
-  mapStateToProps,
-)(CigarettesChart);
