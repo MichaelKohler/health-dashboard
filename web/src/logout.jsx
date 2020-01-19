@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -25,16 +24,9 @@ const useStyles = makeStyles((theme) => Object.assign({}, getDefaultStyle(theme)
   },
 }));
 
-const mapStateToProps = (state) => state;
-
-const mapDispatchToProps = (dispatch) => ({
-  logout: () => {
-    dispatch(logout());
-  },
-});
-
-export function Logout(props) {
+export default function Logout() {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   return (
       <Container component="main" maxWidth="xs">
@@ -47,7 +39,7 @@ export function Logout(props) {
               <Typography component="h1" variant="h5">
                   Logout
               </Typography>
-              <form className={classes.form} noValidate onSubmit={props.logout}>
+              <form className={classes.form} noValidate onSubmit={() => dispatch(logout())}>
                   <p>Are you sure you want to log out?</p>
                   <Button
                     type="submit"
@@ -63,12 +55,3 @@ export function Logout(props) {
       </Container>
   );
 }
-
-Logout.propTypes = {
-  logout: PropTypes.func,
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Logout);

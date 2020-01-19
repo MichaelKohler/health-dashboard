@@ -1,40 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { fetchHealth } from './actions';
 
-const mapStateToProps = (state) => state;
-
-const mapDispatchToProps = (dispatch) => ({
-  fetchHealth: () => {
+export default function DataContainer(props) {
+  const dispatch = useDispatch();
+  useEffect(() => {
     dispatch(fetchHealth());
-  },
-});
-
-class DataContainer extends React.Component {
-  componentDidMount() {
-    this.props.fetchHealth();
 
     document.addEventListener('visibilitychange', () => {
       if (!document.hidden) {
-        this.props.fetchHealth();
+        dispatch(fetchHealth());
       }
     });
-  }
+  });
 
-  render() {
-    return (
-        <section>{this.props.children}</section>
-    );
-  }
+  return (
+      <section>{props.children}</section>
+  );
 }
 
 DataContainer.propTypes = {
   children: PropTypes.object,
-  fetchHealth: PropTypes.func,
 };
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(DataContainer);

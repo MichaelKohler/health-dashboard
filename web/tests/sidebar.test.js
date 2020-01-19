@@ -2,15 +2,35 @@
 /* eslint-disable react/jsx-filename-extension */
 
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
-import renderer from 'react-test-renderer';
-import { Sidebar } from '../src/sidebar.jsx';
+import { useSelector } from 'react-redux';
+import { shallowToJson  } from 'enzyme-to-json';
+import { shallow } from 'enzyme';
+import Sidebar from '../src/sidebar.jsx';
 
-it('renders correctly', () => {
-  const tree = renderer
-    .create(<MemoryRouter><Sidebar/></MemoryRouter>)
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+jest.mock('react-redux', () => ({
+  useSelector: jest.fn(),
+}));
+
+it('renders correctly - logged out', () => {
+  useSelector.mockImplementation(
+    (selectorFn) => selectorFn({
+      isLoggedIn: false,
+    }),
+  );
+
+  const wrapper = shallow(<Sidebar />);
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
+it('renders correctly - logged in', () => {
+  useSelector.mockImplementation(
+    (selectorFn) => selectorFn({
+      isLoggedIn: true,
+    }),
+  );
+
+  const wrapper = shallow(<Sidebar />);
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
 /* eslint-enable react/jsx-filename-extension */

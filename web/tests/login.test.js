@@ -2,16 +2,36 @@
 /* eslint-disable react/jsx-filename-extension */
 
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
-import renderer from 'react-test-renderer';
-import { Login } from '../src/login.jsx';
+import { useSelector } from 'react-redux';
+import { shallowToJson  } from 'enzyme-to-json';
+import { shallow } from 'enzyme';
+import Login from '../src/login.jsx';
+
+jest.mock('react-redux', () => ({
+  useSelector: jest.fn(),
+  useDispatch: () => jest.fn(),
+}));
 
 it('renders correctly', () => {
-  const login = () => {};
-  const tree = renderer
-    .create(<MemoryRouter><Login login={login}/></MemoryRouter>)
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+  useSelector.mockImplementation(
+    (selectorFn) => selectorFn({
+      loginFailed: false,
+    }),
+  );
+
+  const wrapper = shallow(<Login />);
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
+it('renders correctly - login failed', () => {
+  useSelector.mockImplementation(
+    (selectorFn) => selectorFn({
+      loginFailed: true,
+    }),
+  );
+
+  const wrapper = shallow(<Login />);
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
 /* eslint-enable react/jsx-filename-extension */

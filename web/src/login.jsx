@@ -1,7 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -27,16 +25,10 @@ const useStyles = makeStyles((theme) => Object.assign({}, getDefaultStyle(theme)
   },
 }));
 
-const mapStateToProps = (state) => state;
-
-const mapDispatchToProps = (dispatch) => ({
-  login: () => {
-    dispatch(login());
-  },
-});
-
-export function Login(props) {
+export default function Login() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const loginFailed = useSelector((state) => state.loginFailed);
 
   return (
       <Container component="main" maxWidth="xs">
@@ -49,10 +41,10 @@ export function Login(props) {
               <Typography component="h1" variant="h5">
                   Login
               </Typography>
-              {props.loginFailed && (
+              {loginFailed && (
                   <p>Login failed</p>
               )}
-              <form className={classes.form} noValidate onSubmit={props.login}>
+              <form className={classes.form} noValidate onSubmit={() => dispatch(login())}>
                   <TextField
                     variant="outlined"
                     margin="normal"
@@ -88,13 +80,3 @@ export function Login(props) {
       </Container>
   );
 }
-
-Login.propTypes = {
-  loginFailed: PropTypes.bool,
-  login: PropTypes.func,
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(withRouter(Login));

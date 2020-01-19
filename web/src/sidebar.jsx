@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
@@ -19,10 +18,10 @@ import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
 // see https://github.com/ReactTraining/react-router/issues/6056
 const AdapterLink = React.forwardRef((props, ref) => <Link innerRef={ ref } { ...props }/>); // eslint-disable-line react/display-name
 
-const mapStateToProps = (state) => state;
-
 // eslint-disable-next-line react/no-multi-comp
-export function Sidebar(props) {
+export default function Sidebar() {
+  const isLoggedIn = useSelector((state) => state.isLoggedIn);
+
   return (
       <List>
           <ListItem button component={AdapterLink} to="/">
@@ -31,7 +30,7 @@ export function Sidebar(props) {
               </ListItemIcon>
               <ListItemText primary="Dashboard"/>
           </ListItem>
-          {!props.isLoggedIn && (
+          {!isLoggedIn && (
               <ListItem button component={AdapterLink} to="/login">
                   <ListItemIcon>
                       <LockIcon/>
@@ -39,7 +38,7 @@ export function Sidebar(props) {
                   <ListItemText primary="Login"/>
               </ListItem>
           )}
-          {props.isLoggedIn && (
+          {isLoggedIn && (
               <ListItem button component={AdapterLink} to="/logout">
                   <ListItemIcon>
                       <LockOpenIcon/>
@@ -72,11 +71,3 @@ export function Sidebar(props) {
       </List>
   );
 }
-
-Sidebar.propTypes = {
-  isLoggedIn: PropTypes.bool,
-};
-
-export default connect(
-  mapStateToProps,
-)(Sidebar);
