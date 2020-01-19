@@ -1,219 +1,95 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders button disabled 1`] = `
-<main
-  className="MuiContainer-root MuiContainer-maxWidthXs"
+<WithStyles(ForwardRef(Container))
+  component="main"
+  maxWidth="xs"
 >
+  <CssBaseline />
   <div
     className="makeStyles-appBarSpacer-1"
   />
   <div
     className="makeStyles-paper-3"
   >
-    <h1
-      className="MuiTypography-root MuiTypography-h5"
+    <WithStyles(ForwardRef(Typography))
+      component="h1"
+      variant="h5"
     >
       Add Weight
-    </h1>
+    </WithStyles(ForwardRef(Typography))>
     <form
       className="makeStyles-form-5"
       noValidate={true}
+      onSubmit={[Function]}
     >
-      <div
-        className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal MuiFormControl-fullWidth"
-      >
-        <label
-          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-required Mui-required"
-          data-shrink={false}
-          htmlFor="weight"
-          id="weight-label"
-        >
-          Weight in kg
-          <span
-            className="MuiFormLabel-asterisk MuiInputLabel-asterisk"
-          >
-             
-            *
-          </span>
-        </label>
-        <div
-          className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-          onClick={[Function]}
-        >
-          <input
-            aria-invalid={false}
-            className="MuiInputBase-input MuiOutlinedInput-input"
-            disabled={false}
-            id="weight"
-            name="weight"
-            onAnimationStart={[Function]}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            required={true}
-            type="text"
-          />
-          <fieldset
-            aria-hidden={true}
-            className="PrivateNotchedOutline-root-103 MuiOutlinedInput-notchedOutline"
-            style={
-              Object {
-                "paddingLeft": 8,
-              }
-            }
-          >
-            <legend
-              className="PrivateNotchedOutline-legend-104"
-              style={
-                Object {
-                  "width": 0.01,
-                }
-              }
-            >
-              <span
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "&#8203;",
-                  }
-                }
-              />
-            </legend>
-          </fieldset>
-        </div>
-      </div>
-      <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-submit-6 MuiButton-containedPrimary Mui-disabled MuiButton-fullWidth Mui-disabled"
+      <WithStyles(ForwardRef(TextField))
+        fullWidth={true}
+        id="weight"
+        label="Weight in kg"
+        margin="normal"
+        name="weight"
+        required={true}
+        variant="outlined"
+      />
+      <WithStyles(ForwardRef(Button))
+        className="makeStyles-submit-6"
+        color="primary"
         disabled={true}
-        onBlur={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={-1}
+        fullWidth={true}
         type="submit"
+        variant="contained"
       >
-        <span
-          className="MuiButton-label"
-        >
-          Add
-        </span>
-      </button>
+        Add
+      </WithStyles(ForwardRef(Button))>
     </form>
   </div>
-</main>
+</WithStyles(ForwardRef(Container))>
 `;
 
 exports[`renders correctly 1`] = `
-<main
-  className="MuiContainer-root MuiContainer-maxWidthXs"
+<WithStyles(ForwardRef(Container))
+  component="main"
+  maxWidth="xs"
 >
+  <CssBaseline />
   <div
     className="makeStyles-appBarSpacer-1"
   />
   <div
     className="makeStyles-paper-3"
   >
-    <h1
-      className="MuiTypography-root MuiTypography-h5"
+    <WithStyles(ForwardRef(Typography))
+      component="h1"
+      variant="h5"
     >
       Add Weight
-    </h1>
+    </WithStyles(ForwardRef(Typography))>
     <form
       className="makeStyles-form-5"
       noValidate={true}
+      onSubmit={[Function]}
     >
-      <div
-        className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal MuiFormControl-fullWidth"
-      >
-        <label
-          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-required Mui-required"
-          data-shrink={false}
-          htmlFor="weight"
-          id="weight-label"
-        >
-          Weight in kg
-          <span
-            className="MuiFormLabel-asterisk MuiInputLabel-asterisk"
-          >
-             
-            *
-          </span>
-        </label>
-        <div
-          className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-          onClick={[Function]}
-        >
-          <input
-            aria-invalid={false}
-            className="MuiInputBase-input MuiOutlinedInput-input"
-            disabled={false}
-            id="weight"
-            name="weight"
-            onAnimationStart={[Function]}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            required={true}
-            type="text"
-          />
-          <fieldset
-            aria-hidden={true}
-            className="PrivateNotchedOutline-root-103 MuiOutlinedInput-notchedOutline"
-            style={
-              Object {
-                "paddingLeft": 8,
-              }
-            }
-          >
-            <legend
-              className="PrivateNotchedOutline-legend-104"
-              style={
-                Object {
-                  "width": 0.01,
-                }
-              }
-            >
-              <span
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "&#8203;",
-                  }
-                }
-              />
-            </legend>
-          </fieldset>
-        </div>
-      </div>
-      <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-submit-6 MuiButton-containedPrimary MuiButton-fullWidth"
+      <WithStyles(ForwardRef(TextField))
+        fullWidth={true}
+        id="weight"
+        label="Weight in kg"
+        margin="normal"
+        name="weight"
+        required={true}
+        variant="outlined"
+      />
+      <WithStyles(ForwardRef(Button))
+        className="makeStyles-submit-6"
+        color="primary"
         disabled={false}
-        onBlur={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
+        fullWidth={true}
         type="submit"
+        variant="contained"
       >
-        <span
-          className="MuiButton-label"
-        >
-          Add
-        </span>
-      </button>
+        Add
+      </WithStyles(ForwardRef(Button))>
     </form>
   </div>
-</main>
+</WithStyles(ForwardRef(Container))>
 `;

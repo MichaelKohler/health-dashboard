@@ -2,8 +2,13 @@
 /* eslint-disable react/jsx-filename-extension */
 
 import React from 'react';
-import renderer from 'react-test-renderer';
-import { WeightTable } from '../src/weight-table.jsx';
+import { shallowToJson  } from 'enzyme-to-json';
+import { shallow } from 'enzyme';
+import WeightTable from '../src/weight-table.jsx';
+
+jest.mock('react-redux', () => ({
+  useDispatch: () => jest.fn(),
+}));
 
 it('renders correctly', () => {
   const data = [{
@@ -11,10 +16,8 @@ it('renders correctly', () => {
     weight: 80,
   }];
 
-  const tree = renderer
-    .create(<WeightTable rows={ data }/>)
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+  const wrapper = shallow(<WeightTable rows={ data }/>);
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
 /* eslint-enable react/jsx-filename-extension */

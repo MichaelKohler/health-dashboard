@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Table from '@material-ui/core/Table';
@@ -12,14 +11,6 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
 import { deleteWeight } from './actions';
-
-const mapStateToProps = (state) => state;
-
-const mapDispatchToProps = (dispatch) => ({
-  deleteWeight: (id) => {
-    dispatch(deleteWeight(id));
-  },
-});
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
 
 export function WeightTable(props) {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   return (
       <Paper className={classes.root}>
@@ -55,7 +47,7 @@ export function WeightTable(props) {
                           <TableCell align="right">{row.weight}</TableCell>
                           <TableCell align="right">
                               <Button color="secondary" className={classes.button}
-                                      onClick={() => props.deleteWeight(row.id)}>
+                                      onClick={() => dispatch(deleteWeight(row.id))}>
                                 Delete
                               </Button>
                           </TableCell>
@@ -69,10 +61,6 @@ export function WeightTable(props) {
 
 WeightTable.propTypes = {
   rows: PropTypes.array,
-  deleteWeight: PropTypes.func,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(withRouter(WeightTable));
+export default WeightTable;
