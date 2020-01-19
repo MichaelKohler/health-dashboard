@@ -1,9 +1,9 @@
-/* global it, expect */
+/* global it, expect, jest */
 /* eslint-disable react/jsx-filename-extension */
 
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { shallowToJson  } from 'enzyme-to-json';
+import { shallowToJson } from 'enzyme-to-json';
 import { shallow } from 'enzyme';
 import Login from '../src/login.jsx';
 
@@ -19,7 +19,7 @@ it('renders correctly', () => {
     }),
   );
 
-  const wrapper = shallow(<Login />);
+  const wrapper = shallow(<Login/>);
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
@@ -30,7 +30,7 @@ it('renders correctly - login failed', () => {
     }),
   );
 
-  const wrapper = shallow(<Login />);
+  const wrapper = shallow(<Login/>);
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 

@@ -1,8 +1,8 @@
-/* global it, expect */
+/* global it, expect, jest */
 /* eslint-disable react/jsx-filename-extension */
 
 import React from 'react';
-import { shallowToJson  } from 'enzyme-to-json';
+import { shallowToJson } from 'enzyme-to-json';
 import { shallow } from 'enzyme';
 
 import CigaretteTable from '../src/cigarette-table.jsx';

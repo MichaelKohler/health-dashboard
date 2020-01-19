@@ -1,9 +1,9 @@
-/* global it, expect */
+/* global it, expect, jest */
 /* eslint-disable react/jsx-filename-extension */
 
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { shallowToJson  } from 'enzyme-to-json';
+import { shallowToJson } from 'enzyme-to-json';
 import { shallow } from 'enzyme';
 import StairsForm from '../src/stairs-form.jsx';
 
@@ -17,7 +17,7 @@ it('renders correctly', () => {
     isSubmitting: false,
   }));
 
-  const wrapper = shallow(<StairsForm />);
+  const wrapper = shallow(<StairsForm/>);
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
@@ -26,7 +26,7 @@ it('renders button disabled', () => {
     isSubmitting: true,
   }));
 
-  const wrapper = shallow(<StairsForm />);
+  const wrapper = shallow(<StairsForm/>);
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 

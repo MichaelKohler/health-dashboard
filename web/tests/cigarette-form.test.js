@@ -1,9 +1,9 @@
-/* global it, expect */
+/* global it, expect, jest */
 /* eslint-disable react/jsx-filename-extension */
 
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { shallowToJson  } from 'enzyme-to-json';
+import { shallowToJson } from 'enzyme-to-json';
 import { shallow } from 'enzyme';
 
 import CigaretteForm from '../src/cigarette-form.jsx';
@@ -20,7 +20,7 @@ it('renders correctly', () => {
     }),
   );
 
-  const wrapper = shallow(<CigaretteForm />);
+  const wrapper = shallow(<CigaretteForm/>);
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
@@ -31,7 +31,7 @@ it('renders button disabled', () => {
     }),
   );
 
-  const wrapper = shallow(<CigaretteForm />);
+  const wrapper = shallow(<CigaretteForm/>);
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 

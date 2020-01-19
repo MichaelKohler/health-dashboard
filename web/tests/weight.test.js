@@ -1,9 +1,9 @@
-/* global it, expect */
+/* global it, expect, jest */
 /* eslint-disable react/jsx-filename-extension */
 
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { shallowToJson  } from 'enzyme-to-json';
+import { shallowToJson } from 'enzyme-to-json';
 import { shallow } from 'enzyme';
 
 import Weight from '../src/weight.jsx';
@@ -24,7 +24,7 @@ it('renders correctly', () => {
     }),
   );
 
-  const wrapper = shallow(<Weight />);
+  const wrapper = shallow(<Weight/>);
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
@@ -37,7 +37,7 @@ it('renders correctly - fetching', () => {
     }),
   );
 
-  const wrapper = shallow(<Weight />);
+  const wrapper = shallow(<Weight/>);
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
@@ -50,7 +50,7 @@ it('renders correctly - fetching error', () => {
     }),
   );
 
-  const wrapper = shallow(<Weight />);
+  const wrapper = shallow(<Weight/>);
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 

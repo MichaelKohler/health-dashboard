@@ -45,7 +45,8 @@
     "build": "./node_modules/webpack/bin/webpack.js --mode production",
     "start": "webpack-dev-server --hot --progress --colors --inline --mode development",
     "test": "jest",
-    "test:update": "jest --updateSnapshot"
+    "test:update": "jest --updateSnapshot",
+    "eslint": "eslint src tests"
   },
   "author": "Michael Kohler",
   "license": "MIT",

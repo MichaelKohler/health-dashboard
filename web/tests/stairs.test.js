@@ -1,9 +1,9 @@
-/* global it, expect */
+/* global it, expect, jest */
 /* eslint-disable react/jsx-filename-extension */
 
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { shallowToJson  } from 'enzyme-to-json';
+import { shallowToJson } from 'enzyme-to-json';
 import { shallow } from 'enzyme';
 
 import Stairs from '../src/stairs.jsx';
@@ -24,7 +24,7 @@ it('renders correctly', () => {
     }),
   );
 
-  const wrapper = shallow(<Stairs />);
+  const wrapper = shallow(<Stairs/>);
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
@@ -37,7 +37,7 @@ it('shows fetching paper', () => {
     }),
   );
 
-  const wrapper = shallow(<Stairs />);
+  const wrapper = shallow(<Stairs/>);
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 

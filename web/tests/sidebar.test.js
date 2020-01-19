@@ -1,9 +1,9 @@
-/* global it, expect */
+/* global it, expect, jest */
 /* eslint-disable react/jsx-filename-extension */
 
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { shallowToJson  } from 'enzyme-to-json';
+import { shallowToJson } from 'enzyme-to-json';
 import { shallow } from 'enzyme';
 import Sidebar from '../src/sidebar.jsx';
 
@@ -18,7 +18,7 @@ it('renders correctly - logged out', () => {
     }),
   );
 
-  const wrapper = shallow(<Sidebar />);
+  const wrapper = shallow(<Sidebar/>);
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
@@ -29,7 +29,7 @@ it('renders correctly - logged in', () => {
     }),
   );
 
-  const wrapper = shallow(<Sidebar />);
+  const wrapper = shallow(<Sidebar/>);
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
