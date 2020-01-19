@@ -5,29 +5,34 @@ exports[`renders correctly 1`] = `
   <div
     className="makeStyles-appBarSpacer-1"
   />
-  <div
-    className="MuiContainer-root makeStyles-container-2 MuiContainer-maxWidthLg"
+  <WithStyles(ForwardRef(Container))
+    className="makeStyles-container-2"
+    maxWidth="lg"
   >
-    <div
-      className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
+    <WithStyles(ForwardRef(Grid))
+      container={true}
+      spacing={3}
     >
-      <div
-        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-12 MuiGrid-grid-lg-12"
+      <WithStyles(ForwardRef(Grid))
+        item={true}
+        lg={12}
+        md={12}
+        xs={12}
       >
         <h1>
           Cigarettes
         </h1>
-        CigaretteChart
+        <CigarettesChart />
         <h1>
           Weight
         </h1>
-        WeightChart
+        <WeightChart />
         <h1>
           Stairs
         </h1>
-        StairsChart
-      </div>
-    </div>
-  </div>
+        <StairsChart />
+      </WithStyles(ForwardRef(Grid))>
+    </WithStyles(ForwardRef(Grid))>
+  </WithStyles(ForwardRef(Container))>
 </section>
 `;

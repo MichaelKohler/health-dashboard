@@ -1,9 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<h2
-  className="MuiTypography-root MuiTypography-h6 MuiTypography-colorPrimary MuiTypography-gutterBottom"
+<WithStyles(ForwardRef(Typography))
+  color="primary"
+  component="h2"
+  gutterBottom={true}
+  variant="h6"
 >
   Hi!
-</h2>
+</WithStyles(ForwardRef(Typography))>
 `;
