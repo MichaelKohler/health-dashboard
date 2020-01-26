@@ -12,6 +12,9 @@ const copyOptions = [{
 }, {
   from: 'index.html',
   to: '.',
+}, {
+  from: 'favicon.svg',
+  to: '.',
 }];
 
 const variableOptions = {
