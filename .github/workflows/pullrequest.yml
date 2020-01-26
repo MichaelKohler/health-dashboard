@@ -1,9 +1,7 @@
-name: Greenkeeper
+name: PR
 
-on:
-  push:
-    branches:
-      - greenkeeper/*
+on: pull_request
+
 jobs:
   test-server:
     runs-on: ubuntu-latest
