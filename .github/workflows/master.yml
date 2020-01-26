@@ -1,10 +1,9 @@
-name: Default
+name: Master Deployment
 
 on:
   push:
     branches:
       - master
-      - greenkeeper/*
 jobs:
   context:
     runs-on: ubuntu-latest
