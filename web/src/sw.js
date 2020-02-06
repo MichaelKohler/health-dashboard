@@ -1,12 +1,8 @@
-const CACHE_NAME = 'health-cache-v1';
+const CACHE_NAME = 'health-cache-v2';
 const urlsToCache = [
   '/',
   '/main.js',
   '/favicon.svg',
-  '/cigarettes',
-  '/stairs',
-  '/weights',
-  '/stats',
 ];
 
 self.addEventListener('install', (event) => {
@@ -25,6 +21,7 @@ self.addEventListener('fetch', (event) => {
         if (response) {
           return response;
         }
+
         return fetch(event.request).then(
           (response) => {
             if(!response || response.status !== 200 || response.type !== 'basic') {
