@@ -3,15 +3,15 @@
   "version": "2.0.0",
   "description": "",
   "dependencies": {
-    "@michaelkohler/eslint-config-base": "^6.8.17",
-    "bcrypt": "^3.0.7",
+    "@michaelkohler/eslint-config-base": "^6.8.18",
+    "bcrypt": "^3.0.8",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "debug": "^4.1.1",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "lodash.intersection": "^4.4.0",
-    "mariadb": "^2.1.5",
+    "mariadb": "^2.2.0",
     "mqtt": "^3.0.0",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
@@ -19,14 +19,15 @@
     "sequelize": "^5.21.3"
   },
   "devDependencies": {
-    "@michaelkohler/eslint-config-node": "^6.8.17",
-    "@michaelkohler/eslint-config-test": "^6.8.17",
-    "ava": "^2.4.0",
+    "@ava/babel": "^1.0.0",
+    "@michaelkohler/eslint-config-node": "^6.8.18",
+    "@michaelkohler/eslint-config-test": "^6.8.18",
+    "ava": "^3.2.0",
     "eslint": "^6.8.0",
-    "eslint-plugin-unicorn": "^15.0.1",
+    "eslint-plugin-unicorn": "^16.0.0",
     "nyc": "^15.0.0",
     "sequelize-cli": "^5.5.1",
-    "sinon": "^8.1.0",
+    "sinon": "^8.1.1",
     "supertest": "^4.0.2"
   },
   "engines": {
@@ -63,6 +64,11 @@
     "files": [
       "tests/**/*.test.js"
     ],
-    "timeout": "10s"
+    "timeout": "10s",
+    "babel": {
+      "compileAsTests": [
+        "tests/**/*.js"
+      ]
+    }
   }
 }
