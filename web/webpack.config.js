@@ -7,7 +7,7 @@ console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
 const backendBaseUrl = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3333';
 
 const copyOptions = [{
-  from: 'sw.js',
+  from: 'src/sw.js',
   to: '.',
 }, {
   from: 'robots.txt',
