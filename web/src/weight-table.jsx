@@ -48,7 +48,7 @@ export function WeightTable(props) {
                           <TableCell align="right">
                               <Button color="secondary" className={classes.button}
                                       onClick={() => dispatch(deleteWeight(row.id))}>
-                                Delete
+                                  Delete
                               </Button>
                           </TableCell>
                       </TableRow>

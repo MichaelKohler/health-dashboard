@@ -48,7 +48,7 @@ export default function CigaretteTable(props) {
                           <TableCell align="right">
                               <Button color="secondary" className={classes.button}
                                       onClick={() => dispatch(deleteCigarette(row.id))}>
-                                Delete
+                                  Delete
                               </Button>
                           </TableCell>
                       </TableRow>

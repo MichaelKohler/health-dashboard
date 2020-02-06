@@ -48,7 +48,7 @@ export default function StairsTable(props) {
                           <TableCell align="right">
                               <Button color="secondary" className={classes.button}
                                       onClick={() => dispatch(deleteStairs(row.id))}>
-                                Delete
+                                  Delete
                               </Button>
                           </TableCell>
                       </TableRow>

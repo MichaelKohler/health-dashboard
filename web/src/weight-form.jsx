@@ -50,7 +50,7 @@ export default function WeightForm() {
                     className={classes.submit}
                     disabled={isSubmitting}
                   >
-                    Add
+                      Add
                   </Button>
               </form>
           </div>

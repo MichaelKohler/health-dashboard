@@ -53,7 +53,7 @@ export default function CigaretteForm() {
                     className={classes.submit}
                     disabled={isSubmitting}
                   >
-                    Add
+                      Add
                   </Button>
               </form>
           </div>

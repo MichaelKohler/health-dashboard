@@ -48,7 +48,7 @@ export default function Logout() {
                     color="secondary"
                     className={classes.submit}
                   >
-                    Log out
+                      Log out
                   </Button>
               </form>
           </div>

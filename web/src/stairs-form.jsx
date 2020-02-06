@@ -51,7 +51,7 @@ export default function StairsForm() {
                     className={classes.submit}
                     disabled={isSubmitting}
                   >
-                    Add
+                      Add
                   </Button>
               </form>
           </div>
