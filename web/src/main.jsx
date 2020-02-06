@@ -21,3 +21,16 @@ ReactDOM.render(
     </Provider>,
     document.getElementById('root')
 );
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js') // eslint-disable-line compat/compat
+      .then((registration) => {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope); // eslint-disable-line no-console
+      })
+      .catch((err) => {
+        console.log('ServiceWorker registration failed: ', err); // eslint-disable-line no-console
+      });
+  });
+}
+
