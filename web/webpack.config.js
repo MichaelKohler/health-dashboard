@@ -15,6 +15,12 @@ const copyOptions = [{
 }, {
   from: 'favicon.svg',
   to: '.',
+}, {
+  from: 'manifest.json',
+  to: '.',
+}, {
+  from: 'images/',
+  to: 'images/',
 }];
 
 const variableOptions = {
