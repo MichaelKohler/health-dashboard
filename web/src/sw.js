@@ -1,8 +1,15 @@
-const CACHE_NAME = 'health-cache-v2';
+const CACHE_NAME = 'health-cache-v3';
 const urlsToCache = [
   '/',
   '/main.js',
   '/favicon.svg',
+  '/cigarettes',
+  '/stairs',
+  '/weights',
+  '/stats',
+  'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap',
+  'https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxK.woff2',
+  'https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBBc4.woff2',
 ];
 
 self.addEventListener('install', (event) => {
@@ -17,27 +24,39 @@ self.addEventListener('install', (event) => {
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request)
-      .then((response) => {
-        if (response) {
-          return response;
-        }
+      .then((cachedResponse) => {
+        return fetch(event.request)
+          .then((response) => {
+              if(
+                 !response ||
+                 response.status !== 200 ||
+                 response.type !== 'basic' ||
+                 event.request.method !== 'GET'
+              ) {
+                if (cachedResponse) {
+                  return cachedResponse;
+                }
 
-        return fetch(event.request).then(
-          (response) => {
-            if(!response || response.status !== 200 || response.type !== 'basic') {
+                return response;
+              }
+
+              const responseToCache = response.clone();
+
+              caches.open(CACHE_NAME)
+                .then((cache) => {
+                  cache.put(event.request, responseToCache);
+                });
+
               return response;
             }
+          )
+          .catch((error) => {
+            if (cachedResponse) {
+              return cachedResponse;
+            }
 
-            const responseToCache = response.clone();
-
-            caches.open(CACHE_NAME)
-              .then((cache) => {
-                cache.put(event.request, responseToCache);
-              });
-
-            return response;
-          }
-        );
+            throw error;
+          });
       }
     )
   );
