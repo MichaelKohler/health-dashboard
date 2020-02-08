@@ -49,9 +49,9 @@ router.get('/', passport.authenticate(strategy, { session: false }), authorizedR
       weightStats,
       stairsStats,
     ]) => res.json({
-      cigarettes: cigarettesStats.reverse(),
-      weight: weightStats.reverse(),
-      stairs: stairsStats.reverse(),
+      cigarettes: cigarettesStats,
+      weight: weightStats,
+      stairs: stairsStats,
     }))
     .catch((error) => {
       debug('GET_STATS_ERROR', error.message);
