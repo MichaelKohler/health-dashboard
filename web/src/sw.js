@@ -18,11 +18,9 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  console.log('looking for', event.request.url);
   event.respondWith(
     caches.match(event.request)
       .then((cachedResponse) => {
-        console.log('cached response?', event.request.url, cachedResponse);
         if (cachedResponse) {
           getData(event);
           return cachedResponse;
@@ -53,7 +51,6 @@ self.addEventListener('activate', (event) => {
 function getData(event) {
   return fetch(event.request)
     .then((response) => {
-      console.log('got response for', event.request.url, response);
       if(!response ||
           response.status !== 200 ||
           event.request.method !== 'GET'
@@ -65,7 +62,6 @@ function getData(event) {
 
       caches.open(CACHE_NAME)
         .then((cache) => {
-          console.log('putting into cache', event.request);
           cache.put(event.request, responseToCache);
         });
 
