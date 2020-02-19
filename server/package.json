@@ -27,7 +27,7 @@
     "eslint-plugin-unicorn": "^16.0.0",
     "nyc": "^15.0.0",
     "sequelize-cli": "^5.5.1",
-    "sinon": "^8.1.1",
+    "sinon": "^9.0.0",
     "supertest": "^4.0.2"
   },
   "engines": {
