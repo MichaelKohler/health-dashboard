@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "",
   "dependencies": {
-    "@michaelkohler/eslint-config-base": "^6.8.18",
+    "@michaelkohler/eslint-config-base": "^6.8.20",
     "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
@@ -19,15 +19,15 @@
     "sequelize": "^5.21.5"
   },
   "devDependencies": {
-    "@ava/babel": "^1.0.0",
-    "@michaelkohler/eslint-config-node": "^6.8.18",
-    "@michaelkohler/eslint-config-test": "^6.8.18",
-    "ava": "^3.2.0",
+    "@ava/babel": "^1.0.1",
+    "@michaelkohler/eslint-config-node": "^6.8.20",
+    "@michaelkohler/eslint-config-test": "^6.8.20",
+    "ava": "^3.5.0",
     "eslint": "^6.8.0",
-    "eslint-plugin-unicorn": "^17.0.1",
+    "eslint-plugin-unicorn": "^17.2.0",
     "nyc": "^15.0.0",
     "sequelize-cli": "^5.5.1",
-    "sinon": "^9.0.0",
+    "sinon": "^9.0.1",
     "supertest": "^4.0.2"
   },
   "engines": {
