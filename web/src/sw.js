@@ -8,6 +8,29 @@ const urlsToCache = [
   'https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBBc4.woff2',
 ];
 
+function getData(event) {
+  return fetch(event.request)
+    .then((response) => {
+      if (!response ||
+          response.status !== 200 ||
+          event.request.method !== 'GET'
+      ) {
+        return response;
+      }
+
+      const responseToCache = response.clone();
+
+      caches.open(CACHE_NAME)
+        .then((cache) => {
+          cache.put(event.request, responseToCache);
+        })
+        .catch(console.error);
+
+      return response;
+    })
+    .catch(console.error);
+}
+
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -39,34 +62,13 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
+          if (!cacheWhitelist.includes(cacheName)) {
             return caches.delete(cacheName);
           }
+
+          return Promise.resolve();
         })
       );
     })
   );
 });
-
-function getData(event) {
-  return fetch(event.request)
-    .then((response) => {
-      if(!response ||
-          response.status !== 200 ||
-          event.request.method !== 'GET'
-      ) {
-        return response;
-      }
-
-      const responseToCache = response.clone();
-
-      caches.open(CACHE_NAME)
-        .then((cache) => {
-          cache.put(event.request, responseToCache);
-        });
-
-      return response;
-    })
-    .catch(console.error);
-}
-
