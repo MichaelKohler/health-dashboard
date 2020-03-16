@@ -5,7 +5,7 @@ exports[`renders correctly - login failed 1`] = `
   component="main"
   maxWidth="xs"
 >
-  <CssBaseline />
+  <WithStyles(CssBaseline) />
   <div
     className="makeStyles-appBarSpacer-1"
   />
@@ -71,7 +71,7 @@ exports[`renders correctly 1`] = `
   component="main"
   maxWidth="xs"
 >
-  <CssBaseline />
+  <WithStyles(CssBaseline) />
   <div
     className="makeStyles-appBarSpacer-1"
   />
