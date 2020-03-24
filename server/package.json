@@ -22,7 +22,7 @@
     "@ava/babel": "^1.0.1",
     "@michaelkohler/eslint-config-node": "^6.8.20",
     "@michaelkohler/eslint-config-test": "^6.8.20",
-    "ava": "^3.5.0",
+    "ava": "^3.5.1",
     "eslint": "^6.8.0",
     "eslint-plugin-unicorn": "^17.2.0",
     "nyc": "^15.0.0",
