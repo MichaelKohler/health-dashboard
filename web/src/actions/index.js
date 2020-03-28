@@ -148,6 +148,7 @@ function add(dispatch, endpoint, body, frontendPath) {
 
   fetchWithAuth(endpoint, 'PUT', body)
     .then(() => dispatch(fetchHealth()))
+    .then(() => dispatch(fetchHealth()))
     .then(() => {
       dispatch({
         type: SUBMISSION_SUCCEEDED,
