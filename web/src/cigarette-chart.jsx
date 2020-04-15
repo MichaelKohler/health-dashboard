@@ -26,7 +26,7 @@ export default function CigarettesChart() {
                   <XAxis dataKey="date"/>
                   <YAxis/>
                   <Tooltip/>
-                  <Bar dataKey="count" fill="#1f3352"/>
+                  <Bar dataKey="count" fill="#4054b2"/>
               </BarChart>
           )}
       </Grid>

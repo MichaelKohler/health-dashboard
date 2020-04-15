@@ -26,7 +26,7 @@ export default function WeightChart() {
                   <XAxis dataKey="createdAt"/>
                   <YAxis type="number" domain={[75, 85]}/>
                   <Tooltip/>
-                  <Line type="monotone" dataKey="weight" stroke="#1f3352" activeDot={{ r: 8 }}/>
+                  <Line type="monotone" dataKey="weight" stroke="#4054b2" activeDot={{ r: 8 }}/>
               </LineChart>
           )}
       </Grid>

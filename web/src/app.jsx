@@ -5,8 +5,7 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom';
-import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -28,16 +27,6 @@ import WeightForm from './weight-form.jsx';
 import Stairs from './stairs.jsx';
 import StairsForm from './stairs-form.jsx';
 import Snackbar from './snackbar.jsx';
-
-const mainTheme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#1f3352',
-      success: '#40bf40',
-      error: '#ff1a1a',
-    },
-  },
-});
 
 const drawerWidth = 240;
 
@@ -117,56 +106,54 @@ export default function App() {
   };
 
   return (
-      <ThemeProvider theme={mainTheme}>
+      <div className={classes.root}>
           <Snackbar/>
-          <div className={classes.root}>
-              <CssBaseline/>
-              <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
-                  <Toolbar className={classes.toolbar}>
-                      <IconButton
-                        edge="start"
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-                      >
-                          <MenuIcon/>
-                      </IconButton>
-                      <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                          Dashboard
-                      </Typography>
-                  </Toolbar>
-              </AppBar>
-              <Drawer
-                variant="permanent"
-                classes={{
-                  paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-                }}
-                open={open}
-              >
-                  <div className={classes.toolbarIcon}>
-                      <IconButton onClick={handleDrawerClose}>
-                          <ChevronLeftIcon/>
-                      </IconButton>
-                  </div>
-                  <Divider/>
-                  <Sidebar/>
-              </Drawer>
-              <main className={classes.content}>
-                  <Switch>
-                      <Route exact path="/" component={Overview}/>
-                      <Route path="/login" component={Login}/>
-                      <Route path="/logout" component={Logout}/>
-                      <Route path="/cigarettes/add" component={CigaretteForm}/>
-                      <Route path="/cigarettes" component={Cigarettes}/>
-                      <Route path="/weight/add" component={WeightForm}/>
-                      <Route path="/weight" component={Weight}/>
-                      <Route path="/stairs/add" component={StairsForm}/>
-                      <Route path="/stairs" component={Stairs}/>
-                      <Redirect to="/"/>
-                  </Switch>
-              </main>
-          </div>
-      </ThemeProvider>
+          <CssBaseline/>
+          <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+              <Toolbar className={classes.toolbar}>
+                  <IconButton
+                    edge="start"
+                    color="inherit"
+                    aria-label="open drawer"
+                    onClick={handleDrawerOpen}
+                    className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
+                  >
+                      <MenuIcon/>
+                  </IconButton>
+                  <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+                      Dashboard
+                  </Typography>
+              </Toolbar>
+          </AppBar>
+          <Drawer
+            variant="permanent"
+            classes={{
+              paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+            }}
+            open={open}
+          >
+              <div className={classes.toolbarIcon}>
+                  <IconButton onClick={handleDrawerClose}>
+                      <ChevronLeftIcon/>
+                  </IconButton>
+              </div>
+              <Divider/>
+              <Sidebar/>
+          </Drawer>
+          <main className={classes.content}>
+              <Switch>
+                  <Route exact path="/" component={Overview}/>
+                  <Route path="/login" component={Login}/>
+                  <Route path="/logout" component={Logout}/>
+                  <Route path="/cigarettes/add" component={CigaretteForm}/>
+                  <Route path="/cigarettes" component={Cigarettes}/>
+                  <Route path="/weight/add" component={WeightForm}/>
+                  <Route path="/weight" component={Weight}/>
+                  <Route path="/stairs/add" component={StairsForm}/>
+                  <Route path="/stairs" component={Stairs}/>
+                  <Redirect to="/"/>
+              </Switch>
+          </main>
+      </div>
   );
 }
