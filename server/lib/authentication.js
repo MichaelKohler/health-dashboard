@@ -31,7 +31,7 @@ async function getToken(email, password) {
     id: user.id,
     email: user.email,
   }, securityConfig.jwtSecret, {
-    expiresIn: securityConfig.tokenExpirationInMS,
+    expiresIn: securityConfig.tokenExpirationInS,
   });
 
   return token;

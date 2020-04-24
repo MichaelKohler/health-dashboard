@@ -17,7 +17,7 @@ router.post('/login', async (req, res) => {
     debug('USER_LOGGED_IN', email);
     res.status(STATUS_OK);
     res.cookie('jwt', token, {
-      maxAge: securityConfig.tokenExpirationInMS,
+      maxAge: securityConfig.tokenExpirationInS,
       httpOnly: true,
     });
     res.json({

@@ -47,6 +47,21 @@ spec:
                 secretKeyRef:
                   name: health
                   key: connect
+            - name: HEALTH_JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: health-config
+                  key: secret
+            - name: HEALTH_SALT_ROUNDS
+              valueFrom:
+                secretKeyRef:
+                  name: health-config
+                  key: saltrounds
+            - name: HEALTH_TOKEN_EXPIRATION_S
+              valueFrom:
+                secretKeyRef:
+                  name: health-config
+                  key: expiration
           volumeMounts:
             - name: config-volume
               mountPath: /app/server/config/mqtt/
