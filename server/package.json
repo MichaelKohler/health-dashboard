@@ -16,7 +16,8 @@
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
-    "sequelize": "^5.21.7"
+    "sequelize": "^5.21.7",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@ava/babel": "^1.0.1",
@@ -38,7 +39,9 @@
     "migrate": "sequelize-cli db:migrate",
     "seed": "sequelize-cli db:seed:all",
     "start": "npm run migrate && env DEBUG=\"health*\" node index.js",
-    "test": "nyc ava"
+    "test": "nyc ava",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": "Michael Kohler <me@michaelkohler.info>",
   "license": "MIT",
@@ -70,5 +73,6 @@
         "tests/**/*.js"
       ]
     }
-  }
+  },
+  "snyk": true
 }
