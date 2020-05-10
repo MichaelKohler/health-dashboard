@@ -17,14 +17,14 @@
     "recharts": "^1.8.5",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "webpack-cli": "^3.3.11",
-    "snyk": "^1.319.0"
+    "snyk": "^1.319.2",
+    "webpack-cli": "^3.3.11"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
+    "@babel/core": "^7.9.6",
     "@babel/preset-react": "^7.9.4",
-    "@michaelkohler/eslint-config-react": "^6.8.20",
-    "@michaelkohler/eslint-config-test": "^6.8.20",
+    "@michaelkohler/eslint-config-react": "^6.8.21",
+    "@michaelkohler/eslint-config-test": "^6.8.21",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
@@ -32,15 +32,15 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "enzyme-to-json": "^3.4.4",
-    "eslint": "^6.8.0",
-    "eslint-loader": "^3.0.3",
+    "eslint": "^7.0.0",
+    "eslint-loader": "^4.0.2",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^25.1.0",
-    "node-sass": "^4.13.1",
+    "jest": "^26.0.1",
+    "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
-    "react-hot-loader": "^4.12.20",
-    "webpack": "^4.42.1",
-    "webpack-dev-server": "^3.10.3"
+    "react-hot-loader": "^4.12.21",
+    "webpack": "^4.43.0",
+    "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
     "build": "./node_modules/webpack/bin/webpack.js --mode production",
