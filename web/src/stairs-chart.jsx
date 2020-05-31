@@ -26,7 +26,7 @@ export default function StairsChart() {
                   <XAxis dataKey="date"/>
                   <YAxis/>
                   <Tooltip/>
-                  <Bar dataKey="count" fill="#4054b2"/>
+                  <Bar dataKey="count" fill="#1f3352"/>
               </BarChart>
           )}
       </Grid>
