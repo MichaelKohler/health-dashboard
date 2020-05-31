@@ -8,12 +8,12 @@ import { clearSnackbar } from './actions';
 
 const useStyles = makeStyles((theme) => ({
   success: {
-    backgroundColor: theme.palette.primary.success,
+    backgroundColor: theme.palette.success.main,
     display: 'flex',
     alignItems: 'center',
   },
   error: {
-    backgroundColor: theme.palette.primary.error,
+    backgroundColor: theme.palette.error.main,
     display: 'flex',
     alignItems: 'center',
   },
