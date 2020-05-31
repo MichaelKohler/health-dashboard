@@ -4,8 +4,8 @@
   "description": "Some health dashboard.. or just something so I can play around..",
   "scripts": {
     "install": "cd server && npm install && cd ../web && npm install && cd ..",
-    "start:server": "pushd server && npm start && popd",
-    "start:web": "pushd web && npm start && popd",
+    "start:server": "cd server && npm start",
+    "start:web": "cd web && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

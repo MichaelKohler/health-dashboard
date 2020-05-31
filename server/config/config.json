@@ -5,15 +5,33 @@
     "database": "health",
     "host": "127.0.0.1",
     "dialect": "mariadb",
+    "pool": {
+      "max": 10,
+      "min": 0,
+      "acquire": 30000,
+      "idle": 10000
+    },
     "usePassportStrategy": "jwt"
   },
   "test": {
     "usePassportStrategy": "local",
-    "dialect": "mariadb"
+    "dialect": "mariadb",
+    "pool": {
+      "max": 10,
+      "min": 0,
+      "acquire": 30000,
+      "idle": 10000
+    }
   },
   "production": {
     "use_env_variable": "HEALTH_CONNECT",
     "usePassportStrategy": "jwt",
-    "dialect": "mariadb"
+    "dialect": "mariadb",
+    "pool": {
+      "max": 10,
+      "min": 0,
+      "acquire": 30000,
+      "idle": 10000
+    }
   }
 }

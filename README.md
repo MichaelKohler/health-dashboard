@@ -14,7 +14,7 @@ Some health dashboard.. or just something so I can play around..
 First you need to install dependencies:
 
 ```
-$ npm install
+$ npm ci
 ```
 
 ### Start MariaDB instance
