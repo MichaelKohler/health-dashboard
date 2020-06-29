@@ -51,7 +51,7 @@ module.exports = {
       test: /\.js|\.jsx$/,
       exclude: /node_modules/,
       enforce: 'pre',
-      loader: 'eslint-loader'
+      loader: 'eslint-loader',
     }, {
       test: /\.js|\.jsx$/,
       exclude: /node_modules/,
@@ -59,7 +59,7 @@ module.exports = {
     }],
   },
   plugins: [
-    new CopyWebpackPlugin(copyOptions, { copyUnmodified: true }),
-    new webpack.DefinePlugin(variableOptions)
+    new CopyWebpackPlugin({ patterns: copyOptions }),
+    new webpack.DefinePlugin(variableOptions),
   ],
 };
