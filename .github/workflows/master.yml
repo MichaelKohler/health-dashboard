@@ -1,9 +1,9 @@
-name: Master Deployment
+name: Main Deployment
 
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   context:
     runs-on: ubuntu-latest
@@ -61,7 +61,7 @@ jobs:
       env:
         CI: true
     - name: Publish Docker
-      if: github.ref == 'refs/heads/master'
+      if: github.ref == 'refs/heads/main'
       env:
         CI: true
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
@@ -96,7 +96,7 @@ jobs:
     steps:
     - uses: appleboy/telegram-action@master
       name: Send Notification
-      if: github.ref == 'refs/heads/master'
+      if: github.ref == 'refs/heads/main'
       env:
         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
         TELEGRAM_TO: ${{ secrets.TELEGRAM_TO }}
