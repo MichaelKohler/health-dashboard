@@ -16,7 +16,6 @@
     "recharts": "^1.8.5",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "snyk": "^1.352.1",
     "webpack-cli": "^3.3.12"
   },
   "devDependencies": {
@@ -46,9 +45,7 @@
     "start": "webpack-dev-server --hot --progress --colors --inline --mode development",
     "test": "jest",
     "test:update": "jest --updateSnapshot",
-    "eslint": "eslint src tests",
-    "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "eslint": "eslint src tests"
   },
   "author": "Michael Kohler",
   "license": "MIT",
@@ -59,6 +56,5 @@
     "not ie_mob <= 11",
     "not op_mini all",
     "not dead"
-  ],
-  "snyk": true
+  ]
 }
