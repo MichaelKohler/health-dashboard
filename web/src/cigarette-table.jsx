@@ -36,7 +36,7 @@ export default function CigaretteTable(props) {
               <TableHead>
                   <TableRow>
                       <TableCell align="left">Date</TableCell>
-                      <TableCell align="right">Rolled</TableCell>
+                      <TableCell align="right">Type</TableCell>
                       <TableCell align="right">Actions</TableCell>
                   </TableRow>
               </TableHead>

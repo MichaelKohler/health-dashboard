@@ -29,7 +29,7 @@ exports[`renders button disabled 1`] = `
             checked={true}
             color="primary"
             id="rolled"
-            value="checked"
+            onChange={[Function]}
           />
         }
         label="rolled"
@@ -78,7 +78,7 @@ exports[`renders correctly 1`] = `
             checked={true}
             color="primary"
             id="rolled"
-            value="checked"
+            onChange={[Function]}
           />
         }
         label="rolled"

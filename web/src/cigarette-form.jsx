@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -24,6 +24,10 @@ export default function CigaretteForm() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const isSubmitting = useSelector((state) => state.isSubmitting);
+  const [rolled, setRolled] = useState(true);
+  const handleRolledChange = (event) => {
+    setRolled(event.target.checked);
+  };
 
   return (
       <Container component="main" maxWidth="xs">
@@ -38,9 +42,9 @@ export default function CigaretteForm() {
                       control={
                           <Checkbox
                             id="rolled"
-                            checked
+                            checked={rolled}
+                            onChange={handleRolledChange}
                             color="primary"
-                            value="checked"
                           />
                       }
                       label="rolled"
