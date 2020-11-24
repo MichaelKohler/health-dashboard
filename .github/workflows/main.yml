@@ -11,7 +11,7 @@ jobs:
       matrix:
         node-version: [10.x, 12.x, 14.x]
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
@@ -30,7 +30,7 @@ jobs:
       matrix:
         node-version: [10.x, 12.x]
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
@@ -47,7 +47,7 @@ jobs:
     needs: [test-server,test-web]
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Build Docker
       run: |
         docker build -t michaelkohler/health-dashboard:$GITHUB_SHA .
@@ -65,7 +65,7 @@ jobs:
     needs: [docker-build]
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Update deployment file
       run: |
         sed -i 's|<TAG>|'${GITHUB_SHA}'|' $GITHUB_WORKSPACE/k8s/deployment.yaml
