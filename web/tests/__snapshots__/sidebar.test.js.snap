@@ -13,7 +13,7 @@ exports[`renders correctly - logged in 1`] = `
     to="/"
   >
     <WithStyles(ForwardRef(ListItemIcon))>
-      <DashboardIcon />
+      <Memo(ForwardRef(DashboardIcon)) />
     </WithStyles(ForwardRef(ListItemIcon))>
     <WithStyles(ForwardRef(ListItemText))
       primary="Dashboard"
@@ -30,7 +30,7 @@ exports[`renders correctly - logged in 1`] = `
     to="/logout"
   >
     <WithStyles(ForwardRef(ListItemIcon))>
-      <LockOpenIcon />
+      <Memo(ForwardRef(LockOpenIcon)) />
     </WithStyles(ForwardRef(ListItemIcon))>
     <WithStyles(ForwardRef(ListItemText))
       primary="Logout"
@@ -53,7 +53,7 @@ exports[`renders correctly - logged in 1`] = `
     to="/cigarettes"
   >
     <WithStyles(ForwardRef(ListItemIcon))>
-      <SmokingRoomsIcon />
+      <Memo(ForwardRef(SmokingRoomsIcon)) />
     </WithStyles(ForwardRef(ListItemIcon))>
     <WithStyles(ForwardRef(ListItemText))
       primary="Cigarettes"
@@ -70,7 +70,7 @@ exports[`renders correctly - logged in 1`] = `
     to="/weight"
   >
     <WithStyles(ForwardRef(ListItemIcon))>
-      <FitnessCenterIcon />
+      <Memo(ForwardRef(FitnessCenterIcon)) />
     </WithStyles(ForwardRef(ListItemIcon))>
     <WithStyles(ForwardRef(ListItemText))
       primary="Weight"
@@ -87,7 +87,7 @@ exports[`renders correctly - logged in 1`] = `
     to="/stairs"
   >
     <WithStyles(ForwardRef(ListItemIcon))>
-      <DirectionsRunIcon />
+      <Memo(ForwardRef(DirectionsRunIcon)) />
     </WithStyles(ForwardRef(ListItemIcon))>
     <WithStyles(ForwardRef(ListItemText))
       primary="Stairs"
@@ -109,7 +109,7 @@ exports[`renders correctly - logged out 1`] = `
     to="/"
   >
     <WithStyles(ForwardRef(ListItemIcon))>
-      <DashboardIcon />
+      <Memo(ForwardRef(DashboardIcon)) />
     </WithStyles(ForwardRef(ListItemIcon))>
     <WithStyles(ForwardRef(ListItemText))
       primary="Dashboard"
@@ -126,7 +126,7 @@ exports[`renders correctly - logged out 1`] = `
     to="/login"
   >
     <WithStyles(ForwardRef(ListItemIcon))>
-      <LockIcon />
+      <Memo(ForwardRef(LockIcon)) />
     </WithStyles(ForwardRef(ListItemIcon))>
     <WithStyles(ForwardRef(ListItemText))
       primary="Login"
@@ -149,7 +149,7 @@ exports[`renders correctly - logged out 1`] = `
     to="/cigarettes"
   >
     <WithStyles(ForwardRef(ListItemIcon))>
-      <SmokingRoomsIcon />
+      <Memo(ForwardRef(SmokingRoomsIcon)) />
     </WithStyles(ForwardRef(ListItemIcon))>
     <WithStyles(ForwardRef(ListItemText))
       primary="Cigarettes"
@@ -166,7 +166,7 @@ exports[`renders correctly - logged out 1`] = `
     to="/weight"
   >
     <WithStyles(ForwardRef(ListItemIcon))>
-      <FitnessCenterIcon />
+      <Memo(ForwardRef(FitnessCenterIcon)) />
     </WithStyles(ForwardRef(ListItemIcon))>
     <WithStyles(ForwardRef(ListItemText))
       primary="Weight"
@@ -183,7 +183,7 @@ exports[`renders correctly - logged out 1`] = `
     to="/stairs"
   >
     <WithStyles(ForwardRef(ListItemIcon))>
-      <DirectionsRunIcon />
+      <Memo(ForwardRef(DirectionsRunIcon)) />
     </WithStyles(ForwardRef(ListItemIcon))>
     <WithStyles(ForwardRef(ListItemText))
       primary="Stairs"

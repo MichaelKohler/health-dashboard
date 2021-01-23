@@ -15,7 +15,7 @@ exports[`renders correctly - login failed 1`] = `
     <WithStyles(ForwardRef(Avatar))
       className="makeStyles-avatar-7"
     >
-      <LockOutlinedIcon />
+      <Memo(ForwardRef(LockOutlinedIcon)) />
     </WithStyles(ForwardRef(Avatar))>
     <WithStyles(ForwardRef(Typography))
       component="h1"
@@ -81,7 +81,7 @@ exports[`renders correctly 1`] = `
     <WithStyles(ForwardRef(Avatar))
       className="makeStyles-avatar-7"
     >
-      <LockOutlinedIcon />
+      <Memo(ForwardRef(LockOutlinedIcon)) />
     </WithStyles(ForwardRef(Avatar))>
     <WithStyles(ForwardRef(Typography))
       component="h1"

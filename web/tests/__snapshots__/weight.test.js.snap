@@ -38,7 +38,7 @@ exports[`renders correctly - fetching 1`] = `
       color="primary"
       onClick={[Function]}
     >
-      <AddIcon />
+      <Memo(ForwardRef(AddIcon)) />
     </WithStyles(ForwardRef(Fab))>
   </WithStyles(ForwardRef(Container))>
 </section>
@@ -79,7 +79,7 @@ exports[`renders correctly - fetching error 1`] = `
       color="primary"
       onClick={[Function]}
     >
-      <AddIcon />
+      <Memo(ForwardRef(AddIcon)) />
     </WithStyles(ForwardRef(Fab))>
   </WithStyles(ForwardRef(Container))>
 </section>
@@ -123,7 +123,7 @@ exports[`renders correctly 1`] = `
       color="primary"
       onClick={[Function]}
     >
-      <AddIcon />
+      <Memo(ForwardRef(AddIcon)) />
     </WithStyles(ForwardRef(Fab))>
   </WithStyles(ForwardRef(Container))>
 </section>

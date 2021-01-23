@@ -38,7 +38,7 @@ exports[`renders correctly 1`] = `
       color="primary"
       onClick={[Function]}
     >
-      <AddIcon />
+      <Memo(ForwardRef(AddIcon)) />
     </WithStyles(ForwardRef(Fab))>
   </WithStyles(ForwardRef(Container))>
 </section>
@@ -82,7 +82,7 @@ exports[`shows fetching paper 1`] = `
       color="primary"
       onClick={[Function]}
     >
-      <AddIcon />
+      <Memo(ForwardRef(AddIcon)) />
     </WithStyles(ForwardRef(Fab))>
   </WithStyles(ForwardRef(Container))>
 </section>
